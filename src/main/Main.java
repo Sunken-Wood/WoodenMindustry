@@ -12,6 +12,8 @@ import mindustry.ui.dialogs.BaseDialog;
 public class Main extends Mod {
 
     public static Blocks blocks;
+    public static Planets planets;
+    public static Techtree techtree;
 
     public Main(){
         Log.info("Loaded ExampleJavaMod constructor.");
@@ -29,11 +31,15 @@ public class Main extends Mod {
             });
         });
         blocks = new Blocks();
+        planets = new Planets();
+        techtree = new Techtree();
 
     }
     @Override
     public void loadContent() {
         super.loadContent();
         blocks.load();
+        planets.load();
+        techtree.load();
     }
 }
