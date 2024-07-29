@@ -8,6 +8,10 @@ public class Blocks implements ContentList {
 
     @Override
     public void load() {
-        launchPad = new LaunchPad("launch-pad");
+        launchPad = new LaunchPad("launch-pad"){
+            {
+                alwaysUnlocked = true;
+            }
+        };
     }
 }
