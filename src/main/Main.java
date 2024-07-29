@@ -1,15 +1,18 @@
 package main;
 
-import mindustry.*;
 import arc.Core;
 import arc.Events;
 import arc.util.Log;
 import arc.util.Time;
+import main.block.Blocks;
 import mindustry.game.EventType;
 import mindustry.mod.Mod;
 import mindustry.ui.dialogs.BaseDialog;
 
 public class Main extends Mod {
+
+    public static Blocks blocks;
+
     public Main(){
         Log.info("Loaded ExampleJavaMod constructor.");
 
@@ -20,14 +23,17 @@ public class Main extends Mod {
                 BaseDialog dialog = new BaseDialog("frog");
                 dialog.cont.add("behold").row();
                 //mod sprites are prefixed with the mod name (this mod is called 'example-java-mod' in its config)
-                dialog.cont.image(Core.atlas.find("example-java-mod-frog")).pad(20f).row();
+                dialog.cont.image(Core.atlas.find("frog")).pad(20f).row();
                 dialog.cont.button("I see", dialog::hide).size(100f, 50f);
                 dialog.show();
             });
         });
+        blocks = new Blocks();
+
     }
     @Override
     public void loadContent() {
         super.loadContent();
+        blocks.load();
     }
 }
