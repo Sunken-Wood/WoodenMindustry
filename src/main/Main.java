@@ -13,6 +13,7 @@ public class Main extends Mod {
 
     public static Blocks blocks;
     public static Planets planets;
+    public static SectorPresets sectorPresets;
     public static Techtree techtree;
 
     public Main(){
@@ -33,6 +34,7 @@ public class Main extends Mod {
         blocks = new Blocks();
         planets = new Planets();
         techtree = new Techtree();
+        sectorPresets = new SectorPresets();
 
     }
     @Override
@@ -41,5 +43,6 @@ public class Main extends Mod {
         blocks.load();
         planets.load();
         techtree.load();
+        sectorPresets.load();
     }
 }

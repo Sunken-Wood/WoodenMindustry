@@ -14,11 +14,11 @@ import mindustry.world.meta.Env;
 
 public class Planets implements ContentList{
     public static Planet
-        Era_Rebuild;
+            era_rebuild;
 
     @Override
     public void load() {
-        Era_Rebuild = new Planet("rebuild-planet", mindustry.content.Planets.erekir, 1f, 2){{
+        era_rebuild = new Planet("rebuild-planet", mindustry.content.Planets.erekir, 1f, 2){{
             generator = new ErekirPlanetGenerator();
             meshLoader = () -> new HexMesh(this, 5);
             cloudMeshLoader = () -> new MultiMesh(
