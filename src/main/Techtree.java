@@ -11,7 +11,7 @@ public class Techtree implements ContentList{
 
     @Override
     public void load() {
-        erekir.techTree = nodeRoot("Rebuild", Era_Rebuild, true, () -> {
+        Era_Rebuild.techTree = nodeRoot("Rebuild", launchPad, true, () -> {
             node(launchPad, () -> {
 
             });
