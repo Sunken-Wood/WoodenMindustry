@@ -18,7 +18,7 @@ public class Planets implements ContentList{
 
     @Override
     public void load() {
-        Era_Rebuild = new Planet("RebuildPlanet", mindustry.content.Planets.erekir, 1f, 2){{
+        Era_Rebuild = new Planet("rebuild-planet", mindustry.content.Planets.erekir, 1f, 2){{
             generator = new ErekirPlanetGenerator();
             meshLoader = () -> new HexMesh(this, 5);
             cloudMeshLoader = () -> new MultiMesh(
