@@ -26,8 +26,8 @@ public class Planets implements ContentList {
             generator = new ErekirPlanetGenerator();
             meshLoader = () -> new HexMesh(this, 5); // division 划分
             cloudMeshLoader = () -> new MultiMesh(
-                    new HexSkyMesh(this, 2, 0.5f, 0.15f, 5, Color.rgb(150,150,255).a(0.72f), 2, 0.42f, 1f, 0.43f),
-                    new HexSkyMesh(this, 3, 0.8f, 0.17f, 5, Color.rgb(100, 100, 255).a(0.72f), 2, 0.42f, 1f, 0.44f)
+                    new HexSkyMesh(this, 2, 0.15f, 0.15f, 5, Color.rgb(150,150,255).a(0.72f), 2, 0.42f, 1f, 0.43f),
+                    new HexSkyMesh(this, 3, 0.6f, 0.17f, 5, Color.rgb(100, 100, 255).a(0.72f), 2, 0.42f, 1.2f, 0.44f)
             );
             landCloudColor = Color.rgb(120, 120, 255);
             atmosphereColor =Color.rgb(255, 150, 150);
