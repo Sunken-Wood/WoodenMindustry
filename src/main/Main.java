@@ -4,7 +4,9 @@ import arc.Core;
 import arc.Events;
 import arc.util.Log;
 import arc.util.Time;
-import main.block.Blocks;
+import main.content.Blocks;
+import main.content.Planets;
+import main.content.Techtrees;
 import mindustry.game.EventType;
 import mindustry.mod.Mod;
 import mindustry.ui.dialogs.BaseDialog;
@@ -13,8 +15,8 @@ public class Main extends Mod {
 
     public static Blocks blocks;
     public static Planets planets;
-    public static SectorPresets sectorPresets;
-    public static Techtree techtree;
+    public static Techtrees techtrees;
+
 
     public Main(){
         Log.info("Loaded ExampleJavaMod constructor.");
@@ -33,16 +35,13 @@ public class Main extends Mod {
         });
         blocks = new Blocks();
         planets = new Planets();
-        techtree = new Techtree();
-        sectorPresets = new SectorPresets();
-
+        techtrees = new Techtrees();
     }
     @Override
     public void loadContent() {
         super.loadContent();
         blocks.load();
         planets.load();
-        techtree.load();
-        sectorPresets.load();
+        techtrees.load();
     }
 }
