@@ -21,13 +21,13 @@ public class Planets implements ContentList {
 
     @Override
     public void load() {
-        destruction = new Planet("destruction", sun, 0.4f, 2){{
+        destruction = new Planet("destruction", sun, 1f, 2){{
             alwaysUnlocked = true;
             generator = new ErekirPlanetGenerator();
             meshLoader = () -> new HexMesh(this, 5); // division 划分
             cloudMeshLoader = () -> new MultiMesh(
-                    new HexSkyMesh(this, 5, 2.5f, 1.5f, 5, Color.rgb(150,150,255).a(0.72f), 2, 0.42f, 1f, 0.43f),
-                    new HexSkyMesh(this, 5, 2.8f, 1.7f, 5, Color.rgb(100, 100, 255).a(0.72f), 2, 0.42f, 1f, 0.44f)
+                    new HexSkyMesh(this, 2, 2.5f, 1.5f, 5, Color.rgb(150,150,255).a(0.72f), 2, 0.42f, 1f, 0.43f),
+                    new HexSkyMesh(this, 3, 2.8f, 1.7f, 5, Color.rgb(100, 100, 255).a(0.72f), 2, 0.42f, 1f, 0.44f)
             );
             landCloudColor = Color.rgb(120, 120, 255);
             atmosphereColor =Color.rgb(255, 150, 150);
@@ -45,10 +45,8 @@ public class Planets implements ContentList {
             iconColor = Color.rgb(150, 150 ,255);
             enemyBuildSpeedMultiplier = 0.4f;
 
-            //TODO disallowed for now
             allowLaunchToNumbered = false;
 
-            //TODO SHOULD there be lighting?
             updateLighting = false;
 
             defaultAttributes.set(Attribute.heat, 0.8f);
