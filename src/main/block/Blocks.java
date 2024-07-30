@@ -15,7 +15,7 @@ public class Blocks implements ContentList {
     public void load() {
         launchPad = new LaunchPad("launch-pad"){
             {
-                alwaysUnlocked = true;
+//                alwaysUnlocked = true;
                 requirements(Category.effect, BuildVisibility.campaignOnly, with(Items.beryllium, 360, Items.silicon, 360, Items.oxide, 120, Items.tungsten, 360));
                 size = 3;
                 itemCapacity = 100;
