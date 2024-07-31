@@ -4,7 +4,6 @@ import main.ContentList;
 import mindustry.content.TechTree;
 
 import static main.content.Blocks.launchPad_erekir;
-import static main.content.Blocks.wooden;
 import static main.content.Planets.destruction;
 import static mindustry.content.TechTree.node;
 import static mindustry.content.TechTree.nodeRoot;
