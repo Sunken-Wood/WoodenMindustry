@@ -1,8 +1,8 @@
 #the mod name as displayed in-game
-displayName: "Wooden Mindustry"
+displayName: "Erekir的发射台"
 
 #the internal name of your mod
-name: "wooden-mindustry"
+name: "launchpad-erekir"
 
 #your name
 author: "Sunken-Wood"
