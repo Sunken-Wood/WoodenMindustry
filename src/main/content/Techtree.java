@@ -2,23 +2,19 @@ package main.content;
 
 import main.ContentList;
 import mindustry.content.TechTree;
-import mindustry.ctype.UnlockableContent;
 
-import static mindustry.content.Blocks.payloadMassDriver;
-import static mindustry.content.Planets.erekir;
+import static main.content.Blocks.launchPad_erekir;
+import static main.content.Blocks.wooden;
 import static mindustry.content.TechTree.node;
+import static mindustry.content.TechTree.nodeRoot;
 
 public class Techtree implements ContentList {
-    public static TechTree.TechNode context = null;
-    public static void addToNode(UnlockableContent p, Runnable c) {
-        context = TechTree.all.find(t -> t.content == p);
-        c.run();
-    }
+    public static TechTree.TechNode wooden_tools;
 
     @Override
     public void load() {
-        addToNode(payloadMassDriver, () -> {
-            node(Blocks.launchPad_erekir, () -> {
+        wooden_tools = nodeRoot("wooden-tools", wooden, () -> {
+            node(launchPad_erekir, () -> {
 
             });
         });

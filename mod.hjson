@@ -1,8 +1,8 @@
 #the mod name as displayed in-game
-displayName: "Erekir的发射台"
+displayName: "Wooden Tools"
 
 #the internal name of your mod
-name: "launchpad-erekir"
+name: "wooden-tools"
 
 #your name
 author: "Sunken-Wood"
@@ -11,7 +11,7 @@ author: "Sunken-Wood"
 main: "main.Main"
 
 #the mod description as seen in the mod dialog
-description: "A Mindustry Java mod template."
+description: "tools!!!"
 
 #the mod version
 version: 0.1

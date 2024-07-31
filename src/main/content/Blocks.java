@@ -3,12 +3,14 @@ package main.content;
 import main.ContentList;
 import mindustry.content.Items;
 import mindustry.type.Category;
+import mindustry.world.Block;
 import mindustry.world.blocks.campaign.LaunchPad;
 import mindustry.world.meta.BuildVisibility;
 
 import static mindustry.type.ItemStack.with;
 
 public class Blocks implements ContentList {
+    public static Block wooden;
     public static LaunchPad launchPad_erekir;
 
 
