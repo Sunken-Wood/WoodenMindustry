@@ -27,6 +27,7 @@ public class Main extends Mod {
         blocks = new Blocks();
         planets = new Planets();
         techtree = new Techtree();
+        wui = new WUI();
     }
     @Override
     public void loadContent() {
@@ -35,8 +36,7 @@ public class Main extends Mod {
         planets.load();
         techtree.load();
         if (ui != null){
-            wui = new WUI();
-            ui.menufrag.addButton("Hello", () -> {wui.load();});
+            ui.menufrag.addButton("Hello", () -> wui.load());
         }
     }
 }
