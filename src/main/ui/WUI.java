@@ -1,6 +1,7 @@
 package main.ui;
 
 import arc.Core;
+import arc.scene.ui.Dialog;
 import arc.scene.ui.layout.Table;
 import arc.util.Log;
 import arc.util.Time;
@@ -35,6 +36,9 @@ public class WUI implements ContentList {
                 });
             });
         });
+
+        BaseDialog dialog = new BaseDialog("Test");
+        dialog.cont.add(table);
 
     }
 }
