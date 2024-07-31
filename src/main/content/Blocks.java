@@ -10,7 +10,6 @@ import mindustry.world.meta.BuildVisibility;
 import static mindustry.type.ItemStack.with;
 
 public class Blocks implements ContentList {
-    public static Block wooden;
     public static LaunchPad launchPad_erekir;
 
 
