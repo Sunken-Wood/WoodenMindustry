@@ -19,7 +19,7 @@ public class Main extends Mod {
     public static Blocks blocks;
     public static Planets planets;
     public static Techtree techtree;
-    public static WUI wui;
+//    public static WUI wui;
 
 
     public Main(){
@@ -27,7 +27,10 @@ public class Main extends Mod {
         blocks = new Blocks();
         planets = new Planets();
         techtree = new Techtree();
-        wui = new WUI();
+//        if (ui != null){
+//            wui = new WUI();
+//            ui.menufrag.addButton("Hello", () -> wui.load());
+//        }
     }
     @Override
     public void loadContent() {
@@ -35,8 +38,5 @@ public class Main extends Mod {
         blocks.load();
         planets.load();
         techtree.load();
-        if (ui != null){
-            ui.menufrag.addButton("Hello", () -> wui.load());
-        }
     }
 }

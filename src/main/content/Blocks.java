@@ -16,7 +16,7 @@ public class Blocks implements ContentList {
     @Override
     public void load() {
         launchPad_erekir = new LaunchPad("launchpad-erekir"){{
-            requirements(Category.effect, BuildVisibility.campaignOnly, with(Items.beryllium, 360, Items.silicon, 360, Items.oxide, 160));
+            requirements(Category.effect, with(Items.beryllium, 360, Items.silicon, 360, Items.oxide, 160));
             size = 3;
             itemCapacity = 200;
             launchTime = 60f * 60;
