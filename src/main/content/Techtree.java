@@ -4,6 +4,7 @@ import main.ContentList;
 import mindustry.content.TechTree;
 
 import static main.content.Blocks.launchPad_erekir;
+import static main.content.Blocks.unloader_erekir;
 import static main.content.Planets.destruction;
 import static mindustry.content.Planets.erekir;
 import static mindustry.content.TechTree.node;
@@ -15,7 +16,7 @@ public class Techtree implements ContentList {
 
     @Override
     public void load() {
-        erekir.techTree.children.add(node(launchPad_erekir));
+        erekir.techTree.children.add(node(launchPad_erekir), node(unloader_erekir));
         wooden_tools = nodeRoot("wooden-tools", destruction, () -> {
 
         });
