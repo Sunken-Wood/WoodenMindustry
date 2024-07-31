@@ -18,7 +18,9 @@ public class Techtree implements ContentList {
     @Override
     public void load() {
         addToNode(payloadMassDriver, () -> {
-            node(Blocks.launchPad_erekir);
+            node(Blocks.launchPad_erekir, () -> {
+
+            });
         });
     }
 }
