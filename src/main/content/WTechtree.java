@@ -5,12 +5,12 @@ import mindustry.content.Items;
 import mindustry.content.TechTree;
 
 import static main.content.WBlocks.*;
+import static main.content.WPlanets.destruction;
 import static mindustry.content.Planets.erekir;
 import static mindustry.content.TechTree.node;
 import static mindustry.content.TechTree.nodeRoot;
 
 public class WTechtree implements ContentList {
-    public static TechTree.TechNode destruction;
 
     @Override
     public void load() {
@@ -21,7 +21,8 @@ public class WTechtree implements ContentList {
             // 在 launchPad_erekir 节点下添加 pneumatic_drill_erekir 节点
             node(sand_maker);
         }));
-        destruction = nodeRoot("destruction", destruction_core, () -> {
+
+        destruction.techTree = nodeRoot("destruction", destruction_core, true, () -> {
             node(Items.copper, () -> {
                 node(WItems.iron, () -> {
                     node(WItems.silver, () -> {

@@ -1,8 +1,10 @@
 package main.content;
 
 import main.ContentList;
+import mindustry.content.Blocks;
 import mindustry.content.Items;
 import mindustry.content.Liquids;
+import mindustry.content.UnitTypes;
 import mindustry.type.Category;
 import mindustry.type.Item;
 import mindustry.type.ItemStack;
@@ -28,6 +30,9 @@ public class WBlocks implements ContentList {
     public void load() {
 
 //        =============================== Erekir Tools ===============================
+        Blocks.reinforcedPump.consumeLiquid(Liquids.hydrogen, 0f);
+        Blocks.reinforcedPump.consumesPower = true;
+        Blocks.reinforcedPump.consumePower(40f);
         // 初始化 Erekir 版本的 LaunchPad
         launchPad_erekir = new LaunchPad("launchpad-erekir"){{
             // 设置建造需求：需要 360 个 Beryllium、360 个 Silicon 和 160 个 Oxide
@@ -77,18 +82,19 @@ public class WBlocks implements ContentList {
         // 【毁灭】核心
         destruction_core = new CoreBlock("destruction-core"){{
             requirements(Category.effect, with(WItems.iron, 1000, Items.copper, 1000, Items.silicon, 1000));
+            researchCost = with(WItems.iron, 1000, Items.copper, 1000, Items.silicon, 1000);
 
             size = 3;// 大小
             hasItems = true;
             itemCapacity = 50000;// 物品容量
             health = 4000;// 生命值
+            unitType = UnitTypes.evoke;
 
             incinerateNonBuildable = true;//焚烧不可重建
             requiresCoreZone = true;//需要核心区
             alwaysUnlocked = true;//总是解锁
             unitCapModifier = 20;//单位数量
 
-            researchCostMultiplier = 0.7f;//研究花费倍数
         }};
 
     }

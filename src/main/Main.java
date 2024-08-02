@@ -15,17 +15,6 @@ public class Main extends Mod {
     public static WBlocks WBlocks;
     public static WPlanets WPlanets;
     public static WTechtree WTechtree;
-    public static WUI wui;
-
-    public static boolean onlyPlugIn = Core.settings.getBool("");
-//    public static WUI wui;
-
-    public void init(){
-        if (ui != null){
-//            wui = new WUI();
-//            wui.init();
-        }
-    }
 
     public Main(){
         Log.info("Loaded ExampleJavaMod constructor.");
