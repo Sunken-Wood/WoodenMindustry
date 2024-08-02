@@ -1,8 +1,8 @@
 #the mod name as displayed in-game
-displayName: "Wooden Tools"
+displayName: "Wooden Mindustry"
 
 #the internal name of your mod
-name: "wooden-tools"
+name: "wooden-mindustry"
 
 #your name
 author: "Sunken-Wood[https://github.com/Sunken-Wood] / TAGAST[https://github.com/TAGAST]"
@@ -11,7 +11,7 @@ author: "Sunken-Wood[https://github.com/Sunken-Wood] / TAGAST[https://github.com
 main: "main.Main"
 
 #the mod description as seen in the mod dialog
-description: "tools!!!"
+description: "Restart"
 
 #the mod version
 version: V0.1.37.20240801_alpha

@@ -7,19 +7,26 @@ import mindustry.type.Category;
 import mindustry.type.ItemStack;
 import mindustry.world.blocks.campaign.LaunchPad;
 import mindustry.world.blocks.production.GenericCrafter;
+import mindustry.world.blocks.storage.CoreBlock;
 import mindustry.world.blocks.storage.Unloader;
 import mindustry.world.meta.BlockGroup;
 
 import static mindustry.type.ItemStack.with;
 
 public class Blocks implements ContentList {
+//    ============ Erekir ============
     // 定义 Erekir 版本的 LaunchPad、Unloader 和 HeatProducer 块
     public static LaunchPad launchPad_erekir;
     public static Unloader unloader_erekir;
     public static GenericCrafter sand_maker;
 
+//    ============ Destruction ============
+    public static CoreBlock destruction_core;
+
     @Override
     public void load() {
+
+//        =============================== Erekir Tools ===============================
         // 初始化 Erekir 版本的 LaunchPad
         launchPad_erekir = new LaunchPad("launchpad-erekir"){{
             // 设置建造需求：需要 360 个 Beryllium、360 个 Silicon 和 160 个 Oxide
@@ -63,6 +70,23 @@ public class Blocks implements ContentList {
             hasPower = true;
             // 设置电力消耗为 4 单位/秒
             consumePower(10f);
+        }};
+
+//        =============================== Destruction ===============================
+        destruction_core = new CoreBlock("destruction-core"){{
+            requirements(Category.effect, with());
+
+            size = 3;
+            hasItems = true;
+            itemCapacity = 50000;
+            health = 4000;
+
+            incinerateNonBuildable = true;
+            requiresCoreZone = true;
+            alwaysUnlocked = true;
+            unitCapModifier = 20;
+
+            researchCostMultiplier = 0.5f;
         }};
     }
 }
