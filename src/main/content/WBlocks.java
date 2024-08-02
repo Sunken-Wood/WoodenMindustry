@@ -30,9 +30,6 @@ public class WBlocks implements ContentList {
     public void load() {
 
 //        =============================== Erekir Tools ===============================
-        Blocks.reinforcedPump.consumeLiquid(Liquids.hydrogen, 0f);
-        Blocks.reinforcedPump.consumesPower = true;
-        Blocks.reinforcedPump.consumePower(40f);
         // 初始化 Erekir 版本的 LaunchPad
         launchPad_erekir = new LaunchPad("launchpad-erekir"){{
             // 设置建造需求：需要 360 个 Beryllium、360 个 Silicon 和 160 个 Oxide
