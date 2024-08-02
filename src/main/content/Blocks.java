@@ -1,27 +1,22 @@
 package main.content;
 
-import arc.Core;
 import main.ContentList;
 import mindustry.content.Items;
 import mindustry.content.Liquids;
 import mindustry.type.Category;
 import mindustry.type.ItemStack;
-import mindustry.world.Block;
 import mindustry.world.blocks.campaign.LaunchPad;
-import mindustry.world.blocks.heat.HeatProducer;
-import mindustry.world.blocks.production.Drill;
+import mindustry.world.blocks.production.GenericCrafter;
 import mindustry.world.blocks.storage.Unloader;
 import mindustry.world.meta.BlockGroup;
-import mindustry.world.meta.BuildVisibility;
 
-import static mindustry.content.Blocks.coreBastion;
 import static mindustry.type.ItemStack.with;
 
 public class Blocks implements ContentList {
     // 定义 Erekir 版本的 LaunchPad、Unloader 和 HeatProducer 块
     public static LaunchPad launchPad_erekir;
     public static Unloader unloader_erekir;
-    public static HeatProducer pneumatic_drill_erekir;
+    public static GenericCrafter sand_maker;
 
     @Override
     public void load() {
@@ -52,7 +47,7 @@ public class Blocks implements ContentList {
         }};
 
         // 初始化 Erekir 版本的 Pneumatic Drill
-        pneumatic_drill_erekir = new HeatProducer("pneumatic-drill-erekir"){{
+        sand_maker = new GenericCrafter("sand-maker"){{
             // 设置建造需求：需要 40 个 Beryllium 和 30 个 Graphite
             requirements(Category.production, with(Items.beryllium, 40, Items.graphite, 30));
             // 设置块的大小为 2x2
