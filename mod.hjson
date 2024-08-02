@@ -14,7 +14,7 @@ main: "main.Main"
 description: "Restart"
 
 #the mod version
-version: V0.1.41.20240801_alpha
+version: V0.1.41.20240802_alpha
 
 #the minimum game build required to run this mod
 minGameVersion: 146
