@@ -18,34 +18,56 @@ import static mindustry.content.Blocks.coreBastion;
 import static mindustry.type.ItemStack.with;
 
 public class Blocks implements ContentList {
+    // 定义 Erekir 版本的 LaunchPad、Unloader 和 HeatProducer 块
     public static LaunchPad launchPad_erekir;
     public static Unloader unloader_erekir;
     public static HeatProducer pneumatic_drill_erekir;
 
-
     @Override
     public void load() {
+        // 初始化 Erekir 版本的 LaunchPad
         launchPad_erekir = new LaunchPad("launchpad-erekir"){{
+            // 设置建造需求：需要 360 个 Beryllium、360 个 Silicon 和 160 个 Oxide
             requirements(Category.effect, with(Items.beryllium, 360, Items.silicon, 360, Items.oxide, 160));
+            // 设置块的大小为 3x3
             size = 3;
+            // 设置物品容量为 200
             itemCapacity = 200;
+            // 设置发射时间为 30 秒（60 帧/秒 * 30 秒）
             launchTime = 60f * 30;
+            // 启用电力消耗
             hasPower = true;
-            consumePower(4f);
+            // 设置电力消耗为 4 单位/秒
+            consumePower(30f);
         }};
+
+        // 初始化 Erekir 版本的 Unloader
         unloader_erekir = new Unloader("unloader-erekir"){{
+            // 设置建造需求：需要 20 个 Graphite、20 个 Silicon 和 10 个 Tungsten
             requirements(Category.effect, with(Items.graphite, 20, Items.silicon, 20, Items.tungsten, 10));
+            // 设置卸载速度为 60 帧/秒 / 11 帧/秒
             speed = 60f / 11f;
+            // 设置块组为 Transportation
             group = BlockGroup.transportation;
         }};
+
+        // 初始化 Erekir 版本的 Pneumatic Drill
         pneumatic_drill_erekir = new HeatProducer("pneumatic-drill-erekir"){{
+            // 设置建造需求：需要 40 个 Beryllium 和 30 个 Graphite
             requirements(Category.production, with(Items.beryllium, 40, Items.graphite, 30));
+            // 设置块的大小为 2x2
             size = 2;
+            // 设置输出物品为 1 个 Sand
             outputItem = new ItemStack(Items.sand, 1);
+            // 设置制造时间为 1 秒（60 帧/秒 * 1 秒）
             craftTime = 60f * 1;
 
-
+            // 消耗液体 Water，消耗速率为 0.06 单位/秒，并启用加速效果
             consumeLiquid(Liquids.water, 0.06f).boost();
+            // 启用电力消耗
+            hasPower = true;
+            // 设置电力消耗为 4 单位/秒
+            consumePower(10f);
         }};
     }
 }
