@@ -14,7 +14,7 @@ main: "main.Main"
 description: "tools!!!"
 
 #the mod version
-version: 0.1
+version: V0.1.37.20240801_alpha
 
 #the minimum game build required to run this mod
 minGameVersion: 146
