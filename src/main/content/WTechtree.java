@@ -1,5 +1,6 @@
 package main.content;
 
+import arc.Core;
 import main.ContentList;
 import mindustry.content.Items;
 import mindustry.content.TechTree;
@@ -22,7 +23,7 @@ public class WTechtree implements ContentList {
             node(sand_maker);
         }));
 
-        destruction.techTree = nodeRoot("destruction", destruction_core, true, () -> {
+        destruction.techTree = nodeRoot(String.valueOf(Core.atlas.find("planet.wooden-mindustry-destruction")), destruction_core, true, () -> {
             node(Items.copper, () -> {
                 node(WItems.iron, () -> {
                     node(WItems.silver, () -> {

@@ -43,7 +43,7 @@ public class WBlocks implements ContentList {
             // 启用电力消耗
             hasPower = true;
             // 设置电力消耗为 4 单位/秒
-            consumePower(30f);
+            consumePower(30f / 60f);
         }};
 
         // 初始化 Erekir 版本的 Unloader
@@ -72,7 +72,7 @@ public class WBlocks implements ContentList {
             // 启用电力消耗
             hasPower = true;
             // 设置电力消耗为 4 单位/秒
-            consumePower(10f);
+            consumePower(10f / 60f);
         }};
 
 //        =============================== Destruction ===============================
