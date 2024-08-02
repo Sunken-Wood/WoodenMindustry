@@ -1,26 +1,20 @@
 package main;
 
 import arc.Core;
-import arc.Events;
 import arc.util.Log;
-import arc.util.Time;
-import main.content.Blocks;
-import main.content.Planets;
-import main.content.Techtree;
+import main.content.WBlocks;
+import main.content.WPlanets;
+import main.content.WTechtree;
 import main.ui.WUI;
-import mindustry.game.EventType;
-import mindustry.gen.Icon;
 import mindustry.mod.Mod;
-import mindustry.ui.dialogs.BaseDialog;
 
 import static mindustry.Vars.ui;
-import static mindustry.content.Blocks.unloader;
 
 public class Main extends Mod {
 
-    public static Blocks blocks;
-    public static Planets planets;
-    public static Techtree techtree;
+    public static WBlocks WBlocks;
+    public static WPlanets WPlanets;
+    public static WTechtree WTechtree;
     public static WUI wui;
 
     public static boolean onlyPlugIn = Core.settings.getBool("");
@@ -35,15 +29,15 @@ public class Main extends Mod {
 
     public Main(){
         Log.info("Loaded ExampleJavaMod constructor.");
-        blocks = new Blocks();
-        planets = new Planets();
-        techtree = new Techtree();
+        WBlocks = new WBlocks();
+        WPlanets = new WPlanets();
+        WTechtree = new WTechtree();
     }
     @Override
     public void loadContent() {
         super.loadContent();
-        blocks.load();
-        planets.load();
-        techtree.load();
+        WBlocks.load();
+        WPlanets.load();
+        WTechtree.load();
     }
 }

@@ -3,25 +3,24 @@ package main.content;
 import main.ContentList;
 import mindustry.type.Item;
 
-public class Items implements ContentList {
-    public Item
-        iron, copper, gold, silver
+public class WItems implements ContentList {
+    public static Item
+        iron, gold, silver
             ;
 
 
     @Override
     public void load() {
+        // 铁
         iron = new Item("iron"){{
-            hardness = 4;
+            hardness = 4; // 硬度
             cost = 0.7f;
         }};
-        copper = new Item("copper"){{
-            hardness = 3;
-            cost = 0.7f;
-        }};
+        // 金
         gold = new Item("gold"){{
             hardness = 3;
         }};
+        // 银
         silver = new Item("silver"){{
             hardness = 3;
         }};

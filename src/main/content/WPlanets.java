@@ -2,8 +2,6 @@ package main.content;
 
 import arc.graphics.Color;
 import main.ContentList;
-import mindustry.content.Blocks;
-import mindustry.content.Items;
 import mindustry.game.Team;
 import mindustry.graphics.g3d.HexMesh;
 import mindustry.graphics.g3d.HexSkyMesh;
@@ -15,7 +13,7 @@ import mindustry.world.meta.Env;
 
 import static mindustry.content.Planets.erekir;
 
-public class Planets implements ContentList {
+public class WPlanets implements ContentList {
     // 定义一个新的星球：destruction
     public static Planet destruction;
 
@@ -47,7 +45,7 @@ public class Planets implements ContentList {
             // 设置大气半径（外）
             atmosphereRadOut = 0.3f;
             // 设置星球为潮汐锁定
-            tidalLock = true;
+            tidalLock = false;
             // 设置轨道间距
             orbitSpacing = 2f;
             // 增加总半径

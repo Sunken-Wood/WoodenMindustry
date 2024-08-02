@@ -4,6 +4,7 @@ import main.ContentList;
 import mindustry.content.Items;
 import mindustry.content.Liquids;
 import mindustry.type.Category;
+import mindustry.type.Item;
 import mindustry.type.ItemStack;
 import mindustry.world.blocks.campaign.LaunchPad;
 import mindustry.world.blocks.production.GenericCrafter;
@@ -13,7 +14,7 @@ import mindustry.world.meta.BlockGroup;
 
 import static mindustry.type.ItemStack.with;
 
-public class Blocks implements ContentList {
+public class WBlocks implements ContentList {
 //    ============ Erekir ============
     // 定义 Erekir 版本的 LaunchPad、Unloader 和 HeatProducer 块
     public static LaunchPad launchPad_erekir;
@@ -73,20 +74,22 @@ public class Blocks implements ContentList {
         }};
 
 //        =============================== Destruction ===============================
+        // 【毁灭】核心
         destruction_core = new CoreBlock("destruction-core"){{
-            requirements(Category.effect, with());
+            requirements(Category.effect, with(WItems.iron, 1000, Items.copper, 1000, Items.silicon, 1000));
 
-            size = 3;
+            size = 3;// 大小
             hasItems = true;
-            itemCapacity = 50000;
-            health = 4000;
+            itemCapacity = 50000;// 物品容量
+            health = 4000;// 生命值
 
-            incinerateNonBuildable = true;
-            requiresCoreZone = true;
-            alwaysUnlocked = true;
-            unitCapModifier = 20;
+            incinerateNonBuildable = true;//焚烧不可重建
+            requiresCoreZone = true;//需要核心区
+            alwaysUnlocked = true;//总是解锁
+            unitCapModifier = 20;//单位数量
 
-            researchCostMultiplier = 0.5f;
+            researchCostMultiplier = 0.7f;//研究花费倍数
         }};
+
     }
 }
