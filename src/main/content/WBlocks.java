@@ -1,15 +1,16 @@
 package main.content;
 
 import main.ContentList;
-import mindustry.content.Blocks;
 import mindustry.content.Items;
 import mindustry.content.Liquids;
 import mindustry.content.UnitTypes;
 import mindustry.type.Category;
-import mindustry.type.Item;
 import mindustry.type.ItemStack;
 import mindustry.world.blocks.campaign.LaunchPad;
+import mindustry.world.blocks.distribution.DirectionLiquidBridge;
+import mindustry.world.blocks.distribution.DuctBridge;
 import mindustry.world.blocks.production.GenericCrafter;
+import mindustry.world.blocks.production.Pump;
 import mindustry.world.blocks.storage.CoreBlock;
 import mindustry.world.blocks.storage.Unloader;
 import mindustry.world.meta.BlockGroup;
@@ -22,6 +23,10 @@ public class WBlocks implements ContentList {
     public static LaunchPad launchPad_erekir;
     public static Unloader unloader_erekir;
     public static GenericCrafter sand_maker;
+    public static Pump reinforce_pump_plus;
+    public static DuctBridge duct_bridge_plus;
+
+    public static DirectionLiquidBridge reinforced_bridge_conduit_plus;
 
 //    ============ Destruction ============
     public static CoreBlock destruction_core;
@@ -73,6 +78,29 @@ public class WBlocks implements ContentList {
             hasPower = true;
             // 设置电力消耗为 4 单位/秒
             consumePower(10f / 60f);
+        }};
+        reinforce_pump_plus = new Pump("reinforce-pump-plus"){{
+            requirements(Category.liquid, with(Items.beryllium, 40, Items.tungsten, 30, Items.silicon, 20));
+            consumeLiquid(Liquids.hydrogen, 1.5f / 60f);
+
+            pumpAmount = 160f / 120f / 8f;
+            liquidCapacity = 320f;
+            size = 2;
+        }};
+        reinforced_bridge_conduit_plus = new DirectionLiquidBridge("reinforced-bridge-conduit-plus"){{
+            requirements(Category.liquid, with(Items.graphite, 8, Items.beryllium, 20));
+            range = 8;
+            hasPower = false;
+            researchCostMultiplier = 1;
+            underBullets = true;
+        }};
+        duct_bridge_plus = new DuctBridge("duct-bridge-plus"){{
+            requirements(Category.distribution, with(Items.beryllium, 20));
+            health = 90;
+            speed = 8f;
+            buildCostMultiplier = 2f;
+            researchCostMultiplier = 0.3f;
+            itemCapacity = 8;
         }};
 
 //        =============================== Destruction ===============================
