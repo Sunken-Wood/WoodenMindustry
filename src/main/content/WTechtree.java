@@ -21,7 +21,6 @@ public class WTechtree implements ContentList {
         erekir.techTree.children.add(node(launchPad_erekir, () -> {
             node(sand_maker, () -> {
                 node(steam_turbine, () -> {
-                    node(sand_maker);
                     node(reinforce_pump_plus);
                 });
                 node(duct_bridge_plus, () -> {
