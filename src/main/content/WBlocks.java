@@ -11,7 +11,6 @@ import mindustry.content.UnitTypes;
 
 // 导入Mindustry类型类
 import mindustry.type.Category;
-import mindustry.type.Item;
 import mindustry.type.ItemStack;
 
 // 导入Mindustry世界块类
@@ -23,6 +22,13 @@ import mindustry.world.blocks.storage.CoreBlock; // 导入类：核心
 import mindustry.world.blocks.storage.Unloader; // 导入类：装卸器
 
 // 导入Mindustry世界元数据类
+import mindustry.world.blocks.campaign.LaunchPad;
+import mindustry.world.blocks.distribution.DirectionLiquidBridge;
+import mindustry.world.blocks.distribution.DuctBridge;
+import mindustry.world.blocks.production.GenericCrafter;
+import mindustry.world.blocks.production.Pump;
+import mindustry.world.blocks.storage.CoreBlock;
+import mindustry.world.blocks.storage.Unloader;
 import mindustry.world.meta.BlockGroup;
 
 
@@ -35,6 +41,10 @@ public class WBlocks implements ContentList {
     public static Unloader unloader_erekir;
     public static GenericCrafter sand_maker;
     private static PowerGenerator steam_turbine;
+    public static Pump reinforce_pump_plus;
+    public static DuctBridge duct_bridge_plus;
+
+    public static DirectionLiquidBridge reinforced_bridge_conduit_plus;
 
 //    ============ Destruction ============
     public static CoreBlock destruction_core;
@@ -116,6 +126,33 @@ public class WBlocks implements ContentList {
             description = "更高效的涡轮冷凝器，放在水上时能产生双倍涡轮冷凝器的电力，但不能产生水";
         }};
 
+
+//        强化泵 Plus
+        reinforce_pump_plus = new Pump("reinforce-pump-plus"){{
+            requirements(Category.liquid, with(Items.beryllium, 40, Items.tungsten, 30, Items.silicon, 20));
+            consumeLiquid(Liquids.hydrogen, 1.5f / 60f);
+
+            pumpAmount = 160f / 120f / 8f;
+            liquidCapacity = 320f;
+            size = 2;
+        }};
+//        强化流体桥 Plus
+        reinforced_bridge_conduit_plus = new DirectionLiquidBridge("reinforced-bridge-conduit-plus"){{
+            requirements(Category.liquid, with(Items.graphite, 8, Items.beryllium, 20));
+            range = 8;
+            hasPower = false;
+            researchCostMultiplier = 1;
+            underBullets = true;
+        }};
+//        五瓶管道桥 Plus
+        duct_bridge_plus = new DuctBridge("duct-bridge-plus"){{
+            requirements(Category.distribution, with(Items.beryllium, 20));
+            health = 90;
+            speed = 8f;
+            buildCostMultiplier = 2f;
+            researchCostMultiplier = 0.3f;
+            itemCapacity = 8;
+        }};
 
 //        =============================== Destruction ===============================
         // 【毁灭】核心
