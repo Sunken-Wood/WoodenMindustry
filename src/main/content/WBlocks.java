@@ -16,6 +16,7 @@ import mindustry.type.ItemStack;
 // 导入Mindustry世界块类
 import mindustry.type.LiquidStack;
 import mindustry.world.blocks.campaign.LaunchPad; // 导入类：发射台
+import mindustry.world.blocks.power.ThermalGenerator;
 import mindustry.world.blocks.production.GenericCrafter; // 导入类：生产
 import mindustry.world.blocks.power.PowerGenerator; // 导入类：发电机
 import mindustry.world.blocks.storage.CoreBlock; // 导入类：核心
@@ -40,7 +41,7 @@ public class WBlocks implements ContentList {
     public static LaunchPad launchPad_erekir;
     public static Unloader unloader_erekir;
     public static GenericCrafter sand_maker;
-    private static PowerGenerator steam_turbine;
+    public static PowerGenerator steam_turbine;
     public static Pump reinforce_pump_plus;
     public static DuctBridge duct_bridge_plus;
 
@@ -107,7 +108,7 @@ public class WBlocks implements ContentList {
         }};
 
         // 创建一个新的发电机实例，并将其命名为 "steam-turbine"（蒸汽涡轮机）
-        steam_turbine = new PowerGenerator("steam_turbine")
+        steam_turbine = new ThermalGenerator("steam_turbine")
         {{
             // 设置建造需求：需要 100 个 Beryllium、50 个 Silicon 和 30 个 Graphite
             requirements(Category.power, with(Items.beryllium, 100, Items.silicon, 50, Items.graphite, 30));
@@ -120,7 +121,9 @@ public class WBlocks implements ContentList {
             // 设置必须全部放在水上
             placeableLiquid = true;
             //每秒产生40水(会报错)
-            outputItem = new ItemStack(Items.water, 40);
+            hasLiquids = true;
+            liquidCapacity = 40f;
+            outputLiquid = new LiquidStack(Liquids.water, 40f / 60f / 9f);
             // 将发电机添加到电源块组
             group = BlockGroup.power;
             description = "更高效的涡轮冷凝器，放在水上时能产生双倍涡轮冷凝器的电力，但不能产生水";
@@ -132,7 +135,7 @@ public class WBlocks implements ContentList {
             requirements(Category.liquid, with(Items.beryllium, 40, Items.tungsten, 30, Items.silicon, 20));
             consumeLiquid(Liquids.hydrogen, 1.5f / 60f);
 
-            pumpAmount = 160f / 120f / 8f;
+            pumpAmount = 160f / 60f / 4f;
             liquidCapacity = 320f;
             size = 2;
         }};
@@ -164,7 +167,7 @@ public class WBlocks implements ContentList {
 
             size = 6;// 大小
             hasItems = true;
-            itemCapacity = 50000;// 物品容量
+            itemCapacity = 7000;// 物品容量
             health = 4000;// 生命值
             unitType = UnitTypes.evoke;
 
