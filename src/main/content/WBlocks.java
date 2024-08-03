@@ -104,7 +104,7 @@ public class WBlocks implements ContentList {
             hasPower = true;
             // 设置电力消耗为 4 单位/秒
             consumePower(10f / 60f);
-            description = "平地挖沙机，可以产生沙子，本来只能在黑沙地上放置，但由于作者的疏忽，它甚至可以放在浅水上";
+            description = "平地挖沙机，可以产生沙子，本来只能在黑沙地上放置，*但由于作者的疏忽，它甚至可以放在浅水上*(划掉)";
         }};
 
         // 创建一个新的发电机实例，并将其命名为 "steam-turbine"（蒸汽涡轮机）
@@ -126,7 +126,7 @@ public class WBlocks implements ContentList {
             outputLiquid = new LiquidStack(Liquids.water, 40f / 60f / 9f);
             // 将发电机添加到电源块组
             group = BlockGroup.power;
-            description = "更高效的涡轮冷凝器，放在水上时能产生双倍涡轮冷凝器的电力，但不能产生水";
+            description = "更高效的涡轮冷凝器，放在水上时能产生双倍涡轮冷凝器的电力，并产生40的水";
         }};
 
 
