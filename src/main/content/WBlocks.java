@@ -144,7 +144,7 @@ public class WBlocks implements ContentList {
             researchCostMultiplier = 1;
             underBullets = true;
         }};
-//        五瓶管道桥 Plus
+//        物品管道桥 Plus
         duct_bridge_plus = new DuctBridge("duct-bridge-plus"){{
             requirements(Category.distribution, with(Items.beryllium, 20));
             health = 90;
