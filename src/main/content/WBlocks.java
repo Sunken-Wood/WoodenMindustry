@@ -1,11 +1,26 @@
 package main.content;
 
+// 导入主内容列表类
 import main.ContentList;
+
+// 导入Mindustry游戏内容类
+import mindustry.content.Blocks;
 import mindustry.content.Items;
 import mindustry.content.Liquids;
 import mindustry.content.UnitTypes;
+
+// 导入Mindustry类型类
 import mindustry.type.Category;
 import mindustry.type.ItemStack;
+
+// 导入Mindustry世界块类
+import mindustry.world.blocks.campaign.LaunchPad; // 导入类：发射台
+import mindustry.world.blocks.production.GenericCrafter; // 导入类：生产
+import mindustry.world.blocks.power.PowerGenerator; // 导入类：发电机
+import mindustry.world.blocks.storage.CoreBlock; // 导入类：核心
+import mindustry.world.blocks.storage.Unloader; // 导入类：装卸器
+
+// 导入Mindustry世界元数据类
 import mindustry.world.blocks.campaign.LaunchPad;
 import mindustry.world.blocks.distribution.DirectionLiquidBridge;
 import mindustry.world.blocks.distribution.DuctBridge;
@@ -14,6 +29,7 @@ import mindustry.world.blocks.production.Pump;
 import mindustry.world.blocks.storage.CoreBlock;
 import mindustry.world.blocks.storage.Unloader;
 import mindustry.world.meta.BlockGroup;
+
 
 import static mindustry.type.ItemStack.with;
 
