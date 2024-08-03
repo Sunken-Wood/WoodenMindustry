@@ -15,6 +15,7 @@ import mindustry.type.Item;
 import mindustry.type.ItemStack;
 
 // 导入Mindustry世界块类
+import mindustry.type.LiquidStack;
 import mindustry.world.blocks.campaign.LaunchPad; // 导入类：发射台
 import mindustry.world.blocks.production.GenericCrafter; // 导入类：生产
 import mindustry.world.blocks.power.PowerGenerator; // 导入类：发电机
@@ -33,6 +34,7 @@ public class WBlocks implements ContentList {
     public static LaunchPad launchPad_erekir;
     public static Unloader unloader_erekir;
     public static GenericCrafter sand_maker;
+    private static PowerGenerator steam_turbine;
 
 //    ============ Destruction ============
     public static CoreBlock destruction_core;
@@ -41,34 +43,41 @@ public class WBlocks implements ContentList {
     public void load() {
 
 //        =============================== Erekir Tools ===============================
-        // 初始化 Erekir 版本的 LaunchPad
-        launchPad_erekir = new LaunchPad("launchpad-erekir"){{
+        // 创建一个新的 LaunchPad 实例，并将其命名为 "launchpad-erekir"（发射台）
+        launchPad_erekir = new LaunchPad("launchpad-erekir")
+        {{
             // 设置建造需求：需要 360 个 Beryllium、360 个 Silicon 和 160 个 Oxide
             requirements(Category.effect, with(Items.beryllium, 360, Items.silicon, 360, Items.oxide, 160));
             // 设置块的大小为 3x3
             size = 3;
             // 设置物品容量为 200
             itemCapacity = 200;
+            // 设置发射台的生命值300
+            health = 300;
             // 设置发射时间为 30 秒（60 帧/秒 * 30 秒）
             launchTime = 60f * 30;
             // 启用电力消耗
             hasPower = true;
             // 设置电力消耗为 4 单位/秒
             consumePower(30f / 60f);
+            description = "来自赛普罗的发射台，可以将资源发射到其他区块";
         }};
 
-        // 初始化 Erekir 版本的 Unloader
-        unloader_erekir = new Unloader("unloader-erekir"){{
+        // 创建一个新的 Unloader 实例，并将其命名为 "unloader-erekir"（装卸器）
+        unloader_erekir = new Unloader("unloader-erekir")
+        {{
             // 设置建造需求：需要 20 个 Graphite、20 个 Silicon 和 10 个 Tungsten
             requirements(Category.effect, with(Items.graphite, 20, Items.silicon, 20, Items.tungsten, 10));
             // 设置卸载速度为 60 帧/秒 / 11 帧/秒
             speed = 60f / 11f;
             // 设置块组为 Transportation
             group = BlockGroup.transportation;
+            description = "来自赛普罗的装卸器，打破了资源不能从核心卸载的历史";
         }};
 
-        // 初始化 Erekir 版本的 Pneumatic Drill
-        sand_maker = new GenericCrafter("sand-maker"){{
+        // 创建一个新的 GenericCrafter 实例，并将其命名为 "sand-maker"（采沙机）
+        sand_maker = new GenericCrafter("sand-maker")
+        {{
             // 设置建造需求：需要 40 个 Beryllium 和 30 个 Graphite
             requirements(Category.production, with(Items.beryllium, 40, Items.graphite, 30));
             // 设置块的大小为 2x2
@@ -84,15 +93,38 @@ public class WBlocks implements ContentList {
             hasPower = true;
             // 设置电力消耗为 4 单位/秒
             consumePower(10f / 60f);
+            description = "平地挖沙机，可以产生沙子，本来只能在黑沙地上放置，但由于作者的疏忽，它甚至可以放在浅水上";
         }};
+
+        // 创建一个新的发电机实例，并将其命名为 "steam-turbine"（蒸汽涡轮机）
+        steam_turbine = new PowerGenerator("steam_turbine")
+        {{
+            // 设置建造需求：需要 100 个 Beryllium、50 个 Silicon 和 30 个 Graphite
+            requirements(Category.power, with(Items.beryllium, 100, Items.silicon, 50, Items.graphite, 30));
+            // 设置块的大小为 3x3
+            size = 3;
+            // 设置发电机的生命值为 200
+            health = 200;
+            // 设置发电量为 360 单位/秒
+            powerProduction = 360f;
+            // 设置必须全部放在水上
+            placeableLiquid = true;
+            //每秒产生40水(会报错)
+            //outputItem = new ItemStack(Items.water, 40);
+            // 将发电机添加到电源块组
+            group = BlockGroup.power;
+            description = "更高效的涡轮冷凝器，放在水上时能产生双倍涡轮冷凝器的电力，但不能产生水";
+        }};
+
 
 //        =============================== Destruction ===============================
         // 【毁灭】核心
-        destruction_core = new CoreBlock("destruction-core"){{
+        destruction_core = new CoreBlock("destruction-core")
+        {{
             requirements(Category.effect, with(WItems.iron, 1000, Items.copper, 1000, Items.silicon, 1000));
             researchCost = with(WItems.iron, 1000, Items.copper, 1000, Items.silicon, 1000);
 
-            size = 3;// 大小
+            size = 6;// 大小
             hasItems = true;
             itemCapacity = 50000;// 物品容量
             health = 4000;// 生命值

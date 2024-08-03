@@ -16,13 +16,17 @@ public class WTechtree implements ContentList {
     @Override
     public void load() {
         // 在 Erekir 星球的科技树中添加新的节点
-        erekir.techTree.children.add(node(launchPad_erekir, () -> {
+        erekir.techTree.children.add(node(launchPad_erekir, () ->
+        {
             // 在 launchPad_erekir 节点下添加 unloader_erekir 节点
             node(unloader_erekir);
             // 在 launchPad_erekir 节点下添加 pneumatic_drill_erekir 节点
             node(sand_maker);
+            //在 launchPad_erekir 节点下添加
+            //node(steam_turbine);
         }));
 
+        // 在 destruction 星球的科技树中添加新的根节点
         destruction.techTree = nodeRoot(String.valueOf(Core.atlas.find("planet.wooden-mindustry-destruction")), destruction_core, true, () -> {
             node(Items.copper, () -> {
                 node(WItems.iron, () -> {
