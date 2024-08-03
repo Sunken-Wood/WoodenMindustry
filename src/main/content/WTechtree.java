@@ -23,7 +23,7 @@ public class WTechtree implements ContentList {
             // 在 launchPad_erekir 节点下添加 pneumatic_drill_erekir 节点
             node(sand_maker);
             //在 launchPad_erekir 节点下添加
-            //node(steam_turbine);
+            node(steam_turbine);
         }));
 
         // 在 destruction 星球的科技树中添加新的根节点

@@ -110,7 +110,7 @@ public class WBlocks implements ContentList {
             // 设置必须全部放在水上
             placeableLiquid = true;
             //每秒产生40水(会报错)
-            //outputItem = new ItemStack(Items.water, 40);
+            outputItem = new ItemStack(Items.water, 40);
             // 将发电机添加到电源块组
             group = BlockGroup.power;
             description = "更高效的涡轮冷凝器，放在水上时能产生双倍涡轮冷凝器的电力，但不能产生水";
