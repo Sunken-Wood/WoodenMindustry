@@ -95,6 +95,8 @@ public class WBlocks implements ContentList {
             // 设置电力消耗为 4 单位/秒
             consumePower(10f / 60f);
         }};
+
+//        强化泵 Plus
         reinforce_pump_plus = new Pump("reinforce-pump-plus"){{
             requirements(Category.liquid, with(Items.beryllium, 40, Items.tungsten, 30, Items.silicon, 20));
             consumeLiquid(Liquids.hydrogen, 1.5f / 60f);
@@ -103,6 +105,7 @@ public class WBlocks implements ContentList {
             liquidCapacity = 320f;
             size = 2;
         }};
+//        强化流体桥 Plus
         reinforced_bridge_conduit_plus = new DirectionLiquidBridge("reinforced-bridge-conduit-plus"){{
             requirements(Category.liquid, with(Items.graphite, 8, Items.beryllium, 20));
             range = 8;
@@ -110,6 +113,7 @@ public class WBlocks implements ContentList {
             researchCostMultiplier = 1;
             underBullets = true;
         }};
+//        五瓶管道桥 Plus
         duct_bridge_plus = new DuctBridge("duct-bridge-plus"){{
             requirements(Category.distribution, with(Items.beryllium, 20));
             health = 90;
