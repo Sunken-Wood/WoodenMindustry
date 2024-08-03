@@ -18,7 +18,7 @@ public class WItems implements ContentList {
         }};
         // 金
         gold = new Item("gold"){{
-            hardness = 3;
+            hardness = 2;//金是很软的，你甚至可以用牙咬出一个口
         }};
         // 银
         silver = new Item("silver"){{
