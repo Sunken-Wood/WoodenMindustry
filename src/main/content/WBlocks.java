@@ -138,6 +138,7 @@ public class WBlocks implements ContentList {
             pumpAmount = 160f / 60f / 4f;
             liquidCapacity = 320f;
             size = 2;
+            description = "更好的流体泵";
         }};
 //        强化流体桥 Plus
         reinforced_bridge_conduit_plus = new DirectionLiquidBridge("reinforced-bridge-conduit-plus"){{
@@ -146,6 +147,7 @@ public class WBlocks implements ContentList {
             hasPower = false;
             researchCostMultiplier = 1;
             underBullets = true;
+            description = "更长的流体桥";
         }};
 //        物品管道桥 Plus
         duct_bridge_plus = new DuctBridge("duct-bridge-plus"){{
@@ -156,6 +158,7 @@ public class WBlocks implements ContentList {
             buildCostMultiplier = 2f;
             researchCostMultiplier = 0.3f;
             itemCapacity = 8;
+            description = "更长的物品桥";
         }};
 
 //        =============================== Destruction ===============================
