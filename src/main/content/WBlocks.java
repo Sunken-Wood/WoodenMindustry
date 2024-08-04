@@ -149,8 +149,8 @@ public class WBlocks implements ContentList {
 
 // 强化流体桥 Plus
         reinforced_bridge_conduit_plus = new DirectionLiquidBridge("reinforced-bridge-conduit-plus"){{
-            // 定义方块的资源需求，属于液体类别，需要8单位的石墨和20单位的铍
-            requirements(Category.liquid, with(Items.graphite, 8, Items.beryllium, 20));
+            // 定义方块的资源需求，属于液体类别，需要10单位的石墨和20单位的铍
+            requirements(Category.liquid, with(Items.graphite, 10, Items.beryllium, 20, Items.silicon, 20));
             // 方块尺寸为1x1
             size = 1;
             // 方块的生命值为90
@@ -170,7 +170,7 @@ public class WBlocks implements ContentList {
 // 物品管道桥 Plus
         duct_bridge_plus = new DuctBridge("duct-bridge-plus"){{
             // 定义方块的资源需求，属于分配类别，需要20单位的铍
-            requirements(Category.distribution, with(Items.beryllium, 20));
+            requirements(Category.distribution, with(Items.graphite, 10, Items.beryllium, 20, Items.silicon, 20));
             // 方块尺寸为1x1
             size = 1;
             // 传输范围为6格
