@@ -153,6 +153,8 @@ public class WBlocks implements ContentList {
             requirements(Category.liquid, with(Items.graphite, 8, Items.beryllium, 20));
             // 方块尺寸为1x1
             size = 1;
+            // 方块的生命值为90
+            health = 90;
             // 传输范围为8格
             range = 8;
             // 不需要电力
@@ -175,7 +177,7 @@ public class WBlocks implements ContentList {
             range = 6;
             // 方块的生命值为90
             health = 90;
-            // 传输速度为8单位每秒
+            // 传输速度为15单位每秒
             speed = 15f;
             // 建造成本乘数为2
             buildCostMultiplier = 2f;
