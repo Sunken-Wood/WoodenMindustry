@@ -129,36 +129,63 @@ public class WBlocks implements ContentList {
         }};
 
 
-//        强化泵 Plus
+// 强化泵 Plus
         reinforce_pump_plus = new Pump("reinforce-pump-plus"){{
+            // 定义方块的资源需求，属于液体类别，需要40单位的铍、30单位的钨和20单位的硅
             requirements(Category.liquid, with(Items.beryllium, 40, Items.tungsten, 30, Items.silicon, 20));
+            // 每分钟消耗1.5单位的氢气
             consumeLiquid(Liquids.hydrogen, 1.5f / 60f);
+            // 设置方块的图标
             fullIcon = Core.atlas.find("reinforce_pump_plus");
+            // 每分钟泵送160单位的液体，除以4表示每秒泵送的量
             pumpAmount = 160f / 60f / 4f;
+            // 液体容量为320单位
             liquidCapacity = 320f;
+            // 方块尺寸为2x2
             size = 2;
+            // 方块的描述
             description = "更好的流体泵";
         }};
-//        强化流体桥 Plus
+
+// 强化流体桥 Plus
         reinforced_bridge_conduit_plus = new DirectionLiquidBridge("reinforced-bridge-conduit-plus"){{
-            requirements(Category.liquid, with(Items.graphite, 8, Items.beryllium, 20));
+            // 定义方块的资源需求，属于液体类别，需要10单位的石墨和20单位的铍
+            requirements(Category.liquid, with(Items.graphite, 10, Items.beryllium, 20, Items.silicon, 20));
+            // 方块尺寸为1x1
             size = 1;
+            // 方块的生命值为90
+            health = 90;
+            // 传输范围为8格
             range = 8;
+            // 不需要电力
             hasPower = false;
+            // 研究成本乘数为1
             researchCostMultiplier = 1;
+            // 可以在子弹下方传输液体
             underBullets = true;
+            // 方块的描述
             description = "更长的流体桥";
         }};
-//        物品管道桥 Plus
+
+// 物品管道桥 Plus
         duct_bridge_plus = new DuctBridge("duct-bridge-plus"){{
-            requirements(Category.distribution, with(Items.beryllium, 20));
+            // 定义方块的资源需求，属于分配类别，需要20单位的铍
+            requirements(Category.distribution, with(Items.graphite, 10, Items.beryllium, 20, Items.silicon, 20));
+            // 方块尺寸为1x1
             size = 1;
+            // 传输范围为6格
             range = 6;
+            // 方块的生命值为90
             health = 90;
-            speed = 8f;
+            // 传输速度为15单位每秒
+            speed = 15f;
+            // 建造成本乘数为2
             buildCostMultiplier = 2f;
+            // 研究成本乘数为0.3
             researchCostMultiplier = 0.3f;
+            // 物品容量为8单位
             itemCapacity = 8;
+            // 方块的描述
             description = "更长的物品桥";
         }};
 
