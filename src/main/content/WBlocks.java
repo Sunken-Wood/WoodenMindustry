@@ -117,11 +117,12 @@ public class WBlocks implements ContentList {
             requirements(Category.power, with(Items.beryllium, 100, Items.silicon, 50, Items.graphite, 30));
             // 设置块的大小为 3x3
             size = 3;
+            displayEfficiencyScale = 1f / 9f;
             // 设置发电机的生命值为 200
             health = 200;
             // 设置发电量为 360 单位/秒
             outputsPower = true;
-            powerProduction = 360f / 60f / 9f;
+            powerProduction = 360f / 60f;
             //每秒产生60水
             hasLiquids = true;
             liquidCapacity = 60f;
