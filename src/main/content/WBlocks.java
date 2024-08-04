@@ -117,8 +117,8 @@ public class WBlocks implements ContentList {
             size = 3;
             // 设置发电机的生命值为 200
             health = 200;
-            // 设置发电量为 6 单位/秒
-            powerProduction = 6f;
+            // 设置发电量为 360 单位/秒
+            powerProduction = 360f / 60f;
             //每秒产生60水
             hasLiquids = true;
             liquidCapacity = 60f;
