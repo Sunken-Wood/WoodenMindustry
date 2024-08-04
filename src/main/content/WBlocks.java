@@ -31,6 +31,7 @@ import mindustry.world.blocks.production.GenericCrafter;
 import mindustry.world.blocks.production.Pump;
 import mindustry.world.blocks.storage.CoreBlock;
 import mindustry.world.blocks.storage.Unloader;
+import mindustry.world.meta.Attribute;
 import mindustry.world.meta.BlockGroup;
 
 
@@ -111,6 +112,7 @@ public class WBlocks implements ContentList {
         // 创建一个新的发电机实例，并将其命名为 "steam-turbine"（蒸汽涡轮机）
         steam_turbine = new ThermalGenerator("steam_turbine")
         {{
+            attribute = Attribute.steam;
             // 设置建造需求：需要 100 个 Beryllium、50 个 Silicon 和 30 个 Graphite
             requirements(Category.power, with(Items.beryllium, 100, Items.silicon, 50, Items.graphite, 30));
             // 设置块的大小为 3x3
@@ -118,7 +120,8 @@ public class WBlocks implements ContentList {
             // 设置发电机的生命值为 200
             health = 200;
             // 设置发电量为 360 单位/秒
-            powerProduction = 360f / 60f;
+            outputsPower = true;
+            powerProduction = 360f / 60f / 9f;
             //每秒产生60水
             hasLiquids = true;
             liquidCapacity = 60f;
@@ -144,6 +147,7 @@ public class WBlocks implements ContentList {
             // 方块尺寸为2x2
             size = 2;
             // 方块的描述
+            squareSprite = false;
             description = "更好的流体泵";
         }};
 
