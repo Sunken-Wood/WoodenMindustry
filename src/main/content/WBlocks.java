@@ -44,7 +44,6 @@ public class WBlocks implements ContentList {
     public static PowerGenerator steam_turbine;
     public static Pump reinforce_pump_plus;
     public static DuctBridge duct_bridge_plus;
-
     public static DirectionLiquidBridge reinforced_bridge_conduit_plus;
 
 //    ============ Destruction ============
@@ -118,15 +117,13 @@ public class WBlocks implements ContentList {
             health = 200;
             // 设置发电量为 360 单位/秒
             powerProduction = 360f;
-            // 设置必须全部放在水上
-            placeableLiquid = true;
-            //每秒产生40水(会报错)
+            //每秒产生60水
             hasLiquids = true;
-            liquidCapacity = 40f;
-            outputLiquid = new LiquidStack(Liquids.water, 40f / 60f / 9f);
+            liquidCapacity = 60f;
+            outputLiquid = new LiquidStack(Liquids.water, 60f / 60f / 9f);
             // 将发电机添加到电源块组
             group = BlockGroup.power;
-            description = "更高效的涡轮冷凝器，放在水上时能产生双倍涡轮冷凝器的电力，并产生40的水";
+            description = "更高效的发电机，能产生双倍涡轮冷凝器的电力和水";
         }};
 
 
