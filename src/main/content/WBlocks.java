@@ -123,13 +123,13 @@ public class WBlocks implements ContentList {
             // 设置发电量为 360 单位/秒
             outputsPower = true;
             powerProduction = 360f / 60f;
-            //每秒产生60水
+            //每秒产生40水
             hasLiquids = true;
-            liquidCapacity = 60f;
+            liquidCapacity = 40f;
             outputLiquid = new LiquidStack(Liquids.water, 60f / 60f / 9f);
             // 将发电机添加到电源块组
             group = BlockGroup.power;
-            description = "更高效的发电机，能产生双倍涡轮冷凝器的电力和水";
+            description = "更高效的发电机，能产生双倍涡轮冷凝器的电力和大量的水";
         }};
 
 
