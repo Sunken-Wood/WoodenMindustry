@@ -133,7 +133,7 @@ public class WBlocks implements ContentList {
         reinforce_pump_plus = new Pump("reinforce-pump-plus"){{
             requirements(Category.liquid, with(Items.beryllium, 40, Items.tungsten, 30, Items.silicon, 20));
             consumeLiquid(Liquids.hydrogen, 1.5f / 60f);
-
+            fullIcon = Core.atlas.find("reinforce_pump_plus");
             pumpAmount = 160f / 60f / 4f;
             liquidCapacity = 320f;
             size = 2;
