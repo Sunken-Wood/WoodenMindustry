@@ -1,6 +1,7 @@
 package main.content;
 
 // 导入主内容列表类
+import arc.Core;
 import main.ContentList;
 
 // 导入Mindustry游戏内容类
@@ -44,6 +45,7 @@ public class WBlocks implements ContentList {
     public static PowerGenerator steam_turbine;
     public static Pump reinforce_pump_plus;
     public static DuctBridge duct_bridge_plus;
+
     public static DirectionLiquidBridge reinforced_bridge_conduit_plus;
 
 //    ============ Destruction ============
@@ -140,6 +142,7 @@ public class WBlocks implements ContentList {
 //        强化流体桥 Plus
         reinforced_bridge_conduit_plus = new DirectionLiquidBridge("reinforced-bridge-conduit-plus"){{
             requirements(Category.liquid, with(Items.graphite, 8, Items.beryllium, 20));
+            size = 1;
             range = 8;
             hasPower = false;
             researchCostMultiplier = 1;
@@ -149,6 +152,7 @@ public class WBlocks implements ContentList {
 //        物品管道桥 Plus
         duct_bridge_plus = new DuctBridge("duct-bridge-plus"){{
             requirements(Category.distribution, with(Items.beryllium, 20));
+            size = 1;
             range = 6;
             health = 90;
             speed = 8f;
