@@ -179,7 +179,7 @@ public class WBlocks implements ContentList {
             // 方块尺寸为1x1
             size = 1;
             // 传输范围为6格
-            range = 6;
+            range = 8;
             // 方块的生命值为90
             health = 130;
             // 传输速度为4单位每秒
