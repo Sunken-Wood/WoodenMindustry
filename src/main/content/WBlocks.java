@@ -147,8 +147,8 @@ public class WBlocks implements ContentList {
             liquidCapacity = 320f;
             // 方块尺寸为2x2
             size = 2;
-            // 方块的描述
             squareSprite = false;
+            // 方块的描述
             description = "更好的流体泵";
         }};
 
@@ -159,7 +159,7 @@ public class WBlocks implements ContentList {
             // 方块尺寸为1x1
             size = 1;
             // 方块的生命值为90
-            health = 90;
+            health = 130;
             // 传输范围为8格
             range = 8;
             // 不需要电力
@@ -181,9 +181,9 @@ public class WBlocks implements ContentList {
             // 传输范围为6格
             range = 6;
             // 方块的生命值为90
-            health = 90;
-            // 传输速度为15单位每秒
-            speed = 15f;
+            health = 130;
+            // 传输速度为4单位每秒
+            speed = 4f;
             // 建造成本乘数为2
             buildCostMultiplier = 2f;
             // 研究成本乘数为0.3
