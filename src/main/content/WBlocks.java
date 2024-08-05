@@ -105,19 +105,18 @@ public class WBlocks implements ContentList {
             hasPower = true;
             // 设置电力消耗为 4 单位/秒
             consumePower(10f / 60f);
-            description = "平地挖沙机，可以产生沙子，本来只能在黑沙地上放置，*但由于作者的疏忽，它甚至可以放在浅水上*(划掉)";
+            description = "平地挖沙机，可以生产沙子";
         }};
 
         // 创建一个新的发电机实例，并将其命名为 "steam-turbine"（蒸汽涡轮机）
         steam_turbine = new ThermalGenerator("steam_turbine")
         {{
+            // 设置生成器的属性为蒸汽（steam）
             attribute = Attribute.steam;
             // 设置建造需求：需要 100 个 Beryllium、50 个 Silicon 和 30 个 Graphite
             //requirements(Category.power, with(Items.beryllium, 100, Items.silicon, 50, Items.graphite, 30));
             // 设置生成器的需求，需要60个铍（beryllium）作为电源类别
             requirements(Category.power, with(Items.beryllium, 100, Items.silicon, 50, Items.graphite, 30));
-            // 设置生成器的属性为蒸汽（steam）
-            attribute = Attribute.steam;
             // 设置生成器所属的块组为液体（liquids）
             group = BlockGroup.liquids;
             // 设置块的大小为 3x3
