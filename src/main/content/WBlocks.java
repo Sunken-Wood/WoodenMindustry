@@ -113,19 +113,33 @@ public class WBlocks implements ContentList {
         {{
             attribute = Attribute.steam;
             // 设置建造需求：需要 100 个 Beryllium、50 个 Silicon 和 30 个 Graphite
+            //requirements(Category.power, with(Items.beryllium, 100, Items.silicon, 50, Items.graphite, 30));
+            // 设置生成器的需求，需要60个铍（beryllium）作为电源类别
             requirements(Category.power, with(Items.beryllium, 100, Items.silicon, 50, Items.graphite, 30));
+            // 设置生成器的属性为蒸汽（steam）
+            attribute = Attribute.steam;
+            // 设置生成器所属的块组为液体（liquids）
+            group = BlockGroup.liquids;
             // 设置块的大小为 3x3
             size = 3;
+            // 设置显示效率的比例为1/9
             displayEfficiencyScale = 1f / 9f;
+            // 设置最小效率为9 - 0.0001
+            minEfficiency = 9f - 0.0001f;
+            // 设置不显示效率
+            displayEfficiency = false;
             // 设置发电机的生命值为 200
             health = 200;
-            // 设置发电量为 360 单位/秒
+
             outputsPower = true;
-            powerProduction = 360f / 60f;
-            //每秒产生40水
+            // 设置发电量为 6/9
+            powerProduction = 6f / 9f ;
+            // 设置生成器可以处理液体
             hasLiquids = true;
-            liquidCapacity = 40f;
-            outputLiquid = new LiquidStack(Liquids.water, 60f / 60f / 9f);
+            //每秒产生40水
+            //liquidCapacity = 40f;
+            // 设置输出液体为水，输出速率为10/60/9
+            outputLiquid = new LiquidStack(Liquids.water, 10f / 60f / 9f);
             // 将发电机添加到电源块组
             group = BlockGroup.power;
             description = "更高效的发电机，能产生双倍涡轮冷凝器的电力和大量的水";
