@@ -39,7 +39,6 @@ import static mindustry.type.ItemStack.with;
 
 public class WBlocks implements ContentList {
 //    ============ Erekir ============
-    // 定义 Erekir 版本的 LaunchPad、Unloader 和 HeatProducer 块
     public static LaunchPad launchPad_erekir;
     public static Unloader unloader_erekir;
     public static GenericCrafter sand_maker;
