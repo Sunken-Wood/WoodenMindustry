@@ -58,7 +58,7 @@ public class WBlocks implements ContentList {
         // 创建一个新的 LaunchPad 实例，并将其命名为 "launchpad-erekir"（发射台）
         launchPad_erekir = new LaunchPad("launchpad-erekir")
         {{
-            // 设置建造需求：需要 360 个 Beryllium、360 个 Silicon 和 160 个 Oxide
+            // 类型：影响 设置建造需求：需要 360 个 Beryllium、360 个 Silicon 和 160 个 Oxide
             requirements(Category.effect, with(Items.beryllium, 360, Items.silicon, 360, Items.oxide, 160));
             // 设置块的大小为 3x3
             size = 3;
@@ -72,6 +72,7 @@ public class WBlocks implements ContentList {
             hasPower = true;
             // 设置电力消耗为 4 单位/秒
             consumePower(30f / 60f);
+
             description = "来自赛普罗的发射台，可以将资源发射到其他区块";
         }};
 
@@ -90,7 +91,7 @@ public class WBlocks implements ContentList {
         // 创建一个新的 GenericCrafter 实例，并将其命名为 "sand-maker"（采沙机）
         sand_maker = new GenericCrafter("sand-maker")
         {{
-            // 设置建造需求：需要 40 个 Beryllium 和 30 个 Graphite
+            // 类型：生产 建造需求： 40*beryllium 30*graphite
             requirements(Category.production, with(Items.beryllium, 40, Items.graphite, 30));
             // 设置块的大小为 2x2
             size = 2;
@@ -98,7 +99,6 @@ public class WBlocks implements ContentList {
             outputItem = new ItemStack(Items.sand, 1);
             // 设置制造时间为 1 秒（60 帧/秒 * 1 秒）
             craftTime = 60f * 1;
-
             // 消耗液体 Water，消耗速率为 0.06 单位/秒，并启用加速效果
             consumeLiquid(Liquids.water, 0.06f).boost();
             // 启用电力消耗
@@ -108,7 +108,7 @@ public class WBlocks implements ContentList {
             description = "平地挖沙机，可以生产沙子";
         }};
 
-// 强化泵 Plus
+//       强化泵 Plus
         reinforce_pump_plus = new Pump("reinforce-pump-plus"){{
             // 定义方块的资源需求，属于液体类别，需要40单位的铍、30单位的钨和20单位的硅
             requirements(Category.liquid, with(Items.beryllium, 40, Items.tungsten, 30, Items.silicon, 20));
@@ -127,7 +127,32 @@ public class WBlocks implements ContentList {
             description = "更好的流体泵";
         }};
 
-// 强化流体桥 Plus
+//       蒸汽涡轮机
+        steam_turbine = new ThermalGenerator("steam_turbine") {{
+            // 设置建造需求：需要 100 个 Beryllium、50 个 Silicon 和 30 个 Graphite
+            requirements(Category.power, with(Items.beryllium, 100, Items.silicon, 50, Items.graphite, 30));
+            // 设置块的大小为 3x3
+            size = 3;
+            // 设置 效率倍率
+            displayEfficiencyScale = 1f / 9f;
+            // 设置发电机的生命值为 200
+            health = 200;
+            // 输出电力：是
+            outputsPower = true;
+            // 设置发电量为 360 单位/秒
+            powerProduction = 360f / 60f;
+            //每秒产生60水
+            hasLiquids = true;
+            // 流体存储量：60
+            liquidCapacity = 60f;
+            // 输出流体：水 效率：60/s
+            outputLiquid = new LiquidStack(Liquids.water, 60f / 60f / 9f);
+            // 将发电机添加到电源块组
+            group = BlockGroup.power;
+            description = "更高效的发电机，能产生双倍涡轮冷凝器的电力和水";
+        }};
+
+//        流体管道桥Plus
         reinforced_bridge_conduit_plus = new DirectionLiquidBridge("reinforced-bridge-conduit-plus"){{
             // 定义方块的资源需求，属于液体类别，需要10单位的石墨和20单位的铍
             requirements(Category.liquid, with(Items.graphite, 10, Items.beryllium, 20, Items.silicon, 20));
@@ -147,7 +172,7 @@ public class WBlocks implements ContentList {
             description = "更长的流体桥";
         }};
 
-// 物品管道桥 Plus
+//       物品管道桥 Plus
         duct_bridge_plus = new DuctBridge("duct-bridge-plus"){{
             // 定义方块的资源需求，属于分配类别，需要20单位的铍
             requirements(Category.distribution, with(Items.graphite, 10, Items.beryllium, 20, Items.silicon, 20));
@@ -170,22 +195,22 @@ public class WBlocks implements ContentList {
         }};
 
 //        =============================== Destruction ===============================
-        // 【毁灭】核心
+//       【毁灭】核心
         destruction_core = new CoreBlock("destruction-core")
         {{
             requirements(Category.effect, with(WItems.iron, 1000, Items.copper, 1000, Items.silicon, 1000));
             researchCost = with(WItems.iron, 1000, Items.copper, 1000, Items.silicon, 1000);
 
-            size = 6;// 大小
+            size = 6;
             hasItems = true;
-            itemCapacity = 7000;// 物品容量
-            health = 4000;// 生命值
+            itemCapacity = 7000;
+            health = 4000;
             unitType = UnitTypes.evoke;
 
-            incinerateNonBuildable = true;//焚烧不可重建
-            requiresCoreZone = true;//需要核心区
-            alwaysUnlocked = true;//总是解锁
-            unitCapModifier = 20;//单位数量
+            incinerateNonBuildable = true;
+            requiresCoreZone = true;
+            alwaysUnlocked = true;
+            unitCapModifier = 20;
 
         }};
 
