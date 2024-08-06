@@ -154,7 +154,7 @@ public class WBlocks implements ContentList {
             // 输出电力：是
             outputsPower = true;
             // 设置显示效率的比例为1/9
-            displayEfficiencyScale = 2f / 9f;
+            displayEfficiencyScale = 1f / 9f;
             // 设置最小效率为9 - 0.0001
             minEfficiency = 9f - 0.0001f;
             // 设置电力生产为6/9
