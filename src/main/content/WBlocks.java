@@ -5,17 +5,14 @@ import arc.Core;
 import main.ContentList;
 
 // 导入Mindustry游戏内容类
-import mindustry.content.Blocks;
-import mindustry.content.Items;
-import mindustry.content.Liquids;
-import mindustry.content.UnitTypes;
+import mindustry.content.*;
 
 // 导入Mindustry类型类
 import mindustry.type.Category;
 import mindustry.type.ItemStack;
+import mindustry.type.LiquidStack;
 
 // 导入Mindustry世界块类
-import mindustry.type.LiquidStack;
 import mindustry.world.blocks.campaign.LaunchPad; // 导入类：发射台
 import mindustry.world.blocks.power.ThermalGenerator;
 import mindustry.world.blocks.production.GenericCrafter; // 导入类：生产
@@ -34,6 +31,12 @@ import mindustry.world.blocks.storage.Unloader;
 import mindustry.world.meta.Attribute;
 import mindustry.world.meta.BlockGroup;
 
+//导入动画包
+import mindustry.graphics.Drawf;
+import mindustry.world.draw.DrawMulti;
+import mindustry.world.draw.DrawDefault;
+import mindustry.world.draw.DrawBlurSpin;
+
 
 import static mindustry.type.ItemStack.with;
 
@@ -42,10 +45,9 @@ public class WBlocks implements ContentList {
     public static LaunchPad launchPad_erekir;
     public static Unloader unloader_erekir;
     public static GenericCrafter sand_maker;
-    public static PowerGenerator steam_turbine;
+    public static PowerGenerator steam_turbine ;
     public static Pump reinforce_pump_plus;
     public static DuctBridge duct_bridge_plus;
-
     public static DirectionLiquidBridge reinforced_bridge_conduit_plus;
 
 //    ============ Destruction ============
@@ -128,28 +130,51 @@ public class WBlocks implements ContentList {
         }};
 
 //       蒸汽涡轮机
-        steam_turbine = new ThermalGenerator("steam_turbine") {{
+        steam_turbine = new ThermalGenerator("steam-turbine") {{
             // 设置建造需求：需要 100 个 Beryllium、50 个 Silicon 和 30 个 Graphite
             requirements(Category.power, with(Items.beryllium, 100, Items.silicon, 50, Items.graphite, 30));
             // 设置块的大小为 3x3
             size = 3;
+            // 设置生成器所属的块组为液体（liquids）
+            group = BlockGroup.liquids;
+            // 设置生成器的属性为蒸汽（steam）
+            attribute = Attribute.steam;
             // 设置 效率倍率
-            displayEfficiencyScale = 1f / 9f;
+            displayEfficiencyScale = 2f / 9f;
             // 设置发电机的生命值为 200
             health = 200;
             // 输出电力：是
             outputsPower = true;
             // 设置发电量为 360 单位/秒
-            powerProduction = 360f / 60f;
-            //每秒产生60水
-            hasLiquids = true;
+            //powerProduction = 1f ;
+            // 设置显示效率的比例为1/9
+            displayEfficiencyScale = 1f / 9f;
+            // 设置最小效率为9 - 0.0001
+            minEfficiency = 9f - 0.0001f;
+            // 设置电力生产为6/9
+            powerProduction = 6f / 9f;
             // 流体存储量：60
-            liquidCapacity = 60f;
-            // 输出流体：水 效率：60/s
-            outputLiquid = new LiquidStack(Liquids.water, 60f / 60f / 9f);
+            liquidCapacity = 4800f / 60f ;
+            // 输出流体：水 效率：15/s
+            outputLiquid = new LiquidStack(Liquids.water, 15f / 60f / 9f);
             // 将发电机添加到电源块组
             group = BlockGroup.power;
-            description = "更高效的发电机，能产生双倍涡轮冷凝器的电力和水";
+            // 设置不显示效率
+            displayEfficiency = false;
+            // 设置生成效果为蒸汽喷口
+            generateEffect = Fx.turbinegenerate ;
+            // 必须全部放置在蒸汽喷口上
+            placeableOn = true;
+            // 设置效果触发几率为0.04
+            effectChance = 0.04f;
+            description = "更高效的发电机，能产生大量的电力和水";
+
+            // 设置绘制器为DrawMulti，包含默认绘制和旋转模糊绘制
+            drawer = new DrawMulti(new DrawDefault(), new DrawBlurSpin("-rotator", 0.6f * 9f)
+            {{
+                // 设置模糊阈值为0.01
+                blurThresh = 0.01f;
+            }});
         }};
 
 //        流体管道桥Plus
