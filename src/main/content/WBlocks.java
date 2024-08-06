@@ -116,26 +116,28 @@ public class WBlocks implements ContentList {
             hasPower = true;
             // 设置电力消耗为 4 单位/秒
             consumePower(10f / 60f);
-            description = "平地挖沙机，可以生产沙子";
+            description = "平地挖沙机，可以生产沙子，需要电力";
         }};
 
 //       强化泵 Plus
         reinforce_pump_plus = new Pump("reinforce-pump-plus"){{
             // 定义方块的资源需求，属于液体类别，需要40单位的铍、30单位的钨和20单位的硅
-            requirements(Category.liquid, with(Items.beryllium, 40, Items.tungsten, 30, Items.silicon, 20));
-            // 每分钟消耗1.5单位的氢气
-            consumeLiquid(Liquids.hydrogen, 1.5f / 60f);
+            requirements(Category.liquid, with(Items.beryllium, 40, Items.tungsten, 30, Items.silicon, 30));
+            // 启用电力消耗
+            hasPower = true;
+            // 设置电力消耗为 4 单位/秒
+            consumePower(2.5f);
             // 设置方块的图标
             fullIcon = Core.atlas.find("reinforce_pump_plus");
             // 每分钟泵送160单位的液体，除以4表示每秒泵送的量
             pumpAmount = 160f / 60f / 4f;
             // 液体容量为320单位
-            liquidCapacity = 320f;
+            liquidCapacity = 70f;
             // 方块尺寸为2x2
             size = 2;
             squareSprite = false;
             // 方块的描述
-            description = "更好的流体泵";
+            description = "更好的流体泵，需要电力";
         }};
 
 
@@ -171,7 +173,7 @@ public class WBlocks implements ContentList {
             placeableOn = true;
             // 设置效果触发几率为0.04
             effectChance = 0.04f;
-            description = "更高效的发电机，能产生大量的电力和水";
+            description = "更高效的发电机，能产生水和较多的电力";
 
             // 设置绘制器为DrawMulti，包含默认绘制和旋转模糊绘制
             drawer = new DrawMulti(new DrawDefault(), new DrawBlurSpin("-rotator", 0.6f * 9f)
@@ -192,9 +194,8 @@ public class WBlocks implements ContentList {
             health = 200;
 
             minEfficiency = 9f - 0.0001f;
-            //baseEfficiency = 1f / 9f;
-            // 设置显示效率的比例为1/9
-            displayEfficiencyScale = 2f / 9f;
+            // 设置显示效率比例
+            baseEfficiency = 1f / 9f;
             // 设置加速比例
             boostScale = 1f / 9f;
             // 设置液体容量 80
@@ -211,6 +212,7 @@ public class WBlocks implements ContentList {
             placeableOn = true;
 
             researchCostMultiplier = 0.7f;
+            description = "2级的排气冷凝器，消耗较多电力，产生大量水";
         }};
 
 //       流体管道桥Plus
@@ -265,6 +267,7 @@ public class WBlocks implements ContentList {
             researchCostMultiplier = 0.7f;
 
             consumePower(100f / 60f); // 消耗电力 100/s
+            description = "抽水机，可以开采地下水，需要电力";
         }};
 
 
