@@ -129,6 +129,7 @@ public class WBlocks implements ContentList {
             description = "更好的流体泵";
         }};
 
+
 //       蒸汽涡轮机
         steam_turbine = new ThermalGenerator("steam-turbine") {{
             // 设置建造需求：需要 100 个 Beryllium、50 个 Silicon 和 30 个 Graphite
@@ -218,6 +219,9 @@ public class WBlocks implements ContentList {
             // 方块的描述
             description = "更长的物品桥";
         }};
+
+//        TODO:抽水机
+//        TODO:发电机
 
 //        =============================== Destruction ===============================
 //       【毁灭】核心

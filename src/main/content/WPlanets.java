@@ -11,6 +11,9 @@ import mindustry.type.Planet;
 import mindustry.world.meta.Attribute;
 import mindustry.world.meta.Env;
 
+import static main.content.WItems.destructionItems;
+import static mindustry.content.Items.erekirItems;
+import static mindustry.content.Items.serpuloItems;
 import static mindustry.content.Planets.erekir;
 
 public class WPlanets implements ContentList {
@@ -30,6 +33,9 @@ public class WPlanets implements ContentList {
                     new HexSkyMesh(this, 2, 0.15f, 0.14f, 5, Color.rgb(100, 100, 255).a(0.75f), 2, 0.42f, 1f, 0.43f),
                     new HexSkyMesh(this, 3, 0.6f, 0.15f, 5, Color.rgb(120, 120, 255).a(0.75f), 2, 0.42f, 1.2f, 0.45f)
             );
+            // 隐藏物品
+            hiddenItems.addAll(destructionItems).removeAll(erekirItems);
+            hiddenItems.removeAll(serpuloItems);
             // 设置星球始终解锁
             alwaysUnlocked = true;
             // 设置陆地云层颜色

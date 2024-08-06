@@ -1,5 +1,6 @@
 package main.content;
 
+import arc.struct.Seq;
 import main.ContentList;
 import mindustry.type.Item;
 
@@ -7,6 +8,8 @@ public class WItems implements ContentList {
     public static Item
         iron, gold, silver
             ;
+
+    public static Seq<Item> destructionItems;
 
 
     @Override
@@ -24,5 +27,9 @@ public class WItems implements ContentList {
         silver = new Item("silver"){{
             hardness = 3;
         }};
+        destructionItems.addAll(
+                iron, gold, silver
+        );
     }
+
 }
