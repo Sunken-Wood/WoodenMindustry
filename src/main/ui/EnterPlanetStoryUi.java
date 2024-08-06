@@ -3,11 +3,12 @@ package main.ui;
 import arc.Core;
 import arc.scene.ui.layout.Table;
 import arc.util.Time;
+import mindustry.game.EventType;
 import mindustry.gen.Tex;
 import mindustry.ui.dialogs.BaseDialog;
 
-// UnloaderUi 类继承自 BaseDialog，用于创建一个自定义的对话框
-public class UnloaderUi extends BaseDialog {
+// EnterPlanetStoryUi 类继承自 BaseDialog，用于创建一个自定义的对话框
+public class EnterPlanetStoryUi extends BaseDialog {
 
     // toShow 方法用于显示对话框内容
     public void toShow(){
@@ -38,8 +39,8 @@ public class UnloaderUi extends BaseDialog {
         });
     }
 
-    // UnloaderUi 构造函数，调用父类 BaseDialog 的构造函数，设置对话框标题为 "hello"
-    public UnloaderUi() {
+    // EnterPlanetStoryUi 构造函数，调用父类 BaseDialog 的构造函数，设置对话框标题为 "hello"
+    public EnterPlanetStoryUi() {
         super("hello");
     }
 }
