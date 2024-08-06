@@ -183,7 +183,7 @@ public class WBlocks implements ContentList {
                 blurThresh = 0.01f;
             }});
         }};
-//T2排气冷凝器
+//       T2排气冷凝器
         t2_vent_condenser = new AttributeCrafter("t2-vent-condenser") {{
             // 设置需求物品和数量
             requirements(Category.liquid, with(Items.graphite, 80, Items.beryllium, 200, Items.silicon, 50));
@@ -209,12 +209,9 @@ public class WBlocks implements ContentList {
             attribute = Attribute.steam;
             // 必须全部放置在蒸汽喷口上
             placeableOn = true;
+            researchCostMultiplier = 0.7f;
         }};
-
-
-
-
-//        流体管道桥Plus
+//       流体管道桥Plus
         reinforced_bridge_conduit_plus = new DirectionLiquidBridge("reinforced-bridge-conduit-plus"){{
             // 定义方块的资源需求，属于液体类别，需要10单位的石墨和20单位的铍
             requirements(Category.liquid, with(Items.graphite, 10, Items.beryllium, 20, Items.silicon, 20));
@@ -255,7 +252,7 @@ public class WBlocks implements ContentList {
             // 方块的描述
             description = "更长的物品桥";
         }};
-//        地下抽水机
+//       地下抽水机
         water_extractor_erekir = new SolidPump("water-extractor-erekir"){{
             requirements(Category.production, with()); //类型：生产类 建造需求：
             result = Liquids.water; // 输出
@@ -263,6 +260,7 @@ public class WBlocks implements ContentList {
             size = 2; // 大小
             liquidCapacity = 30f; // 存储容量
             rotateSpeed = 1.4f; // 转速
+            researchCostMultiplier = 0.7f;
 
             consumePower(100f / 60f); // 消耗电力 100/s
         }};
