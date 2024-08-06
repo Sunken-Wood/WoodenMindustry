@@ -49,12 +49,11 @@ public class WBlocks implements ContentList {
     public static LaunchPad launchPad_erekir;
     public static Unloader unloader_erekir;
     public static GenericCrafter sand_maker;
-    public static PowerGenerator steam_turbine ;
+    public static PowerGenerator steam_turbine, t2_vent_condenser ;
     public static Pump reinforce_pump_plus;
     public static DuctBridge duct_bridge_plus;
     public static DirectionLiquidBridge reinforced_bridge_conduit_plus;
     public static SolidPump water_extractor_erekir;
-    public static AttributeCrafter t2_vent_condenser;
 
 //    ============ Destruction ============
     public static CoreBlock destruction_core;
@@ -153,7 +152,7 @@ public class WBlocks implements ContentList {
             // 设置发电量为 360 单位/秒
             //powerProduction = 1f ;
             // 设置显示效率的比例为1/9
-            displayEfficiencyScale = 1f / 9f;
+            displayEfficiencyScale = 2f / 9f;
             // 设置最小效率为9 - 0.0001
             minEfficiency = 9f - 0.0001f;
             // 设置电力生产为6/9
@@ -182,7 +181,7 @@ public class WBlocks implements ContentList {
             }});
         }};
 //       T2排气冷凝器
-        t2_vent_condenser = new AttributeCrafter("t2-vent-condenser") {{
+        t2_vent_condenser = new ThermalGenerator("t2-vent-condenser") {{
             // 设置需求物品和数量
             requirements(Category.liquid, with(Items.graphite, 80, Items.beryllium, 200, Items.silicon, 50));
             // 设置大小
@@ -192,7 +191,7 @@ public class WBlocks implements ContentList {
             // 设置生命值
             health = 200;
             // 设置显示效率比例
-            displayEfficiencyScale = 1f / 9f;
+            displayEfficiencyScale = 2f / 9f;
             // 设置液体容量 80
             liquidCapacity = 80;
             // 设置输出液体及其数量 100/s
@@ -203,10 +202,9 @@ public class WBlocks implements ContentList {
             consumePower(150f / 60f);
             // 设置不显示效率
             displayEfficiency = false;
-            // 设置生成器的属性为蒸汽（steam）
-            attribute = Attribute.steam;
             // 必须全部放置在蒸汽喷口上
             placeableOn = true;
+            generateEffect = Fx.turbinegenerate;
             researchCostMultiplier = 0.7f;
         }};
 //       流体管道桥Plus
