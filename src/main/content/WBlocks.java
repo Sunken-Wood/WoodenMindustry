@@ -275,8 +275,7 @@ public class WBlocks implements ContentList {
 //       【毁灭】核心
         destruction_core = new CoreBlock("destruction-core")
         {{
-            requirements(Category.effect, with(WItems.iron, 1000, Items.copper, 1000, Items.silicon, 1000));
-            researchCost = with(WItems.iron, 1000, Items.copper, 1000, Items.silicon, 1000);
+            requirements(Category.effect, with(WItems.iron, 1000, WItems.silver, 1000));
 
             size = 6;
             hasItems = true;
