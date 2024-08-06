@@ -1,23 +1,16 @@
-#the mod name as displayed in-game
+# 显示名称
 displayName: "Wooden Mindustry"
-
-#the internal name of your mod
+# 内部名称
 name: "wooden-mindustry"
-
-#your name
+# 作者
 author: "Sunken-Wood[https://github.com/Sunken-Wood] / TAGAST[https://github.com/TAGAST]"
-
-#the fully qualified main class of the mod
+# 主类
 main: "main.Main"
-
-#the mod description as seen in the mod dialog
+# 描述
 description: "Restart"
-
-#the mod version
+# 版本
 version: V0.1.43.20240803_alpha
-
-#the minimum game build required to run this mod
+# 最低游戏版本
 minGameVersion: 146
-
-#this is a java mod
+# 是否使用Java
 java: true
