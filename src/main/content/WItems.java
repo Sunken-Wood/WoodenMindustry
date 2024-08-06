@@ -9,7 +9,7 @@ public class WItems implements ContentList {
         iron, gold, silver
             ;
 
-    public static Seq<Item> destructionItems;
+    public static final Seq<Item> destructionItems = new Seq<>();
 
 
     @Override
