@@ -188,7 +188,8 @@ public class WBlocks implements ContentList {
             // 设置生命值
             health = 200;
             // 设置显示效率比例
-            displayEfficiencyScale = 2f / 9f;
+            minEfficiency = 9f - 0.0001f;
+            baseEfficiency = 1f / 9f;
             // 设置液体容量 80
             liquidCapacity = 80;
             // 设置输出液体及其数量 100/s
