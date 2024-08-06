@@ -142,18 +142,14 @@ public class WBlocks implements ContentList {
             requirements(Category.power, with(Items.beryllium, 100, Items.silicon, 50, Items.graphite, 30));
             // 设置块的大小为 3x3
             size = 3;
-            // 设置生成器所属的块组为液体（liquids）
-            //group = BlockGroup.liquids;
             // 设置生成器的属性为蒸汽（steam）
             attribute = Attribute.steam;
             // 设置发电机的生命值为 200
             health = 200;
             // 输出电力：是
             outputsPower = true;
-            // 设置发电量为 360 单位/秒
-            //powerProduction = 1f ;
             // 设置显示效率的比例为1/9
-            displayEfficiencyScale = 1f / 9f;
+            displayEfficiencyScale = 2f / 9f;
             // 设置最小效率为9 - 0.0001
             minEfficiency = 9f - 0.0001f;
             // 设置电力生产为6/9
