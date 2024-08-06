@@ -49,12 +49,11 @@ public class WBlocks implements ContentList {
     public static LaunchPad launchPad_erekir;
     public static Unloader unloader_erekir;
     public static GenericCrafter sand_maker;
-    public static PowerGenerator steam_turbine ;
+    public static PowerGenerator steam_turbine, t2_vent_condenser ;
     public static Pump reinforce_pump_plus;
     public static DuctBridge duct_bridge_plus;
     public static DirectionLiquidBridge reinforced_bridge_conduit_plus;
     public static SolidPump water_extractor_erekir;
-    public static AttributeCrafter t2_vent_condenser;
 
 //    ============ Destruction ============
     public static CoreBlock destruction_core;
@@ -144,14 +143,12 @@ public class WBlocks implements ContentList {
             size = 3;
             // 设置生成器的属性为蒸汽（steam）
             attribute = Attribute.steam;
-            // 设置 效率倍率
-            displayEfficiencyScale = 2f / 9f;
             // 设置发电机的生命值为 200
             health = 200;
             // 输出电力：是
             outputsPower = true;
             // 设置显示效率的比例为1/9
-            displayEfficiencyScale = 1f / 9f;
+            displayEfficiencyScale = 2f / 9f;
             // 设置最小效率为9 - 0.0001
             minEfficiency = 9f - 0.0001f;
             // 设置电力生产为6/9
@@ -180,7 +177,7 @@ public class WBlocks implements ContentList {
             }});
         }};
 //       T2排气冷凝器
-        t2_vent_condenser = new AttributeCrafter("t2-vent-condenser") {{
+        t2_vent_condenser = new ThermalGenerator("t2-vent-condenser") {{
             // 设置需求物品和数量
             requirements(Category.liquid, with(Items.graphite, 80, Items.beryllium, 200, Items.silicon, 50));
             // 设置大小
@@ -192,6 +189,7 @@ public class WBlocks implements ContentList {
             // 设置显示效率比例
             displayEfficiencyScale = 1f;
             // 设置液体容量 80
+            liquidCapacity = 80;
             liquidCapacity = 100;
             // 设置输出液体及其数量 100/s
             outputLiquid = new LiquidStack(Liquids.water, 100f / 60f / 9f);
@@ -209,6 +207,7 @@ public class WBlocks implements ContentList {
             //generateEffect = Fx.turbinegenerate ;
             // 必须全部放置在蒸汽喷口上
             placeableOn = true;
+            generateEffect = Fx.turbinegenerate;
             //研究倍数
             researchCostMultiplier = 0.7f;
         }};
