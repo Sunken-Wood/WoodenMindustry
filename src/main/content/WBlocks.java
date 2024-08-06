@@ -17,6 +17,7 @@ import mindustry.world.blocks.campaign.LaunchPad; // 导入类：发射台
 import mindustry.world.blocks.power.ThermalGenerator;
 import mindustry.world.blocks.production.GenericCrafter; // 导入类：生产
 import mindustry.world.blocks.power.PowerGenerator; // 导入类：发电机
+import mindustry.world.blocks.production.SolidPump;
 import mindustry.world.blocks.storage.CoreBlock; // 导入类：核心
 import mindustry.world.blocks.storage.Unloader; // 导入类：装卸器
 
@@ -36,6 +37,7 @@ import mindustry.graphics.Drawf;
 import mindustry.world.draw.DrawMulti;
 import mindustry.world.draw.DrawDefault;
 import mindustry.world.draw.DrawBlurSpin;
+import mindustry.world.meta.Env;
 
 
 import static mindustry.type.ItemStack.with;
@@ -49,6 +51,7 @@ public class WBlocks implements ContentList {
     public static Pump reinforce_pump_plus;
     public static DuctBridge duct_bridge_plus;
     public static DirectionLiquidBridge reinforced_bridge_conduit_plus;
+    public static SolidPump water_extractor_erekir;
 
 //    ============ Destruction ============
     public static CoreBlock destruction_core;
@@ -219,9 +222,18 @@ public class WBlocks implements ContentList {
             // 方块的描述
             description = "更长的物品桥";
         }};
+//        地下抽水机
+        water_extractor_erekir = new SolidPump("water-extractor-erekir"){{
+            requirements(Category.production, with()); //类型：生产类 建造需求：
+            result = Liquids.water; // 输出
+            pumpAmount = 30f / 60f; // 泵出速度 30/s
+            size = 2; // 大小
+            liquidCapacity = 30f; // 存储容量
+            rotateSpeed = 1.4f; // 转速
 
-//        TODO:抽水机
-//        TODO:发电机
+            consumePower(100f / 60f); // 消耗电力 100/s
+        }};
+
 
 //        =============================== Destruction ===============================
 //       【毁灭】核心

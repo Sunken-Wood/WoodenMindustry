@@ -34,8 +34,7 @@ public class WPlanets implements ContentList {
                     new HexSkyMesh(this, 3, 0.6f, 0.15f, 5, Color.rgb(120, 120, 255).a(0.75f), 2, 0.42f, 1.2f, 0.45f)
             );
             // 隐藏物品
-            hiddenItems.addAll(destructionItems).removeAll(erekirItems);
-            hiddenItems.removeAll(serpuloItems);
+            hiddenItems.addAll(serpuloItems).addAll(erekirItems).removeAll(destructionItems);
             // 设置星球始终解锁
             alwaysUnlocked = true;
             // 设置陆地云层颜色
