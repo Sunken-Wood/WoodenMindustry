@@ -206,7 +206,7 @@ public class WBlocks implements ContentList {
             // 设置生成器的属性为蒸汽（steam）
             attribute = Attribute.steam;
             // 设置生成效果为蒸汽喷口
-            generateEffect = Fx.turbinegenerate ;
+            //generateEffect = Fx.turbinegenerate ;
             // 必须全部放置在蒸汽喷口上
             placeableOn = true;
             //研究倍数
