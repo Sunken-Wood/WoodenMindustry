@@ -187,13 +187,20 @@ public class WBlocks implements ContentList {
             attribute = Attribute.steam;
             // 设置生命值
             health = 200;
-            // 设置显示效率比例
+            // 输出电力：x
+            outputsPower = false;
+
             minEfficiency = 9f - 0.0001f;
-            baseEfficiency = 1f / 9f;
+            // 设置显示效率比例
+            //baseEfficiency = 1f / 9f;
+            // 设置显示效率的比例为1/9
+            displayEfficiencyScale = 2f / 9f;
+            // 设置加速比例
+            boostScale = 1f / 9f;
             // 设置液体容量 80
             liquidCapacity = 80;
             // 设置输出液体及其数量 100/s
-            outputLiquid = new LiquidStack(Liquids.water, 100f / 60f / 9f);
+            outputLiquid = new LiquidStack(Liquids.water, 900f / 60f / 9f  );
             // 启用电力消耗
             hasPower = true;
             // 设置电力消耗为 150 单位/分钟（即 2.5 单位/秒）
@@ -202,9 +209,12 @@ public class WBlocks implements ContentList {
             displayEfficiency = false;
             // 必须全部放置在蒸汽喷口上
             placeableOn = true;
-            craftEffect = Fx.turbinegenerate;
+
+            attribute = Attribute.steam;
+
             researchCostMultiplier = 0.7f;
         }};
+
 //       流体管道桥Plus
         reinforced_bridge_conduit_plus = new DirectionLiquidBridge("reinforced-bridge-conduit-plus"){{
             // 定义方块的资源需求，属于液体类别，需要10单位的石墨和20单位的铍
