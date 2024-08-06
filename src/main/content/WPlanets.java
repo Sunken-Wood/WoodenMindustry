@@ -11,6 +11,7 @@ import mindustry.type.Planet;
 import mindustry.world.meta.Attribute;
 import mindustry.world.meta.Env;
 
+import static main.content.WBlocks.destruction_core;
 import static main.content.WItems.destructionItems;
 import static mindustry.content.Items.erekirItems;
 import static mindustry.content.Items.serpuloItems;
@@ -96,6 +97,8 @@ public class WPlanets implements ContentList {
                 // 仅在核心处存款
                 r.onlyDepositCore = true;
             };
+
+            unlockedOnLand.add(destruction_core);
         }};
     }
 }

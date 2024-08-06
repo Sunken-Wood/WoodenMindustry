@@ -2,6 +2,7 @@ package main.content;
 
 // 导入主内容列表类
 import arc.Core;
+import arc.struct.Seq;
 import main.ContentList;
 
 // 导入Mindustry游戏内容类
@@ -13,6 +14,7 @@ import mindustry.type.ItemStack;
 import mindustry.type.LiquidStack;
 
 // 导入Mindustry世界块类
+import mindustry.world.Block;
 import mindustry.world.blocks.campaign.LaunchPad; // 导入类：发射台
 import mindustry.world.blocks.power.ThermalGenerator;//导入类：热能发电机
 import mindustry.world.blocks.production.AttributeCrafter;
@@ -58,6 +60,7 @@ public class WBlocks implements ContentList {
 
 //    ============ Destruction ============
     public static CoreBlock destruction_core;
+    public static Seq<Block> destructionBlocks = new Seq<>();
 
     @Override
     public void load() {
@@ -187,11 +190,8 @@ public class WBlocks implements ContentList {
             attribute = Attribute.steam;
             // 设置生命值
             health = 200;
-            // 输出电力：x
-            outputsPower = false;
 
             minEfficiency = 9f - 0.0001f;
-            // 设置显示效率比例
             //baseEfficiency = 1f / 9f;
             // 设置显示效率的比例为1/9
             displayEfficiencyScale = 2f / 9f;
@@ -200,7 +200,7 @@ public class WBlocks implements ContentList {
             // 设置液体容量 80
             liquidCapacity = 80;
             // 设置输出液体及其数量 100/s
-            outputLiquid = new LiquidStack(Liquids.water, 900f / 60f / 9f  );
+            outputLiquid = new LiquidStack(Liquids.water, 100f / 60f  );
             // 启用电力消耗
             hasPower = true;
             // 设置电力消耗为 150 单位/分钟（即 2.5 单位/秒）
@@ -209,8 +209,6 @@ public class WBlocks implements ContentList {
             displayEfficiency = false;
             // 必须全部放置在蒸汽喷口上
             placeableOn = true;
-
-            attribute = Attribute.steam;
 
             researchCostMultiplier = 0.7f;
         }};
@@ -289,6 +287,8 @@ public class WBlocks implements ContentList {
             unitCapModifier = 20;
 
         }};
-
+        destructionBlocks.add(
+                destruction_core
+        );
     }
 }
