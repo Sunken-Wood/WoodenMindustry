@@ -142,8 +142,6 @@ public class WBlocks implements ContentList {
             requirements(Category.power, with(Items.beryllium, 100, Items.silicon, 50, Items.graphite, 30));
             // 设置块的大小为 3x3
             size = 3;
-            // 设置生成器所属的块组为液体（liquids）
-            //group = BlockGroup.liquids;
             // 设置生成器的属性为蒸汽（steam）
             attribute = Attribute.steam;
             // 设置 效率倍率
@@ -152,8 +150,6 @@ public class WBlocks implements ContentList {
             health = 200;
             // 输出电力：是
             outputsPower = true;
-            // 设置发电量为 360 单位/秒
-            //powerProduction = 1f ;
             // 设置显示效率的比例为1/9
             displayEfficiencyScale = 1f / 9f;
             // 设置最小效率为9 - 0.0001
@@ -194,9 +190,9 @@ public class WBlocks implements ContentList {
             // 设置生命值
             health = 200;
             // 设置显示效率比例
-            displayEfficiencyScale = 2f / 9f;
+            displayEfficiencyScale = 1f;
             // 设置液体容量 80
-            liquidCapacity = 4800f / 60f;
+            liquidCapacity = 100;
             // 设置输出液体及其数量 100/s
             outputLiquid = new LiquidStack(Liquids.water, 100f / 60f / 9f);
             // 启用电力消耗
@@ -205,10 +201,15 @@ public class WBlocks implements ContentList {
             consumePower(150f / 60f);
             // 设置不显示效率
             displayEfficiency = false;
+            // 设置显示效率的比例为1/9
+            displayEfficiencyScale = 1f / 9f;
             // 设置生成器的属性为蒸汽（steam）
             attribute = Attribute.steam;
+            // 设置生成效果为蒸汽喷口
+            generateEffect = Fx.turbinegenerate ;
             // 必须全部放置在蒸汽喷口上
             placeableOn = true;
+            //研究倍数
             researchCostMultiplier = 0.7f;
         }};
 //       流体管道桥Plus
