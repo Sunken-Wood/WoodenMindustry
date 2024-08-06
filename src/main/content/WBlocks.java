@@ -14,11 +14,13 @@ import mindustry.type.LiquidStack;
 
 // 导入Mindustry世界块类
 import mindustry.world.blocks.campaign.LaunchPad; // 导入类：发射台
-import mindustry.world.blocks.power.ThermalGenerator;
+import mindustry.world.blocks.power.ThermalGenerator;//导入类：热能发电机
+import mindustry.world.blocks.production.AttributeCrafter;
 import mindustry.world.blocks.production.GenericCrafter; // 导入类：生产
 import mindustry.world.blocks.power.PowerGenerator; // 导入类：发电机
 import mindustry.world.blocks.storage.CoreBlock; // 导入类：核心
 import mindustry.world.blocks.storage.Unloader; // 导入类：装卸器
+import mindustry.world.blocks.Attributes;
 
 // 导入Mindustry世界元数据类
 import mindustry.world.blocks.campaign.LaunchPad;
@@ -49,6 +51,7 @@ public class WBlocks implements ContentList {
     public static Pump reinforce_pump_plus;
     public static DuctBridge duct_bridge_plus;
     public static DirectionLiquidBridge reinforced_bridge_conduit_plus;
+    public static AttributeCrafter t2_vent_condenser;
 
 //    ============ Destruction ============
     public static CoreBlock destruction_core;
@@ -137,7 +140,7 @@ public class WBlocks implements ContentList {
             // 设置块的大小为 3x3
             size = 3;
             // 设置生成器所属的块组为液体（liquids）
-            group = BlockGroup.liquids;
+            //group = BlockGroup.liquids;
             // 设置生成器的属性为蒸汽（steam）
             attribute = Attribute.steam;
             // 设置 效率倍率
@@ -177,6 +180,36 @@ public class WBlocks implements ContentList {
                 blurThresh = 0.01f;
             }});
         }};
+//T2排气冷凝器
+        t2_vent_condenser = new AttributeCrafter("t2-vent-condenser") {{
+            // 设置需求物品和数量
+            requirements(Category.liquid, with(Items.graphite, 80, Items.beryllium, 200, Items.silicon, 50));
+            // 设置大小
+            size = 3;
+            // 设置属性
+            attribute = Attribute.steam;
+            // 设置生命值
+            health = 200;
+            // 设置显示效率比例
+            displayEfficiencyScale = 2f / 9f;
+            // 设置液体容量 80
+            liquidCapacity = 4800f / 60f;
+            // 设置输出液体及其数量 100/s
+            outputLiquid = new LiquidStack(Liquids.water, 100f / 60f / 9f);
+            // 启用电力消耗
+            hasPower = true;
+            // 设置电力消耗为 150 单位/分钟（即 2.5 单位/秒）
+            consumePower(150f / 60f);
+            // 设置不显示效率
+            displayEfficiency = false;
+            // 设置生成器的属性为蒸汽（steam）
+            attribute = Attribute.steam;
+            // 必须全部放置在蒸汽喷口上
+            placeableOn = true;
+        }};
+
+
+
 
 //        流体管道桥Plus
         reinforced_bridge_conduit_plus = new DirectionLiquidBridge("reinforced-bridge-conduit-plus"){{
