@@ -1,12 +1,7 @@
 package main.content;
 
-import arc.Core;
 import main.ContentList;
-import mindustry.content.Blocks;
-import mindustry.content.Items;
-import mindustry.content.TechTree;
 
-import static main.Utils.addToNode;
 import static main.Utils.toText;
 import static main.content.WBlocks.*;
 import static main.content.WPlanets.destruction;
