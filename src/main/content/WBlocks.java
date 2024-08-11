@@ -24,6 +24,7 @@ import mindustry.world.blocks.production.SolidPump;
 import mindustry.world.blocks.storage.CoreBlock; // 导入类：核心
 import mindustry.world.blocks.storage.Unloader; // 导入类：装卸器
 import mindustry.world.blocks.Attributes;
+import mindustry.world.blocks.defense.Wall;
 
 // 导入Mindustry世界元数据类
 import mindustry.world.blocks.campaign.LaunchPad;
@@ -57,6 +58,7 @@ public class WBlocks implements ContentList {
     public static DirectionLiquidBridge reinforced_bridge_conduit_plus;
     public static SolidPump water_extractor_erekir;
     public static AttributeCrafter t2_vent_condenser;
+    public static Wall fortify_the_defensive_wall,fortify_the_defensive_wall_large;
 
 //    ============ Destruction ============
     public static CoreBlock destruction_core;
@@ -66,6 +68,27 @@ public class WBlocks implements ContentList {
     public void load() {
 
 //        =============================== Erekir Tools ===============================
+
+        fortify_the_defensive_wall = new Wall("fortify-the-defensive-wall")
+        {{
+        requirements(Category.defense,with(Items.beryllium,10,Items.tungsten,5,Items.silicon,15,Items.graphite,5));
+        size = 1 ;
+        armor = 5;
+        health = 1000;
+        buildCostMultiplier = 1.7f;
+        description = "强化防御墙，拥有较高的血量";
+        }};
+
+        fortify_the_defensive_wall_large = new Wall("fortify-the-defensive-wall-large")
+        {{
+            requirements(Category.defense,with(Items.beryllium,30,Items.tungsten,10,Items.silicon,30,Items.graphite,10));
+            size = 2 ;
+            armor = 20;
+            health = 5000;
+            buildCostMultiplier = 1.5f;
+            description = "大型强化防御墙，拥有很高的血量";
+        }};
+
         // 创建一个新的 LaunchPad 实例，并将其命名为 "launchpad-erekir"（发射台）
         launchPad_erekir = new LaunchPad("launchpad-erekir")
         {{
