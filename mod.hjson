@@ -9,7 +9,7 @@ main: "main.Main"
 # 描述
 description: "欧耶~~"
 # 版本
-version: V0.1.43.20240803_alpha
+version: V0.1.5.beta
 # 最低游戏版本
 minGameVersion: 146
 # 是否使用Java

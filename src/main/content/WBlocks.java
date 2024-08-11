@@ -16,6 +16,7 @@ import mindustry.type.LiquidStack;
 // 导入Mindustry世界块类
 import mindustry.world.Block;
 import mindustry.world.blocks.campaign.LaunchPad; // 导入类：发射台
+import mindustry.world.blocks.defense.Door;
 import mindustry.world.blocks.power.ThermalGenerator;//导入类：热能发电机
 import mindustry.world.blocks.production.AttributeCrafter;
 import mindustry.world.blocks.production.GenericCrafter; // 导入类：生产
@@ -23,26 +24,20 @@ import mindustry.world.blocks.power.PowerGenerator; // 导入类：发电机
 import mindustry.world.blocks.production.SolidPump;
 import mindustry.world.blocks.storage.CoreBlock; // 导入类：核心
 import mindustry.world.blocks.storage.Unloader; // 导入类：装卸器
-import mindustry.world.blocks.Attributes;
-import mindustry.world.blocks.defense.Wall;
+import mindustry.world.blocks.defense.Wall;//防御墙
+import mindustry.world.blocks.defense.Door;//门
 
 // 导入Mindustry世界元数据类
-import mindustry.world.blocks.campaign.LaunchPad;
 import mindustry.world.blocks.distribution.DirectionLiquidBridge;
 import mindustry.world.blocks.distribution.DuctBridge;
-import mindustry.world.blocks.production.GenericCrafter;
 import mindustry.world.blocks.production.Pump;
-import mindustry.world.blocks.storage.CoreBlock;
-import mindustry.world.blocks.storage.Unloader;
 import mindustry.world.meta.Attribute;
 import mindustry.world.meta.BlockGroup;
 
 //导入动画包
-import mindustry.graphics.Drawf;
 import mindustry.world.draw.DrawMulti;
 import mindustry.world.draw.DrawDefault;
 import mindustry.world.draw.DrawBlurSpin;
-import mindustry.world.meta.Env;
 
 
 import static mindustry.type.ItemStack.with;
@@ -59,6 +54,7 @@ public class WBlocks implements ContentList {
     public static SolidPump water_extractor_erekir;
     public static AttributeCrafter t2_vent_condenser;
     public static Wall fortify_the_defensive_wall,fortify_the_defensive_wall_large;
+    public static Door strengthened_gates;
 
 //    ============ Destruction ============
     public static CoreBlock destruction_core;
@@ -76,7 +72,9 @@ public class WBlocks implements ContentList {
         armor = 5;
         health = 1000;
         buildCostMultiplier = 1.7f;
-        description = "强化防御墙，拥有较高的血量";
+        chanceDeflect = 10f;
+        flashHit = true;
+        description = "强化防御墙，拥有较高的血量，小概率反弹子弹";
         }};
 
         fortify_the_defensive_wall_large = new Wall("fortify-the-defensive-wall-large")
@@ -86,7 +84,22 @@ public class WBlocks implements ContentList {
             armor = 20;
             health = 5000;
             buildCostMultiplier = 1.5f;
-            description = "大型强化防御墙，拥有很高的血量";
+            chanceDeflect = 10f;
+            flashHit = true;
+            description = "大型强化防御墙，拥有很高的血量，小概率反弹子弹";
+        }};
+
+        strengthened_gates = new Door("strengthened-gates")
+        {{
+            requirements(Category.defense,with(Items.beryllium,30,Items.tungsten,20,Items.silicon,40,Items.graphite,5));
+            openfx = Fx.dooropenlarge;
+            closefx = Fx.doorcloselarge;
+            size = 2 ;
+            health = 4096;
+            buildCostMultiplier = 1.3f;
+            chanceDeflect = 10f;
+            flashHit = true;
+            description = "供单位穿越的门，需要手动开关，可以连携开关,小概率反弹子弹";
         }};
 
         // 创建一个新的 LaunchPad 实例，并将其命名为 "launchpad-erekir"（发射台）

@@ -20,7 +20,9 @@ public class WTechtree implements ContentList {
     public void load() {
         erekir.techTree.children.add(node(launchPad_erekir, () -> {
             node(fortify_the_defensive_wall,() -> {
-                node(fortify_the_defensive_wall_large);
+                node(fortify_the_defensive_wall_large,() -> {
+                    node(strengthened_gates);
+                });
                     });
             node(sand_maker, () -> {
                 node(steam_turbine, () -> {
