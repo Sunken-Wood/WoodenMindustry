@@ -213,6 +213,12 @@ public class WBlocks implements ContentList {
 
             researchCostMultiplier = 0.7f;
             description = "2级的排气冷凝器，消耗较多电力，产生大量水";
+
+            drawer = new DrawMulti(new DrawDefault(), new DrawBlurSpin("-rotator", 0.6f * 9f)
+            {{
+                // 设置模糊阈值为0.01
+                blurThresh = 0.01f;
+            }});
         }};
 
 //       流体管道桥Plus
