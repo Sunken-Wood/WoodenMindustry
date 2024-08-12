@@ -7,7 +7,7 @@ import main.content.WBlocks;
 import main.content.WItems;
 import main.content.WPlanets;
 import main.content.WTechtree;
-import main.ui.WUI;
+//import main.ui.WUI;
 import mindustry.gen.Icon;
 import mindustry.mod.Mod;
 
