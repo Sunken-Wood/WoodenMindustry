@@ -16,7 +16,7 @@ import mindustry.type.LiquidStack;
 // 导入Mindustry世界块类
 import mindustry.world.Block;
 import mindustry.world.blocks.campaign.LaunchPad; // 导入类：发射台
-import mindustry.world.blocks.defense.Door;
+import mindustry.world.blocks.defense.Door;//门
 import mindustry.world.blocks.power.ThermalGenerator;//导入类：热能发电机
 import mindustry.world.blocks.production.AttributeCrafter;
 import mindustry.world.blocks.production.GenericCrafter; // 导入类：生产
@@ -25,7 +25,6 @@ import mindustry.world.blocks.production.SolidPump;
 import mindustry.world.blocks.storage.CoreBlock; // 导入类：核心
 import mindustry.world.blocks.storage.Unloader; // 导入类：装卸器
 import mindustry.world.blocks.defense.Wall;//防御墙
-import mindustry.world.blocks.defense.Door;//门
 
 // 导入Mindustry世界元数据类
 import mindustry.world.blocks.distribution.DirectionLiquidBridge;
@@ -65,41 +64,54 @@ public class WBlocks implements ContentList {
 
 //        =============================== Erekir Tools ===============================
 
-        fortify_the_defensive_wall = new Wall("fortify-the-defensive-wall")
-        {{
-        requirements(Category.defense,with(Items.beryllium,10,Items.tungsten,5,Items.silicon,15,Items.graphite,5));
-        size = 1 ;
-        armor = 5;
-        health = 1000;
-        buildCostMultiplier = 1.7f;
-        chanceDeflect = 10f;
-        flashHit = true;
-        description = "强化防御墙，拥有较高的血量，小概率反弹子弹";
+// 创建一个新的防御墙对象，命名为 "fortify-the-defensive-wall"
+        fortify_the_defensive_wall = new Wall("fortify-the-defensive-wall") {{
+            // 设置建造需求，包括铍、钨、硅和石墨
+            requirements(Category.defense, with(Items.beryllium, 10, Items.tungsten, 5, Items.silicon, 15, Items.graphite, 5));
+            // 设置大小为 1*1
+            size = 1;
+            // 设置装甲值为 5
+            armor = 5;
+            // 设置血量为 1000
+            health = 800;
+            // 设置建造成本倍率为 1.7
+            buildCostMultiplier = 1.7f;
+            // 设置描述信息
+            description = "强化防御墙";
         }};
 
-        fortify_the_defensive_wall_large = new Wall("fortify-the-defensive-wall-large")
-        {{
-            requirements(Category.defense,with(Items.beryllium,30,Items.tungsten,10,Items.silicon,30,Items.graphite,10));
-            size = 2 ;
+// 创建一个新的大型防御墙对象，命名为 "fortify-the-defensive-wall-large"
+        fortify_the_defensive_wall_large = new Wall("fortify-the-defensive-wall-large") {{
+            // 设置建造需求，包括铍、钨、硅和石墨
+            requirements(Category.defense, with(Items.beryllium, 30, Items.tungsten, 10, Items.silicon, 30, Items.graphite, 10));
+            // 设置大小为 2*2
+            size = 2;
+            // 设置装甲值为 20
             armor = 20;
-            health = 5000;
+            // 设置血量为 5000
+            health = 4000;
+            // 设置建造成本倍率为 1.5
             buildCostMultiplier = 1.5f;
-            chanceDeflect = 10f;
-            flashHit = true;
-            description = "大型强化防御墙，拥有很高的血量，小概率反弹子弹";
+            // 设置描述信息
+            description = "大型强化防御墙";
         }};
 
-        strengthened_gates = new Door("strengthened-gates")
-        {{
-            requirements(Category.defense,with(Items.beryllium,30,Items.tungsten,20,Items.silicon,40,Items.graphite,5));
+// 创建一个新的强化门对象，命名为 "strengthened-gates"
+        strengthened_gates = new Door("strengthened-gates") {{
+            // 设置建造需求，包括铍、钨、硅和石墨
+            requirements(Category.defense, with(Items.beryllium, 30, Items.tungsten, 20, Items.silicon, 40, Items.graphite, 5));
+            // 设置开门时的音效
             openfx = Fx.dooropenlarge;
+            // 设置关门时的音效
             closefx = Fx.doorcloselarge;
-            size = 2 ;
+            // 设置大小为 2*2
+            size = 2;
+            // 设置血量为 4096
             health = 4096;
+            // 设置建造成本倍率为 1.3
             buildCostMultiplier = 1.3f;
-            chanceDeflect = 10f;
-            flashHit = true;
-            description = "供单位穿越的门，需要手动开关，可以连携开关,小概率反弹子弹";
+            // 设置描述信息
+            description = "供单位穿越的门，需要手动开关，可以连携开关";
         }};
 
         // 创建一个新的 LaunchPad 实例，并将其命名为 "launchpad-erekir"（发射台）
@@ -153,6 +165,11 @@ public class WBlocks implements ContentList {
             // 设置电力消耗为 4 单位/秒
             consumePower(10f / 60f);
             description = "平地挖沙机，可以生产沙子，需要电力";
+            drawer = new DrawMulti(new DrawDefault(), new DrawBlurSpin("-rotator", 0.6f * 9f)
+            {{
+                // 设置模糊阈值为0.01
+                blurThresh = 0.03f;
+            }});
         }};
 
 //       强化泵 Plus
@@ -237,7 +254,7 @@ public class WBlocks implements ContentList {
             // 设置液体容量 80
             liquidCapacity = 80;
             // 设置输出液体及其数量 100/s
-            outputLiquid = new LiquidStack(Liquids.water, 100f / 60f  );
+            outputLiquid = new LiquidStack(Liquids.water, 50f / 60f  );
             // 启用电力消耗
             hasPower = true;
             // 设置电力消耗为 150 单位/分钟（即 2.5 单位/秒）
@@ -309,7 +326,7 @@ public class WBlocks implements ContentList {
             researchCostMultiplier = 0.7f;
 
             consumePower(100f / 60f); // 消耗电力 100/s
-            description = "抽水机，可以开采地下水，需要电力";
+            description = "抽水机，开采地下水，需要电力";
         }};
 
 

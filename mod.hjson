@@ -3,13 +3,13 @@ displayName: "WoodenMindustry"
 # 内部名称
 name: "wooden-mindustry"
 # 作者
-author: "Sunken-Wood(CN)[https://github.com/Sunken-Wood] / TAGAST(CN)[https://github.com/TAGAST]"
+author: "Sunken-Wood(CN)/TAGAST(CN)"
 # 主类
 main: "main.Main"
 # 描述
 description: "欧耶~~"
 # 版本
-version: V0.1.5.beta
+version: V0.2.0.beta
 # 最低游戏版本
 minGameVersion: 146
 # 是否使用Java
