@@ -1,5 +1,5 @@
 # 显示名称
-displayName: "WoodenMindustry"
+displayName: "沉木工业"
 # 内部名称
 name: "wooden-mindustry"
 # 作者
@@ -7,9 +7,9 @@ author: "Sunken-Wood(CN)/TAGAST(CN)"
 # 主类
 main: "main.Main"
 # 描述
-description: "欧耶~~"
+description: "很简单的小MOD，祝你玩得开心！"
 # 版本
-version: V0.2.0.beta
+version: V0.3.5.beta
 # 最低游戏版本
 minGameVersion: 146
 # 是否使用Java
