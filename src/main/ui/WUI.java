@@ -1,9 +1,9 @@
-//package main.ui;
+package main.ui;
 
-//public class WUI {
+public class WUI {
 //    public EnterPlanetStoryUi unloaderUi;
-
+//
 //    public void init(){
 //        unloaderUi = new EnterPlanetStoryUi();
-//   }
-//}
+//    }
+}
