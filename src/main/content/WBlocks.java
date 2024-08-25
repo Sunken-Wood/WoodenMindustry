@@ -15,15 +15,15 @@ import mindustry.type.LiquidStack;
 
 // 导入Mindustry世界块类
 import mindustry.world.Block;
-import mindustry.world.blocks.campaign.LaunchPad; // 导入类：发射台
+import mindustry.world.blocks.campaign.LaunchPad; // 发射台
 import mindustry.world.blocks.defense.Door;//门
-import mindustry.world.blocks.power.ThermalGenerator;//导入类：热能发电机
-import mindustry.world.blocks.production.AttributeCrafter;
-import mindustry.world.blocks.production.GenericCrafter; // 导入类：生产
-import mindustry.world.blocks.power.PowerGenerator; // 导入类：发电机
-import mindustry.world.blocks.production.SolidPump;
-import mindustry.world.blocks.storage.CoreBlock; // 导入类：核心
-import mindustry.world.blocks.storage.Unloader; // 导入类：装卸器
+import mindustry.world.blocks.power.ThermalGenerator;//发电机
+import mindustry.world.blocks.production.AttributeCrafter;//T2排气冷凝器
+import mindustry.world.blocks.production.GenericCrafter; // 生产
+import mindustry.world.blocks.power.PowerGenerator; // 发电机
+import mindustry.world.blocks.production.SolidPump;//抽水机
+import mindustry.world.blocks.storage.CoreBlock; // 核心
+import mindustry.world.blocks.storage.Unloader; // 装卸器
 import mindustry.world.blocks.defense.Wall;//防御墙
 
 // 导入Mindustry世界元数据类
@@ -67,47 +67,49 @@ public class WBlocks implements ContentList {
 // 创建一个新的防御墙对象，命名为 "fortify-the-defensive-wall"
         fortify_the_defensive_wall = new Wall("fortify-the-defensive-wall") {{
             // 设置建造需求，包括铍、钨、硅和石墨
-            requirements(Category.defense, with(Items.beryllium, 10, Items.tungsten, 5, Items.silicon, 15, Items.graphite, 5));
+            requirements(Category.defense, with(Items.beryllium, 20, Items.tungsten, 10, Items.silicon, 30, Items.graphite, 10));
             // 设置大小为 1*1
             size = 1;
             // 设置装甲值为 5
             armor = 5;
-            // 设置血量为 1000
+            // 设置血量为 800
             health = 800;
             // 设置建造成本倍率为 1.7
             buildCostMultiplier = 1.7f;
             // 设置描述信息
-            description = "强化防御墙";
+            description = "防御子弹，保护建筑";
         }};
 
 // 创建一个新的大型防御墙对象，命名为 "fortify-the-defensive-wall-large"
         fortify_the_defensive_wall_large = new Wall("fortify-the-defensive-wall-large") {{
             // 设置建造需求，包括铍、钨、硅和石墨
-            requirements(Category.defense, with(Items.beryllium, 30, Items.tungsten, 10, Items.silicon, 30, Items.graphite, 10));
+            requirements(Category.defense, with(Items.beryllium, 40, Items.tungsten, 20, Items.silicon, 40, Items.graphite, 20));
             // 设置大小为 2*2
             size = 2;
             // 设置装甲值为 20
             armor = 20;
-            // 设置血量为 5000
+            // 设置血量为4000
             health = 4000;
             // 设置建造成本倍率为 1.5
             buildCostMultiplier = 1.5f;
             // 设置描述信息
-            description = "大型强化防御墙";
+            description = "防御子弹，保护建筑";
         }};
 
 // 创建一个新的强化门对象，命名为 "strengthened-gates"
         strengthened_gates = new Door("strengthened-gates") {{
             // 设置建造需求，包括铍、钨、硅和石墨
-            requirements(Category.defense, with(Items.beryllium, 30, Items.tungsten, 20, Items.silicon, 40, Items.graphite, 5));
+            requirements(Category.defense, with(Items.beryllium, 40, Items.tungsten, 30, Items.silicon, 40, Items.graphite, 10));
             // 设置开门时的音效
             openfx = Fx.dooropenlarge;
             // 设置关门时的音效
             closefx = Fx.doorcloselarge;
             // 设置大小为 2*2
             size = 2;
-            // 设置血量为 4096
+            // 设置血量
             health = 4096;
+            // 设置装甲值为 20
+            armor = 20;
             // 设置建造成本倍率为 1.3
             buildCostMultiplier = 1.3f;
             // 设置描述信息
@@ -129,7 +131,7 @@ public class WBlocks implements ContentList {
             launchTime = 60f * 30;
             // 启用电力消耗
             hasPower = true;
-            // 设置电力消耗为 4 单位/秒
+            // 设置电力消耗
             consumePower(30f / 60f);
 
             description = "来自赛普罗的发射台，可以将资源发射到其他区块";
@@ -138,13 +140,13 @@ public class WBlocks implements ContentList {
         // 创建一个新的 Unloader 实例，并将其命名为 "unloader-erekir"（装卸器）
         unloader_erekir = new Unloader("unloader-erekir")
         {{
-            // 设置建造需求：需要 20 个 Graphite、20 个 Silicon 和 10 个 Tungsten
+            // 设置建造需求
             requirements(Category.effect, with(Items.graphite, 20, Items.silicon, 20, Items.tungsten, 10));
             // 设置卸载速度为 60 帧/秒 / 11 帧/秒
             speed = 60f / 11f;
             // 设置块组为 Transportation
             group = BlockGroup.transportation;
-            description = "来自赛普罗的装卸器，打破了资源不能从核心卸载的历史";
+            description = "来自赛普罗的装卸器，现在可以从核心卸载资源了";
         }};
 
         // 创建一个新的 GenericCrafter 实例，并将其命名为 "sand-maker"（采沙机）
@@ -164,7 +166,7 @@ public class WBlocks implements ContentList {
             hasPower = true;
             // 设置电力消耗为 4 单位/秒
             consumePower(10f / 60f);
-            description = "平地挖沙机，可以生产沙子，需要电力";
+            description = "平地挖沙机，可以开采沙子，需要电力";
             drawer = new DrawMulti(new DrawDefault(), new DrawBlurSpin("-rotator", 0.6f * 9f)
             {{
                 // 设置模糊阈值为0.01
@@ -254,7 +256,7 @@ public class WBlocks implements ContentList {
             // 设置液体容量 80
             liquidCapacity = 80;
             // 设置输出液体及其数量 100/s
-            outputLiquid = new LiquidStack(Liquids.water, 50f / 60f  );
+            outputLiquid = new LiquidStack(Liquids.water, 45f / 60f  );
             // 启用电力消耗
             hasPower = true;
             // 设置电力消耗为 150 单位/分钟（即 2.5 单位/秒）
@@ -277,7 +279,7 @@ public class WBlocks implements ContentList {
 //       流体管道桥Plus
         reinforced_bridge_conduit_plus = new DirectionLiquidBridge("reinforced-bridge-conduit-plus"){{
             // 定义方块的资源需求，属于液体类别，需要10单位的石墨和20单位的铍
-            requirements(Category.liquid, with(Items.graphite, 10, Items.beryllium, 20, Items.silicon, 20));
+            requirements(Category.liquid, with(Items.graphite, 10, Items.tungsten, 30, Items.beryllium, 20, Items.silicon, 20));
             // 方块尺寸为1x1
             size = 1;
             // 方块的生命值为90
@@ -297,10 +299,10 @@ public class WBlocks implements ContentList {
 //       物品管道桥 Plus
         duct_bridge_plus = new DuctBridge("duct-bridge-plus"){{
             // 定义方块的资源需求，属于分配类别，需要20单位的铍
-            requirements(Category.distribution, with(Items.graphite, 10, Items.beryllium, 20, Items.silicon, 20));
+            requirements(Category.distribution, with(Items.tungsten, 30,Items.graphite, 10, Items.beryllium, 20, Items.silicon, 20));
             // 方块尺寸为1x1
             size = 1;
-            // 传输范围为6格
+            // 传输范围为8格
             range = 8;
             // 方块的生命值为90
             health = 130;
@@ -315,7 +317,8 @@ public class WBlocks implements ContentList {
             // 方块的描述
             description = "更长的物品桥";
         }};
-//       地下抽水机
+
+//       抽水机
         water_extractor_erekir = new SolidPump("water-extractor-erekir"){{
             requirements(Category.production, with()); //类型：生产类 建造需求：
             result = Liquids.water; // 输出
@@ -326,12 +329,12 @@ public class WBlocks implements ContentList {
             researchCostMultiplier = 0.7f;
 
             consumePower(100f / 60f); // 消耗电力 100/s
-            description = "抽水机，开采地下水，需要电力";
+            description = "抽水机，可以开采地下水，需要电力";
         }};
 
 
 //        =============================== Destruction ===============================
-//       【毁灭】核心
+//       【毁灭】核心(未完成)
         destruction_core = new CoreBlock("destruction-core")
         {{
             requirements(Category.effect, with(WItems.iron, 1000, WItems.silver, 1000));
