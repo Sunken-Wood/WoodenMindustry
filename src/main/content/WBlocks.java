@@ -2,6 +2,8 @@ package main.content;
 
 // 导入主内容列表类
 import arc.Core;
+import arc.fx.filters.FxaaFilter;
+import arc.graphics.Color;
 import arc.struct.Seq;
 import main.ContentList;
 
@@ -9,6 +11,10 @@ import main.ContentList;
 import mindustry.content.*;
 
 // 导入Mindustry类型类
+import mindustry.entities.bullet.LaserBulletType;
+import mindustry.entities.effect.MultiEffect;
+import mindustry.gen.Sounds;
+import mindustry.graphics.Pal;
 import mindustry.type.Category;
 import mindustry.type.ItemStack;
 import mindustry.type.LiquidStack;
@@ -25,6 +31,7 @@ import mindustry.world.blocks.production.SolidPump;//抽水机
 import mindustry.world.blocks.storage.CoreBlock; // 核心
 import mindustry.world.blocks.storage.Unloader; // 装卸器
 import mindustry.world.blocks.defense.Wall;//防御墙
+import mindustry.world.blocks.defense.turrets.PowerTurret;//炮台
 
 // 导入Mindustry世界元数据类
 import mindustry.world.blocks.distribution.DirectionLiquidBridge;
@@ -54,6 +61,7 @@ public class WBlocks implements ContentList {
     public static AttributeCrafter t2_vent_condenser;
     public static Wall fortify_the_defensive_wall,fortify_the_defensive_wall_large;
     public static Door strengthened_gates;
+    public static PowerTurret plasma_generator;
 
 //    ============ Destruction ============
     public static CoreBlock destruction_core;
@@ -62,7 +70,40 @@ public class WBlocks implements ContentList {
     @Override
     public void load() {
 
-//        =============================== Erekir Tools ===============================
+//        =============================== Erekir ===============================
+
+        plasma_generator = new PowerTurret("plasma-generator") {{
+            requirements(Category.turret, with(Items.beryllium, 10, Items.tungsten, 30, Items.silicon, 30, Items.graphite, 20)); // 成本
+            range = 165; // 射程
+            shoot.firstShotDelay = 40f; // 射击延迟
+            recoil = 0.5f; // 后坐力
+            reload = 40f; // 装填时间
+            shootEffect = Fx.lancerLaserShoot; // 射击效果
+            heatColor = Color.blue; // 热量颜色
+            size = 2; // 大小
+            scaledHealth = 300; // 生命值
+            consumePower(6f); // 能量消耗
+            targetAir = true; // 攻空目标
+            moveWhileCharging = true; // 可移动充电
+            accurateDelay = true; // 精确延迟
+            shootSound = Sounds.laser; // 射击声音
+
+            shootType = new LaserBulletType(150) {{
+                colors = new Color[]{Pal.lancerLaser.cpy().a(0.8f), Pal.lancerLaser, Color.white}; // 子弹颜色
+                chargeEffect = new MultiEffect(Fx.lancerLaserCharge, Fx.lancerLaserChargeBegin); // 充电效果
+                buildCostMultiplier = 0.2f; // 建造成本倍率
+                hitEffect = Fx.hitLancer; // 命中效果
+                hitSize = 3; // 命中效果大小
+                lifetime = 8f; // 子弹生命时间
+                drawSize = 400f; // 绘制大小
+                collidesAir = false; // 是否与空气碰撞
+                length = 173f; // 激光长度
+                ammoMultiplier = 1f; // 弹药倍率
+                pierceCap = -1; // 穿透上限为无限
+            }};
+
+            description = "发射高能等离子束攻击单位"; // 描述
+        }};
 
 // 创建一个新的防御墙对象，命名为 "fortify-the-defensive-wall"
         fortify_the_defensive_wall = new Wall("fortify-the-defensive-wall") {{
@@ -339,7 +380,7 @@ public class WBlocks implements ContentList {
         {{
             requirements(Category.effect, with(WItems.iron, 1000, WItems.silver, 1000));
 
-            size = 4;
+            size = 6;
             hasItems = true;
             itemCapacity = 7000;
             health = 4000;

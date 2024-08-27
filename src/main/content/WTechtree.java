@@ -22,6 +22,7 @@ public class WTechtree implements ContentList {
         addToNode(Blocks.reinforcedBridgeConduit, node(reinforced_bridge_conduit_plus));
         addToNode(Blocks.ductUnloader, node(unloader_erekir));
         addToNode(Blocks.blastDoor, node(fortify_the_defensive_wall, () -> node(fortify_the_defensive_wall_large, () -> node(strengthened_gates))));
+        addToNode(Blocks.sublimate, node(plasma_generator));
 
 //        destruction
         destruction.techTree = nodeRoot(toText("planet.wooden-mindustry-destruction.name"), destruction_core, () -> {
