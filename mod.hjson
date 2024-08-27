@@ -9,7 +9,7 @@ main: "main.Main"
 # 描述
 description: "很简单的小MOD，祝你玩得开心！"
 # 版本
-version: V0.3.8_beta
+version: V0.3.9_beta
 # 最低游戏版本
 minGameVersion: 146
 # 是否使用Java
