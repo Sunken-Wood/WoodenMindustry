@@ -119,7 +119,7 @@ public class WBlocks implements ContentList {
         // 创建一个新的 LaunchPad 实例，并将其命名为 "launchpad-erekir"（发射台）
         launchPad_erekir = new LaunchPad("launchpad-erekir")
         {{
-            // 类型：影响 设置建造需求：需要 360 个 Beryllium、360 个 Silicon 和 160 个 Oxide
+            // 类型：影响 设置建造需求
             requirements(Category.effect, with(Items.beryllium, 360, Items.silicon, 360, Items.oxide, 160));
             // 设置块的大小为 3x3
             size = 3;
@@ -152,7 +152,7 @@ public class WBlocks implements ContentList {
         // 创建一个新的 GenericCrafter 实例，并将其命名为 "sand-maker"（采沙机）
         sand_maker = new GenericCrafter("sand-maker")
         {{
-            // 类型：生产 建造需求： 40*beryllium 30*graphite
+            // 类型：生产 建造需求
             requirements(Category.production, with(Items.beryllium, 40, Items.graphite, 30));
             // 设置块的大小为 2x2
             size = 2;
@@ -176,7 +176,7 @@ public class WBlocks implements ContentList {
 
 //       强化泵 Plus
         reinforce_pump_plus = new Pump("reinforce-pump-plus"){{
-            // 定义方块的资源需求，属于液体类别，需要40单位的铍、30单位的钨和20单位的硅
+            // 定义方块的资源需求
             requirements(Category.liquid, with(Items.beryllium, 40, Items.tungsten, 30, Items.silicon, 30));
             // 启用电力消耗
             hasPower = true;
@@ -198,7 +198,7 @@ public class WBlocks implements ContentList {
 
 //       蒸汽涡轮机
         steam_turbine = new ThermalGenerator("steam-turbine") {{
-            // 设置建造需求：需要 100 个 Beryllium、50 个 Silicon 和 30 个 Graphite
+            // 设置建造需求
             requirements(Category.power, with(Items.beryllium, 100, Items.silicon, 50, Items.graphite, 30));
             // 设置块的大小为 3x3
             size = 3;
@@ -278,7 +278,7 @@ public class WBlocks implements ContentList {
 
 //       流体管道桥Plus
         reinforced_bridge_conduit_plus = new DirectionLiquidBridge("reinforced-bridge-conduit-plus"){{
-            // 定义方块的资源需求，属于液体类别，需要10单位的石墨和20单位的铍
+            // 定义方块的资源需求
             requirements(Category.liquid, with(Items.graphite, 10, Items.tungsten, 30, Items.beryllium, 20, Items.silicon, 20));
             // 方块尺寸为1x1
             size = 1;
@@ -298,7 +298,7 @@ public class WBlocks implements ContentList {
 
 //       物品管道桥 Plus
         duct_bridge_plus = new DuctBridge("duct-bridge-plus"){{
-            // 定义方块的资源需求，属于分配类别，需要20单位的铍
+            // 定义方块的资源需求
             requirements(Category.distribution, with(Items.tungsten, 30,Items.graphite, 10, Items.beryllium, 20, Items.silicon, 20));
             // 方块尺寸为1x1
             size = 1;
