@@ -120,7 +120,6 @@ public class WBlocks implements ContentList {
             // 设置描述信息
             description = "防御子弹，保护建筑";
         }};
-
 // 创建一个新的大型防御墙对象，命名为 "fortify-the-defensive-wall-large"
         fortify_the_defensive_wall_large = new Wall("fortify-the-defensive-wall-large") {{
             // 设置建造需求，包括铍、钨、硅和石墨
@@ -136,7 +135,6 @@ public class WBlocks implements ContentList {
             // 设置描述信息
             description = "防御子弹，保护建筑";
         }};
-
 // 创建一个新的强化门对象，命名为 "strengthened-gates"
         strengthened_gates = new Door("strengthened-gates") {{
             // 设置建造需求，包括铍、钨、硅和石墨
@@ -156,7 +154,6 @@ public class WBlocks implements ContentList {
             // 设置描述信息
             description = "供单位穿越的门，需要手动开关，可以连携开关";
         }};
-
         // 创建一个新的 LaunchPad 实例，并将其命名为 "launchpad-erekir"（发射台）
         launchPad_erekir = new LaunchPad("launchpad-erekir")
         {{
@@ -177,7 +174,6 @@ public class WBlocks implements ContentList {
 
             description = "来自赛普罗的发射台，可以将资源发射到其他区块";
         }};
-
         // 创建一个新的 Unloader 实例，并将其命名为 "unloader-erekir"（装卸器）
         unloader_erekir = new Unloader("unloader-erekir")
         {{
@@ -189,7 +185,6 @@ public class WBlocks implements ContentList {
             group = BlockGroup.transportation;
             description = "来自赛普罗的装卸器，现在可以从核心卸载资源了";
         }};
-
         // 创建一个新的 GenericCrafter 实例，并将其命名为 "sand-maker"（采沙机）
         sand_maker = new GenericCrafter("sand-maker")
         {{
@@ -214,7 +209,6 @@ public class WBlocks implements ContentList {
                 blurThresh = 0.03f;
             }});
         }};
-
 //       强化泵 Plus
         reinforce_pump_plus = new Pump("reinforce-pump-plus"){{
             // 定义方块的资源需求
@@ -235,8 +229,6 @@ public class WBlocks implements ContentList {
             // 方块的描述
             description = "更好的流体泵，需要电力";
         }};
-
-
 //       蒸汽涡轮机
         steam_turbine = new ThermalGenerator("steam-turbine") {{
             // 设置建造需求
@@ -316,7 +308,6 @@ public class WBlocks implements ContentList {
                 blurThresh = 0.01f;
             }});
         }};
-
 //       流体管道桥Plus
         reinforced_bridge_conduit_plus = new DirectionLiquidBridge("reinforced-bridge-conduit-plus"){{
             // 定义方块的资源需求
@@ -336,7 +327,6 @@ public class WBlocks implements ContentList {
             // 方块的描述
             description = "更长的流体桥";
         }};
-
 //       物品管道桥 Plus
         duct_bridge_plus = new DuctBridge("duct-bridge-plus"){{
             // 定义方块的资源需求
@@ -361,18 +351,16 @@ public class WBlocks implements ContentList {
 
 //       抽水机
         water_extractor_erekir = new SolidPump("water-extractor-erekir"){{
-            requirements(Category.production, with()); //类型：生产类 建造需求：
+            requirements(Category.production, with(Items.silicon, 60, Items.beryllium, 60)); //类型：生产类 建造需求：
             result = Liquids.water; // 输出
             pumpAmount = 30f / 60f; // 泵出速度 30/s
             size = 2; // 大小
             liquidCapacity = 30f; // 存储容量
             rotateSpeed = 1.4f; // 转速
-            researchCostMultiplier = 0.7f;
 
             consumePower(100f / 60f); // 消耗电力 100/s
             description = "抽水机，可以开采地下水，需要电力";
         }};
-
 
 //        =============================== Destruction ===============================
 //       【毁灭】核心(未完成)
