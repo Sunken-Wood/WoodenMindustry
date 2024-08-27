@@ -339,7 +339,7 @@ public class WBlocks implements ContentList {
         {{
             requirements(Category.effect, with(WItems.iron, 1000, WItems.silver, 1000));
 
-            size = 6;
+            size = 4;
             hasItems = true;
             itemCapacity = 7000;
             health = 4000;
