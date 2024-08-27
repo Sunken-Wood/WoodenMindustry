@@ -26,9 +26,6 @@ public class WTechtree implements ContentList {
             node(fortify_the_defensive_wall_large);
             node(strengthened_gates);
         }));
-
-
-
 //        destruction
         destruction.techTree = nodeRoot(toText("planet.wooden-mindustry-destruction.name"), destruction_core, () -> {
             node(WItems.iron, () -> {
