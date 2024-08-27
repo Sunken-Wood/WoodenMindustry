@@ -361,7 +361,7 @@ public class WBlocks implements ContentList {
 
 //       抽水机
         water_extractor_erekir = new SolidPump("water-extractor-erekir"){{
-            requirements(Category.production, with()); //类型：生产类 建造需求：
+            requirements(Category.production, with(Items.silicon, 60, Items.beryllium, 60)); //类型：生产类 建造需求：
             result = Liquids.water; // 输出
             pumpAmount = 30f / 60f; // 泵出速度 30/s
             size = 2; // 大小
