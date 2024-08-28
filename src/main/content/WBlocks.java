@@ -11,6 +11,7 @@ import main.ContentList;
 import mindustry.content.*;
 
 // 导入Mindustry类型类
+import mindustry.entities.bullet.ContinuousFlameBulletType;
 import mindustry.entities.bullet.LaserBulletType;
 import mindustry.entities.effect.MultiEffect;
 import mindustry.gen.Sounds;
@@ -73,22 +74,22 @@ public class WBlocks implements ContentList {
 //        =============================== Erekir ===============================
 //添加一个炮台
         plasma_generator = new PowerTurret("plasma-generator") {{
-            requirements(Category.turret, with(Items.beryllium, 10, Items.tungsten, 30, Items.silicon, 30, Items.graphite, 20)); // 成本
+            requirements(Category.turret, with(Items.oxide, 50, Items.tungsten, 200, Items.graphite,30, Items.silicon, 250)); // 成本
             range = 165; // 射程
             shoot.firstShotDelay = 40f; // 射击延迟
-            recoil = 0.5f; // 后坐力
+            recoil = 1.5f; // 后坐力
             reload = 40f; // 装填时间
             shootEffect = Fx.lancerLaserShoot; // 射击效果
-            heatColor = Color.blue; // 热量颜色
-            size = 2; // 大小
-            scaledHealth = 300; // 生命值
+            heatColor = Color.red; // 热量颜色
+            size = 3; // 大小
+            scaledHealth = 180; // 生命值
             consumePower(6f); // 能量消耗
             targetAir = true; // 攻空目标
             moveWhileCharging = true; // 可移动充电
             accurateDelay = true; // 精确延迟
             shootSound = Sounds.laser; // 射击声音
 
-            shootType = new LaserBulletType(150) {{
+            shootType = new LaserBulletType(450) {{//伤害
                 colors = new Color[]{Pal.lancerLaser.cpy().a(0.8f), Pal.lancerLaser, Color.white}; // 子弹颜色
                 chargeEffect = new MultiEffect(Fx.lancerLaserCharge, Fx.lancerLaserChargeBegin); // 充电效果
                 buildCostMultiplier = 0.2f; // 建造成本倍率
@@ -100,9 +101,10 @@ public class WBlocks implements ContentList {
                 length = 173f; // 激光长度
                 ammoMultiplier = 1f; // 弹药倍率
                 pierceCap = -1; // 穿透上限为无限
+                knockback = 2; //击退效果
             }};
 
-            description = "发射高能等离子束攻击单位"; // 描述
+            description = "发射高能等离子束攻击单位，无限穿透，精度很高"; // 描述
         }};
 
 // 创建一个新的防御墙对象，命名为 "fortify-the-defensive-wall"
