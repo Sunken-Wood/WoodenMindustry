@@ -80,7 +80,7 @@ public class WBlocks implements ContentList {
             recoil = 1.5f; // 后坐力
             reload = 40f; // 装填时间
             shootEffect = Fx.lancerLaserShoot; // 射击效果
-            heatColor = Color.red; // 热量颜色
+            heatColor = Color.blue; // 热量颜色
             size = 3; // 大小
             scaledHealth = 180; // 生命值
             consumePower(6f); // 能量消耗
