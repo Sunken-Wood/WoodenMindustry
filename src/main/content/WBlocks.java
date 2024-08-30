@@ -84,7 +84,7 @@ public class WBlocks implements ContentList {
             size = 3; // 大小
             scaledHealth = 180; // 生命值
             consumePower(6f); // 能量消耗
-            targetAir = true; // 攻空目标
+            targetAir = false; // 攻空目标
             moveWhileCharging = true; // 可移动充电
             accurateDelay = true; // 精确延迟
             shootSound = Sounds.laser; // 射击声音
@@ -104,7 +104,7 @@ public class WBlocks implements ContentList {
                 knockback = 2; //击退效果
             }};
 
-            description = "发射高能等离子束攻击单位，无限穿透，精度很高"; // 描述
+            description = "发射高能等离子束攻击地面单位，无限穿透，精度很高"; // 描述
         }};
 
 // 创建一个新的防御墙对象，命名为 "fortify-the-defensive-wall"
