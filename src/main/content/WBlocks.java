@@ -2,7 +2,6 @@ package main.content;
 
 // 导入主内容列表类
 import arc.Core;
-import arc.fx.filters.FxaaFilter;
 import arc.graphics.Color;
 import arc.struct.Seq;
 import main.ContentList;
@@ -11,7 +10,6 @@ import main.ContentList;
 import mindustry.content.*;
 
 // 导入Mindustry类型类
-import mindustry.entities.bullet.ContinuousFlameBulletType;
 import mindustry.entities.bullet.LaserBulletType;
 import mindustry.entities.effect.MultiEffect;
 import mindustry.gen.Sounds;
