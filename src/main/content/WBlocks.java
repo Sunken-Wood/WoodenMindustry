@@ -62,7 +62,7 @@ public class WBlocks implements ContentList {
     public static AttributeCrafter t2_vent_condenser;
     public static Wall fortify_the_defensive_wall,fortify_the_defensive_wall_large;
     public static Door strengthened_gates;
-    public static PowerTurret plasma_generator;
+    public static PowerTurret spear;
 
 //    ============ Destruction ============
     public static CoreBlock destruction_core;
@@ -73,8 +73,8 @@ public class WBlocks implements ContentList {
 
 //        =============================== Erekir ===============================
 //添加一个炮台
-        plasma_generator = new PowerTurret("plasma-generator") {{
-            requirements(Category.turret, with(Items.oxide, 50, Items.tungsten, 200, Items.graphite,30, Items.silicon, 250)); // 成本
+        spear = new PowerTurret("spear") {{
+            requirements(Category.turret, with(Items.beryllium,450, Items.oxide, 50, Items.tungsten, 200, Items.graphite,30, Items.silicon, 250)); // 成本
             range = 165; // 射程
             shoot.firstShotDelay = 40f; // 射击延迟
             recoil = 1.5f; // 后坐力
@@ -83,16 +83,17 @@ public class WBlocks implements ContentList {
             heatColor = Color.blue; // 热量颜色
             size = 3; // 大小
             scaledHealth = 180; // 生命值
-            consumePower(6f); // 能量消耗
+            consumePower(3f); // 能量消耗
             targetAir = false; // 攻空目标
             moveWhileCharging = true; // 可移动充电
             accurateDelay = true; // 精确延迟
             shootSound = Sounds.laser; // 射击声音
 
+
             shootType = new LaserBulletType(450) {{//伤害
-                colors = new Color[]{Pal.lancerLaser.cpy().a(0.8f), Pal.lancerLaser, Color.white}; // 子弹颜色
+                colors = new Color[]{Pal.lancerLaser.cpy().a(1f), Pal.lancerLaser, Color.white}; // 子弹颜色
                 chargeEffect = new MultiEffect(Fx.lancerLaserCharge, Fx.lancerLaserChargeBegin); // 充电效果
-                buildCostMultiplier = 0.2f; // 建造成本倍率
+                buildCostMultiplier = 0.4f; // 建造成本倍率
                 hitEffect = Fx.hitLancer; // 命中效果
                 hitSize = 3; // 命中效果大小
                 lifetime = 8f; // 子弹生命时间
@@ -103,8 +104,7 @@ public class WBlocks implements ContentList {
                 pierceCap = -1; // 穿透上限为无限
                 knockback = 2; //击退效果
             }};
-
-            description = "发射高能等离子束攻击地面单位，无限穿透，精度很高"; // 描述
+            description = "发射能量束攻击地面单位，无限穿透，精度很高"; // 描述
         }};
 
 // 创建一个新的防御墙对象，命名为 "fortify-the-defensive-wall"
@@ -156,6 +156,7 @@ public class WBlocks implements ContentList {
             // 设置描述信息
             description = "供单位穿越的门，需要手动开关，可以连携开关";
         }};
+
         // 创建一个新的 LaunchPad 实例，并将其命名为 "launchpad-erekir"（发射台）
         launchPad_erekir = new LaunchPad("launchpad-erekir")
         {{
@@ -176,6 +177,7 @@ public class WBlocks implements ContentList {
 
             description = "来自赛普罗的发射台，可以将资源发射到其他区块";
         }};
+
         // 创建一个新的 Unloader 实例，并将其命名为 "unloader-erekir"（装卸器）
         unloader_erekir = new Unloader("unloader-erekir")
         {{
@@ -187,6 +189,7 @@ public class WBlocks implements ContentList {
             group = BlockGroup.transportation;
             description = "来自赛普罗的装卸器，现在可以从核心卸载资源了";
         }};
+
         // 创建一个新的 GenericCrafter 实例，并将其命名为 "sand-maker"（采沙机）
         sand_maker = new GenericCrafter("sand-maker")
         {{
@@ -211,6 +214,7 @@ public class WBlocks implements ContentList {
                 blurThresh = 0.03f;
             }});
         }};
+
 //       强化泵 Plus
         reinforce_pump_plus = new Pump("reinforce-pump-plus"){{
             // 定义方块的资源需求
@@ -221,16 +225,17 @@ public class WBlocks implements ContentList {
             consumePower(2.5f);
             // 设置方块的图标
             fullIcon = Core.atlas.find("reinforce_pump_plus");
-            // 每分钟泵送160单位的液体，除以4表示每秒泵送的量
-            pumpAmount = 160f / 60f / 4f;
-            // 液体容量为320单位
-            liquidCapacity = 70f;
+            // 每分钟泵送100单位的液体，除以4表示每秒泵送的量
+            pumpAmount = 100f / 60f / 4f;
+            // 液体容量
+            liquidCapacity = 50f;
             // 方块尺寸为2x2
             size = 2;
             squareSprite = false;
             // 方块的描述
             description = "更好的流体泵，需要电力";
         }};
+
 //       蒸汽涡轮机
         steam_turbine = new ThermalGenerator("steam-turbine") {{
             // 设置建造需求
@@ -272,6 +277,7 @@ public class WBlocks implements ContentList {
                 blurThresh = 0.01f;
             }});
         }};
+
 //       T2排气冷凝器
         t2_vent_condenser = new AttributeCrafter("t2-vent-condenser") {{
             // 设置需求物品和数量
@@ -290,8 +296,8 @@ public class WBlocks implements ContentList {
             boostScale = 1f / 9f;
             // 设置液体容量 80
             liquidCapacity = 80;
-            // 设置输出液体及其数量 100/s
-            outputLiquid = new LiquidStack(Liquids.water, 45f / 60f  );
+            // 设置输出液体及其数量
+            outputLiquid = new LiquidStack(Liquids.water, 40f / 60f  );
             // 启用电力消耗
             hasPower = true;
             // 设置电力消耗为 150 单位/分钟（即 2.5 单位/秒）
@@ -310,20 +316,19 @@ public class WBlocks implements ContentList {
                 blurThresh = 0.01f;
             }});
         }};
+
 //       流体管道桥Plus
         reinforced_bridge_conduit_plus = new DirectionLiquidBridge("reinforced-bridge-conduit-plus"){{
             // 定义方块的资源需求
-            requirements(Category.liquid, with(Items.graphite, 10, Items.tungsten, 30, Items.beryllium, 20, Items.silicon, 20));
+            requirements(Category.liquid, with(Items.oxide,5, Items.graphite, 10, Items.tungsten, 30, Items.beryllium, 20, Items.silicon, 20));
             // 方块尺寸为1x1
             size = 1;
-            // 方块的生命值为90
-            health = 130;
+            // 方块的生命值
+            health = 70;
             // 传输范围为8格
             range = 8;
-            // 不需要电力
-            hasPower = false;
-            // 研究成本乘数为1
-            researchCostMultiplier = 1;
+            // 研究成本乘数
+            researchCostMultiplier = 0.5f;
             // 可以在子弹下方传输液体
             underBullets = true;
             // 方块的描述
@@ -332,19 +337,19 @@ public class WBlocks implements ContentList {
 //       物品管道桥 Plus
         duct_bridge_plus = new DuctBridge("duct-bridge-plus"){{
             // 定义方块的资源需求
-            requirements(Category.distribution, with(Items.tungsten, 30,Items.graphite, 10, Items.beryllium, 20, Items.silicon, 20));
+            requirements(Category.distribution, with(Items.oxide,5, Items.tungsten, 30,Items.graphite, 10, Items.beryllium, 20, Items.silicon, 20));
             // 方块尺寸为1x1
             size = 1;
             // 传输范围为8格
             range = 8;
-            // 方块的生命值为90
-            health = 130;
+            // 方块的生命值
+            health = 70;
             // 传输速度为4单位每秒
             speed = 4f;
             // 建造成本乘数为2
             buildCostMultiplier = 2f;
             // 研究成本乘数为0.3
-            researchCostMultiplier = 0.3f;
+            researchCostMultiplier = 0.5f;
             // 物品容量为8单位
             itemCapacity = 8;
             // 方块的描述
@@ -355,11 +360,10 @@ public class WBlocks implements ContentList {
         water_extractor_erekir = new SolidPump("water-extractor-erekir"){{
             requirements(Category.production, with(Items.silicon, 60, Items.beryllium, 60)); //类型：生产类 建造需求：
             result = Liquids.water; // 输出
-            pumpAmount = 30f / 60f; // 泵出速度 30/s
+            pumpAmount = 15f / 60f; // 泵出速度
             size = 2; // 大小
             liquidCapacity = 30f; // 存储容量
             rotateSpeed = 1.4f; // 转速
-
             consumePower(100f / 60f); // 消耗电力 100/s
             description = "抽水机，可以开采地下水，需要电力";
         }};
