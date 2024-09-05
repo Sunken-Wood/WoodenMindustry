@@ -109,7 +109,7 @@ public class WBlocks implements ContentList {
 
 // 创建一个新的防御墙对象，命名为 "fortify-the-defensive-wall"
         fortify_the_defensive_wall = new Wall("fortify-the-defensive-wall") {{
-            // 设置建造需求，包括铍、钨、硅和石墨
+            // 设置建造需求
             requirements(Category.defense, with(Items.beryllium, 20, Items.tungsten, 10, Items.silicon, 30, Items.graphite, 10));
             // 设置大小为 1*1
             size = 1;
@@ -124,7 +124,7 @@ public class WBlocks implements ContentList {
         }};
 // 创建一个新的大型防御墙对象，命名为 "fortify-the-defensive-wall-large"
         fortify_the_defensive_wall_large = new Wall("fortify-the-defensive-wall-large") {{
-            // 设置建造需求，包括铍、钨、硅和石墨
+            // 设置建造需求
             requirements(Category.defense, with(Items.beryllium, 40, Items.tungsten, 20, Items.silicon, 40, Items.graphite, 20));
             // 设置大小为 2*2
             size = 2;
@@ -139,7 +139,7 @@ public class WBlocks implements ContentList {
         }};
 // 创建一个新的强化门对象，命名为 "strengthened-gates"
         strengthened_gates = new Door("strengthened-gates") {{
-            // 设置建造需求，包括铍、钨、硅和石墨
+            // 设置建造需求
             requirements(Category.defense, with(Items.beryllium, 40, Items.tungsten, 30, Items.silicon, 40, Items.graphite, 10));
             // 设置开门时的音效
             openfx = Fx.dooropenlarge;
