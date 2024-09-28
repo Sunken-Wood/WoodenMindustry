@@ -203,7 +203,7 @@ public class WBlocks implements ContentList {
             consumeLiquid(Liquids.water, 0.06f).boost();
             // 启用电力消耗
             hasPower = true;
-            // 设置电力消耗为 4 单位/秒
+            // 设置电力消耗
             consumePower(10f / 60f);
             description = "平地挖沙机，可以开采沙子，需要电力";
             drawer = new DrawMulti(new DrawDefault(), new DrawBlurSpin("-rotator", 0.6f * 9f)
