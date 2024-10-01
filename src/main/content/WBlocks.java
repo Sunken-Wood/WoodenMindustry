@@ -377,7 +377,6 @@ public class WBlocks implements ContentList {
             itemCapacity = 7000;//容量
             health = 4000;//血量
             unitType = UnitTypes.evoke;//单位类型
-
             incinerateNonBuildable = true;//焚烧不可建造的物体
             requiresCoreZone = true;//需要在核心区域内使用
             alwaysUnlocked = true;//始终解锁
