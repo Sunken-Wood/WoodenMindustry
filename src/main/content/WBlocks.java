@@ -372,16 +372,16 @@ public class WBlocks implements ContentList {
         {{
             requirements(Category.effect, with(WItems.iron, 1000, WItems.silver, 1000));
 
-            size = 6;
-            hasItems = true;
-            itemCapacity = 7000;
-            health = 4000;
-            unitType = UnitTypes.evoke;
+            size = 6;//大小
+            hasItems = true;//是否储存物品
+            itemCapacity = 7000;//容量
+            health = 4000;//血量
+            unitType = UnitTypes.evoke;//单位类型
 
-            incinerateNonBuildable = true;
-            requiresCoreZone = true;
-            alwaysUnlocked = true;
-            unitCapModifier = 20;
+            incinerateNonBuildable = true;//焚烧不可建造的物体
+            requiresCoreZone = true;//需要在核心区域内使用
+            alwaysUnlocked = true;//始终解锁
+            unitCapModifier = 20;//单位上限
 
         }};
         destructionBlocks.add(
