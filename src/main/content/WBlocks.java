@@ -90,7 +90,7 @@ public class WBlocks implements ContentList {
 
             shootType = new LaserBulletType(450) {{//伤害
                 colors = new Color[]{Pal.lancerLaser.cpy().a(1f), Pal.lancerLaser, Color.white}; // 子弹颜色
-                chargeEffect = new MultiEffect(Fx.lancerLaserCharge, Fx.lancerLaserChargeBegin); // 充电效果
+                chargeEffect = new MultiEffect(WFx.spearKH, Fx.lancerLaserChargeBegin); // 充电效果
                 buildCostMultiplier = 0.4f; // 建造成本倍率
                 hitEffect = Fx.hitLancer; // 命中效果
                 hitSize = 3; // 命中效果大小
