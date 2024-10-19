@@ -18,4 +18,15 @@ public class Utils {
     public static void addToNode(UnlockableContent parent, TechTree.TechNode child){
         TechTree.all.find(t -> t.content == parent).children.add(child);
     }
+
+    public static class Using{
+        public final String string;
+        public Using(String str){
+            string = str;
+        }
+
+        public String toText(String str){
+            return Utils.toText(string + str);
+        }
+    }
 }

@@ -9,26 +9,27 @@ import static main.Utils.toText;
 
 public class WUI extends BaseDialog {
     Basic.TextField textField = new Basic.TextField();
+    Using storyUsing = new Using("ui.story-mode.");
 
     public WUI(String title) {
         super(title);
-        buttons.button(toText("ui.cancel"), Icon.cancel, this::hide).pad(10).colspan(2).width(200).row();
-        buttons.button(toText("ui.next"), Icon.ok, () -> {
-            textField.clear();
-            textField.addString(toText("ui.story-mode.text.1"));
-            change();
-            changed(() -> {
-                textField.clear();
-                textField.addString("虽然有最基础的部件");
-                textField.addString("但是仍未开发完成");
-            });
-        }).pad(10).colspan(2).width(200).row();
     }
 
     public void Show(){
         cont.clear();
+        buttons.clear();
+        textField.clear();
+        buttons.button(toText("ui.cancel"), Icon.cancel, this::hide).pad(10).colspan(2).width(200);
+        buttons.button(toText("ui.next"), Icon.ok, () -> {
+            textField.clear();
+            textField.addString(storyUsing.toText("text.1"));
+            textField.addString(storyUsing.toText("text.2"));
+            textField.addString(storyUsing.toText("text.3"));
+            change();
+            changed(this::hide);
+        }).pad(10).colspan(2).width(200);
 
-        textField.addString("Welcome");
+        textField.addString(storyUsing.toText("text.0"));
         cont.add(textField.getTable());
 
         show();
