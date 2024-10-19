@@ -25,8 +25,8 @@ public class WUI extends BaseDialog {
             textField.addString(storyUsing.toText("text.1"));
             textField.addString(storyUsing.toText("text.2"));
             textField.addString(storyUsing.toText("text.3"));
-            change();
-            changed(this::hide);
+            buttons.clear();
+            buttons.button(toText("ui.finish"), Icon.cancel, this::hide).pad(10).colspan(2).width(200);
         }).pad(10).colspan(2).width(200);
 
         textField.addString(storyUsing.toText("text.0"));
