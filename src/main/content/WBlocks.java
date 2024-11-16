@@ -25,6 +25,7 @@ import mindustry.world.blocks.defense.Door;//门
 import mindustry.world.blocks.power.ThermalGenerator;//发电机
 import mindustry.world.blocks.production.AttributeCrafter;//T2排气冷凝器
 import mindustry.world.blocks.production.GenericCrafter; // 生产
+import mindustry.world.blocks.production.BeamDrill;
 import mindustry.world.blocks.power.PowerGenerator; // 发电机
 import mindustry.world.blocks.production.SolidPump;//抽水机
 import mindustry.world.blocks.storage.CoreBlock; // 核心
@@ -64,6 +65,7 @@ public class WBlocks implements ContentList {
 
 //    ============ Destruction ============
     public static CoreBlock destruction_core;
+    public static BeamDrill basic_ion_drill;
     public static Seq<Block> destructionBlocks = new Seq<>();
 
     @Override
@@ -101,6 +103,7 @@ public class WBlocks implements ContentList {
                 ammoMultiplier = 1f; // 弹药倍率
                 pierceCap = -1; // 穿透上限为无限
                 knockback = 2; //击退效果
+                buildingDamageMultiplier = 0.2f;//对建筑的伤害倍率
             }};
             description = "发射能量束攻击地面单位，无限穿透，精度很高"; // 描述
         }};
@@ -356,7 +359,7 @@ public class WBlocks implements ContentList {
 
 //       抽水机
         water_extractor_erekir = new SolidPump("water-extractor-erekir"){{
-            requirements(Category.production, with(Items.silicon, 60, Items.beryllium, 60)); //类型：生产类 建造需求：
+            requirements(Category.production, with(Items.silicon, 60, Items.beryllium, 60)); //类型：生产类
             result = Liquids.water; // 输出
             pumpAmount = 15f / 60f; // 泵出速度
             size = 2; // 大小
@@ -383,6 +386,21 @@ public class WBlocks implements ContentList {
             unitCapModifier = 20;//单位上限
 
         }};
+
+        basic_ion_drill = new BeamDrill("basic-ion-drill")
+        {{requirements(Category.production, with(WItems.iron,30, WItems.copper,30));
+            size = 2;//大小
+            itemCapacity = 10;//存储空间
+            health = 200;//血量
+            consumePower(0.2f);//电力消耗
+            drillTime = 210f;//开采时间
+            tier = 1;//开采等级
+            range = 4;
+            //fogRadius = 3;//探照范围 当星球开启战争迷雾时启用
+            researchCost = with(Items.beryllium,15);//研发成本
+            consumeLiquid(Liquids.water,0.25f/60f).boost();//消耗水来加速
+        }};
+
         destructionBlocks.add(
                 destruction_core
         );
