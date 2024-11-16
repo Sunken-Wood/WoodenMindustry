@@ -396,7 +396,6 @@ public class WBlocks implements ContentList {
             drillTime = 210f;//开采时间
             tier = 1;//开采等级
             range = 4;
-            //fogRadius = 3;//探照范围 当星球开启战争迷雾时启用
             researchCost = with(Items.beryllium,15);//研发成本
             consumeLiquid(Liquids.water,0.25f/60f).boost();//消耗水来加速
         }};
