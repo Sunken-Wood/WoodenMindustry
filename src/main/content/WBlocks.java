@@ -388,7 +388,7 @@ public class WBlocks implements ContentList {
         }};
 
         basic_ion_drill = new BeamDrill("basic-ion-drill")
-        {{requirements(Category.production, with(WItems.iron,30, WItems.copper,30));
+        {{requirements(Category.production, with(WItems.iron,30, Items.copper,30));
             size = 2;//大小
             itemCapacity = 10;//存储空间
             health = 200;//血量

@@ -7,7 +7,7 @@ import mindustry.type.Item;
 
 public class WItems implements ContentList {
     public static Item
-        iron, gold, silver,copper,aluminum,leab;
+        iron, gold, silver,copper,aluminum,aluminum_mineral,leab;
 
     public static final Seq<Item> destructionItems = new Seq<>();
 
@@ -19,20 +19,15 @@ public class WItems implements ContentList {
             hardness = 3; // 开采等级
             color = Color.valueOf("7E7B7A");
         }};
-        // 铜
-        copper = new Item("copper"){{
-            hardness = 3;
-            color = Color.valueOf("B87333");
-        }};
         // 铝
         aluminum = new Item("aluminum"){{
             hardness = 3;
             color = Color.valueOf("C0C0C0");
         }};
-        //铅
-        leab = new Item("leab"){{
-            hardness = 3;
-            color = Color.valueOf("7A7B7D");
+        // 铝土矿
+        aluminum_mineral = new Item("aluminum_mindral"){{
+           hardness = 4;
+           color = Color.valueOf("A52A2A");
         }};
         // 金
         gold = new Item("gold"){{
@@ -44,9 +39,7 @@ public class WItems implements ContentList {
             hardness = 4;
             color = Color.valueOf("D3D3D3");
         }};
-        destructionItems.addAll(
-                iron, gold, silver
-        );
+        destructionItems.addAll(iron, gold, silver, copper, aluminum,aluminum_mineral);
     }
 
 }
