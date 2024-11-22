@@ -2,11 +2,15 @@ package main.content;
 
 import main.ContentList;
 import mindustry.content.Blocks;
+import mindustry.content.Items;
+import mindustry.content.TechTree;
+import mindustry.world.blocks.storage.CoreBlock;
 
 import static main.Utils.*;
 import static main.content.WBlocks.*;
 import static main.content.WPlanets.destruction;
 import static mindustry.content.Planets.erekir;
+import static mindustry.content.Planets.gier;
 import static mindustry.content.TechTree.node;
 import static mindustry.content.TechTree.nodeRoot;
 
@@ -28,12 +32,6 @@ public class WTechtree implements ContentList {
             node(strengthened_gates);
         }));
 //        destruction
-        destruction.techTree = nodeRoot(toText("planet.wooden-mindustry-destruction.name"), destruction_core, () -> {
-            node(WItems.iron, () -> {
-                node(WItems.silver, () -> {
-                    node(WItems.gold);
-                });
-            });
-        });
+        //报错了destruction.techTree = nodeRoot(toText("planet.wooden-mindustry-destruction.name"), destruction_core);
     }
 }
