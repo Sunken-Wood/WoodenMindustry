@@ -35,6 +35,7 @@ public class WTechtree implements ContentList {
         }));
 //        destruction
         destruction.techTree = nodeRoot(toText("planet.wooden-mindustry-destruction.name"), destruction_core, () -> {
+            node(basic_ion_drill);
             node(Items.copper, () -> {
                 node(Items.lead, () -> {
                     node(WItems.iron, () -> {

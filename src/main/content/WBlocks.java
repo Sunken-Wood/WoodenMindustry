@@ -391,14 +391,14 @@ public class WBlocks implements ContentList {
         {{
             requirements(Category.production, with( Items.copper,30));
             size = 2;//大小
-            itemCapacity = 10;//存储空间
+            itemCapacity = 5;//存储空间
             health = 200;//血量
             consumePower(0.2f);//电力消耗
             drillTime = 210f;//开采时间
             tier = 1;//开采等级
             range = 4;//开采范围
-            researchCost = with(Items.beryllium,15);//研发成本
-            consumeLiquid(Liquids.water,0.25f/60f).boost();//消耗水来加速
+            researchCost = with(Items.copper,15);//研发成本
+            consumeLiquid(Liquids.water,0.5f/60f).boost();//消耗水来加速
         }};
 
         destructionBlocks.add(
