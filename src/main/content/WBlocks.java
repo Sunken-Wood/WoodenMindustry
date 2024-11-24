@@ -388,14 +388,15 @@ public class WBlocks implements ContentList {
         }};
 
         basic_ion_drill = new BeamDrill("basic-ion-drill")
-        {{requirements(Category.production, with(WItems.iron,30, Items.copper,30));
+        {{
+            requirements(Category.production, with( Items.copper,30));
             size = 2;//大小
             itemCapacity = 10;//存储空间
             health = 200;//血量
             consumePower(0.2f);//电力消耗
             drillTime = 210f;//开采时间
             tier = 1;//开采等级
-            range = 4;
+            range = 4;//开采范围
             researchCost = with(Items.beryllium,15);//研发成本
             consumeLiquid(Liquids.water,0.25f/60f).boost();//消耗水来加速
         }};

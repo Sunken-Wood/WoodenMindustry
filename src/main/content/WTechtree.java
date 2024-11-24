@@ -1,6 +1,8 @@
 package main.content;
 
 import main.ContentList;
+import main.content.WItems;
+import main.content.WBlocks;
 import mindustry.content.Blocks;
 import mindustry.content.Items;
 import mindustry.content.TechTree;
@@ -32,6 +34,19 @@ public class WTechtree implements ContentList {
             node(strengthened_gates);
         }));
 //        destruction
-        //报错了destruction.techTree = nodeRoot(toText("planet.wooden-mindustry-destruction.name"), destruction_core);
-    }
-}
+        destruction.techTree = nodeRoot(toText("planet.wooden-mindustry-destruction.name"), destruction_core, () -> {
+            node(Items.copper, () -> {
+                node(Items.lead, () -> {
+                    node(WItems.iron, () -> {
+                        node(WItems.gold, () -> {
+                            node(WItems.silver, () -> {
+                                node(WItems.aluminum_mineral, () ->{
+                                    node(WItems.aluminum);
+                                });
+                            });
+                        });
+                    });
+                });
+            });
+        });
+    }}
