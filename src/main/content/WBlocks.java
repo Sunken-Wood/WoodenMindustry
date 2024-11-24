@@ -22,6 +22,7 @@ import mindustry.type.LiquidStack;
 import mindustry.world.Block;
 import mindustry.world.blocks.campaign.LaunchPad; // 发射台
 import mindustry.world.blocks.defense.Door;//门
+import mindustry.world.blocks.environment.StaticWall;//资源墙
 import mindustry.world.blocks.power.ThermalGenerator;//发电机
 import mindustry.world.blocks.production.AttributeCrafter;//T2排气冷凝器
 import mindustry.world.blocks.production.GenericCrafter; // 生产
@@ -67,6 +68,9 @@ public class WBlocks implements ContentList {
     public static CoreBlock destruction_core;
     public static BeamDrill basic_ion_drill;
     public static Seq<Block> destructionBlocks = new Seq<>();
+    //=============资源块==================
+    public static StaticWall Ironwall;
+
 
     @Override
     public void load() {
@@ -370,6 +374,12 @@ public class WBlocks implements ContentList {
         }};
 
 //        =============================== Destruction ===============================
+
+        Ironwall = new StaticWall("irom-wall"){{
+            itemDrop = WItems.iron;
+            variants = 2;
+        }};
+
 //       【毁灭】核心(未完成)
         destruction_core = new CoreBlock("destruction-core")
         {{
@@ -395,7 +405,7 @@ public class WBlocks implements ContentList {
             health = 200;//血量
             consumePower(0.2f);//电力消耗
             drillTime = 210f;//开采时间
-            tier = 1;//开采等级
+            tier = 3;//开采等级
             range = 4;//开采范围
             researchCost = with(Items.copper,15);//研发成本
             consumeLiquid(Liquids.water,0.5f/60f).boost();//消耗水来加速
