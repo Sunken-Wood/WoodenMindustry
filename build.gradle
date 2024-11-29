@@ -49,7 +49,7 @@ configurations.all{
 
 task jarAndroid{
     dependsOn "jar"
-
+apply plugin: 'groovy'
     doLast{
         if(!sdkRoot || !new File(sdkRoot).exists()) throw new GradleException("No valid Android SDK found. Ensure that ANDROID_HOME is set to your Android SDK directory.");
 
