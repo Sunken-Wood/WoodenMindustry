@@ -38,13 +38,11 @@ import mindustry.world.blocks.defense.turrets.PowerTurret;//炮台
 import mindustry.world.blocks.distribution.DirectionLiquidBridge;
 import mindustry.world.blocks.distribution.DuctBridge;
 import mindustry.world.blocks.production.Pump;
+import mindustry.world.draw.*;
 import mindustry.world.meta.Attribute;
 import mindustry.world.meta.BlockGroup;
 
 //导入动画包
-import mindustry.world.draw.DrawMulti;
-import mindustry.world.draw.DrawDefault;
-import mindustry.world.draw.DrawBlurSpin;
 
 
 import static mindustry.type.ItemStack.with;
@@ -53,7 +51,7 @@ public class WBlocks implements ContentList {
 //    ============ Erekir ============
     public static LaunchPad launchPad_erekir;
     public static Unloader unloader_erekir;
-    public static GenericCrafter sand_maker;
+    public static GenericCrafter sand_maker,aluminum_electrolyzer;
     public static PowerGenerator steam_turbine ;
     public static Pump reinforce_pump_plus;
     public static DuctBridge duct_bridge_plus;
@@ -377,7 +375,7 @@ public class WBlocks implements ContentList {
 
 //        =============================== Destruction ===============================
 
-        ore_wall_iron = new OreBlock("ore-wall-iron"){{//铁
+        ore_wall_iron = new OreBlock("ore-wall-iron"){{//铁（墙）
             itemDrop = WItems.iron;//产出
             variants = 1;//贴图数
             wallOre = true;//是否为墙
@@ -399,6 +397,21 @@ public class WBlocks implements ContentList {
             variants = 1;
         }};
 
+        aluminum_electrolyzer = new GenericCrafter("aluminum-electrolyzer"){{
+            requirements(Category.crafting,with(WItems.iron, 80,WItems.gold,40,WItems.silver,40,Items.graphite,80));
+            outputItem = new ItemStack(WItems.aluminum,5);//产出
+            craftTime = 60f;//生产时间
+            size = 3;//大小
+            hasPower = true;//消耗电力
+            itemCapacity = 30;//容量
+            drawer = new DrawMulti(new DrawRegion("-bottom"), new DrawArcSmelt(),new DrawDefault());//绘制器
+            fogRadius = 5;//探照半径
+            ambientSound = Sounds.smelter;//背景音效
+            ambientSoundVolume = 0.12f;//背景音量
+            consumeItems(with(WItems.aluminum_mineral,5));//生产消耗
+            consumePower(6f);//电力消耗
+        }};
+
 //       【毁灭】核心(未完成)
         destruction_core = new CoreBlock("destruction-core")
         {{
@@ -413,7 +426,7 @@ public class WBlocks implements ContentList {
             requiresCoreZone = true;//需要在核心区域内使用
             alwaysUnlocked = true;//始终解锁
             unitCapModifier = 20;//单位上限
-
+            fogRadius = 50;
         }};
 
         basic_ion_drill = new BeamDrill("basic-ion-drill")
@@ -428,6 +441,7 @@ public class WBlocks implements ContentList {
             range = 4;//开采范围
             researchCost = with(Items.copper,15);//研发成本
             consumeLiquid(Liquids.water,0.5f/60f).boost();//消耗水来加速
+            fogRadius = 5;
         }};
 
         destructionBlocks.add(
