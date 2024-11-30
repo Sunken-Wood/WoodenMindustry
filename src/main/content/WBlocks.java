@@ -68,8 +68,10 @@ public class WBlocks implements ContentList {
     public static CoreBlock destruction_core;
     public static BeamDrill basic_ion_drill;
     public static Seq<Block> destructionBlocks = new Seq<>();
-    //=============资源块==================
-    public static OreBlock ore_wall_iron,ore_wall_gold,ore_wall_silver,ore_wall_aluminum_mineral;
+    //=============资源==================
+    public static OreBlock
+            ore_wall_iron,ore_iron,ore_gold,ore_silver,ore_aluminum_mineral
+            ;
 
 
     @Override
@@ -375,25 +377,26 @@ public class WBlocks implements ContentList {
 
 //        =============================== Destruction ===============================
 
-        ore_wall_iron = new OreBlock("ore_wall_iron"){{//铁资源
+        ore_wall_iron = new OreBlock("ore-wall-iron"){{//铁
             itemDrop = WItems.iron;//产出
             variants = 1;//贴图数
-            wallOre = true;//是否可以做为墙使用
+            wallOre = true;//是否为墙
         }};
-        ore_wall_gold = new OreBlock("ore-wall-gold"){{
+        ore_iron = new OreBlock("ore-iron"){{//Fe
+            itemDrop = WItems.iron;
+            variants = 1;
+        }};
+        ore_gold = new OreBlock("ore-gold"){{//Au
             itemDrop = WItems.gold;
             variants = 1;
-            wallOre = true;
         }};
-        ore_wall_silver = new OreBlock("ore-wall-silver"){{
+        ore_silver = new OreBlock("ore-silver"){{//Ag
             itemDrop = WItems.silver;
             variants = 1;
-            wallOre = false;
         }};
-        ore_wall_aluminum_mineral = new OreBlock("ore-wall-aluminum-mineral"){{
+        ore_aluminum_mineral = new OreBlock("ore-aluminum-mineral"){{//Al
             itemDrop = WItems.aluminum_mineral;
             variants = 1;
-            wallOre = false;
         }};
 
 //       【毁灭】核心(未完成)
