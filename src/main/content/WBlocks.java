@@ -22,11 +22,11 @@ import mindustry.type.LiquidStack;
 import mindustry.world.Block;
 import mindustry.world.blocks.campaign.LaunchPad; // 发射台
 import mindustry.world.blocks.defense.Door;//门
-import mindustry.world.blocks.environment.StaticWall;//资源墙
+import mindustry.world.blocks.environment.OreBlock;//资源墙
 import mindustry.world.blocks.power.ThermalGenerator;//发电机
 import mindustry.world.blocks.production.AttributeCrafter;//T2排气冷凝器
 import mindustry.world.blocks.production.GenericCrafter; // 生产
-import mindustry.world.blocks.production.BeamDrill;
+import mindustry.world.blocks.production.BeamDrill;//矿机
 import mindustry.world.blocks.power.PowerGenerator; // 发电机
 import mindustry.world.blocks.production.SolidPump;//抽水机
 import mindustry.world.blocks.storage.CoreBlock; // 核心
@@ -69,7 +69,7 @@ public class WBlocks implements ContentList {
     public static BeamDrill basic_ion_drill;
     public static Seq<Block> destructionBlocks = new Seq<>();
     //=============资源块==================
-    public static StaticWall Ironwall;
+    public static OreBlock ore_wall_iron,ore_wall_gold,ore_wall_silver,ore_wall_aluminum_mineral;
 
 
     @Override
@@ -375,9 +375,25 @@ public class WBlocks implements ContentList {
 
 //        =============================== Destruction ===============================
 
-        Ironwall = new StaticWall("irom-wall"){{
-            itemDrop = WItems.iron;
-            variants = 2;
+        ore_wall_iron = new OreBlock("ore_wall_iron"){{//铁资源
+            itemDrop = WItems.iron;//产出
+            variants = 1;//贴图数
+            wallOre = true;//是否可以做为墙使用
+        }};
+        ore_wall_gold = new OreBlock("ore-wall-gold"){{
+            itemDrop = WItems.gold;
+            variants = 1;
+            wallOre = true;
+        }};
+        ore_wall_silver = new OreBlock("ore-wall-silver"){{
+            itemDrop = WItems.silver;
+            variants = 1;
+            wallOre = false;
+        }};
+        ore_wall_aluminum_mineral = new OreBlock("ore-wall-aluminum-mineral"){{
+            itemDrop = WItems.aluminum_mineral;
+            variants = 1;
+            wallOre = false;
         }};
 
 //       【毁灭】核心(未完成)
