@@ -23,7 +23,7 @@ public class Main extends Mod {
     public static WUI Wui;
 
     public Main(){
-        Log.info("Loaded ExampleJavaMod constructor.");
+        Log.info("[WoodenMindustry] Loaded WoodenMindustry Mod");
         wItems = new WItems();
         WBlocks = new WBlocks();
         WPlanets = new WPlanets();
