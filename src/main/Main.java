@@ -23,8 +23,8 @@ public class Main extends Mod {
         wItems = new WItems();
         WBlocks = new WBlocks();
         WPlanets = new WPlanets();
-        WTechtree = new WTechtree();
         WSectorPresets = new WSectorPreset();
+        WTechtree = new WTechtree();
     }
     @Override
     public void loadContent() {
@@ -32,8 +32,8 @@ public class Main extends Mod {
         wItems.load();
         WBlocks.load();
         WPlanets.load();
-        WTechtree.load();
         WSectorPresets.load();
+        WTechtree.load();
     }
 
     @Override
