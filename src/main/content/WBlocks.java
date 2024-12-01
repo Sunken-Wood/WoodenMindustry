@@ -22,11 +22,11 @@ import mindustry.type.LiquidStack;
 import mindustry.world.Block;
 import mindustry.world.blocks.campaign.LaunchPad; // 发射台
 import mindustry.world.blocks.defense.Door;//门
-import mindustry.world.blocks.environment.StaticWall;//资源墙
+import mindustry.world.blocks.environment.OreBlock;//资源墙
 import mindustry.world.blocks.power.ThermalGenerator;//发电机
 import mindustry.world.blocks.production.AttributeCrafter;//T2排气冷凝器
 import mindustry.world.blocks.production.GenericCrafter; // 生产
-import mindustry.world.blocks.production.BeamDrill;
+import mindustry.world.blocks.production.BeamDrill;//矿机
 import mindustry.world.blocks.power.PowerGenerator; // 发电机
 import mindustry.world.blocks.production.SolidPump;//抽水机
 import mindustry.world.blocks.storage.CoreBlock; // 核心
@@ -38,13 +38,11 @@ import mindustry.world.blocks.defense.turrets.PowerTurret;//炮台
 import mindustry.world.blocks.distribution.DirectionLiquidBridge;
 import mindustry.world.blocks.distribution.DuctBridge;
 import mindustry.world.blocks.production.Pump;
+import mindustry.world.draw.*;
 import mindustry.world.meta.Attribute;
 import mindustry.world.meta.BlockGroup;
 
 //导入动画包
-import mindustry.world.draw.DrawMulti;
-import mindustry.world.draw.DrawDefault;
-import mindustry.world.draw.DrawBlurSpin;
 
 
 import static mindustry.type.ItemStack.with;
@@ -53,7 +51,7 @@ public class WBlocks implements ContentList {
 //    ============ Erekir ============
     public static LaunchPad launchPad_erekir;
     public static Unloader unloader_erekir;
-    public static GenericCrafter sand_maker;
+    public static GenericCrafter sand_maker,aluminum_electrolyzer;
     public static PowerGenerator steam_turbine ;
     public static Pump reinforce_pump_plus;
     public static DuctBridge duct_bridge_plus;
@@ -68,8 +66,10 @@ public class WBlocks implements ContentList {
     public static CoreBlock destruction_core;
     public static BeamDrill basic_ion_drill;
     public static Seq<Block> destructionBlocks = new Seq<>();
-    //=============资源块==================
-    public static StaticWall Ironwall;
+    //=============资源==================
+    public static OreBlock
+            ore_wall_iron,ore_iron,ore_gold,ore_silver,ore_aluminum_mineral
+            ;
 
 
     @Override
@@ -375,9 +375,41 @@ public class WBlocks implements ContentList {
 
 //        =============================== Destruction ===============================
 
-        Ironwall = new StaticWall("irom-wall"){{
+        ore_wall_iron = new OreBlock("ore-wall-iron"){{//铁（墙）
+            itemDrop = WItems.iron;//产出
+            variants = 1;//贴图数
+            wallOre = true;//是否为墙
+        }};
+        ore_iron = new OreBlock("ore-iron"){{//Fe
             itemDrop = WItems.iron;
-            variants = 2;
+            variants = 1;
+        }};
+        ore_gold = new OreBlock("ore-gold"){{//Au
+            itemDrop = WItems.gold;
+            variants = 1;
+        }};
+        ore_silver = new OreBlock("ore-silver"){{//Ag
+            itemDrop = WItems.silver;
+            variants = 1;
+        }};
+        ore_aluminum_mineral = new OreBlock("ore-aluminum-mineral"){{//Al
+            itemDrop = WItems.aluminum_mineral;
+            variants = 1;
+        }};
+
+        aluminum_electrolyzer = new GenericCrafter("aluminum-electrolyzer"){{
+            requirements(Category.crafting,with(WItems.iron, 80,WItems.gold,40,WItems.silver,40,Items.graphite,80));
+            outputItem = new ItemStack(WItems.aluminum,5);//产出
+            craftTime = 60f;//生产时间
+            size = 3;//大小
+            hasPower = true;//消耗电力
+            itemCapacity = 30;//容量
+            drawer = new DrawMulti(new DrawRegion("-bottom"), new DrawArcSmelt(),new DrawDefault());//绘制器
+            fogRadius = 5;//探照半径
+            ambientSound = Sounds.smelter;//背景音效
+            ambientSoundVolume = 0.12f;//背景音量
+            consumeItems(with(WItems.aluminum_mineral,5));//生产消耗
+            consumePower(6f);//电力消耗
         }};
 
 //       【毁灭】核心(未完成)
@@ -394,7 +426,7 @@ public class WBlocks implements ContentList {
             requiresCoreZone = true;//需要在核心区域内使用
             alwaysUnlocked = true;//始终解锁
             unitCapModifier = 20;//单位上限
-
+            fogRadius = 50;
         }};
 
         basic_ion_drill = new BeamDrill("basic-ion-drill")
@@ -409,6 +441,7 @@ public class WBlocks implements ContentList {
             range = 4;//开采范围
             researchCost = with(Items.copper,15);//研发成本
             consumeLiquid(Liquids.water,0.5f/60f).boost();//消耗水来加速
+            fogRadius = 5;
         }};
 
         destructionBlocks.add(
