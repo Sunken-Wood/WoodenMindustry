@@ -17,6 +17,8 @@ import mindustry.graphics.Pal;
 import mindustry.type.Category;
 import mindustry.type.ItemStack;
 import mindustry.type.LiquidStack;
+import mindustry.type.*;
+
 
 // 导入Mindustry世界块类
 import mindustry.world.Block;
@@ -41,6 +43,7 @@ import mindustry.world.blocks.production.Pump;
 import mindustry.world.draw.*;
 import mindustry.world.meta.Attribute;
 import mindustry.world.meta.BlockGroup;
+import mindustry.world.meta.BuildVisibility;
 
 //导入动画包
 
@@ -213,6 +216,7 @@ public class WBlocks implements ContentList {
             // 设置电力消耗
             consumePower(10f / 60f);
             description = "平地挖沙机，可以开采沙子，需要电力";
+
             drawer = new DrawMulti(new DrawDefault(), new DrawBlurSpin("-rotator", 0.6f * 9f)
             {{
                 // 设置模糊阈值为0.01
@@ -231,7 +235,7 @@ public class WBlocks implements ContentList {
             // 设置方块的图标
             fullIcon = Core.atlas.find("reinforce_pump_plus");
             // 每分钟泵送100单位的液体，除以4表示每秒泵送的量
-            pumpAmount = 100f / 60f / 4f;
+            pumpAmount = 80f / 60f / 4f;
             // 液体容量
             liquidCapacity = 50f;
             // 方块尺寸为2x2
@@ -410,6 +414,7 @@ public class WBlocks implements ContentList {
             ambientSoundVolume = 0.12f;//背景音量
             consumeItems(with(WItems.aluminum_mineral,5));//生产消耗
             consumePower(6f);//电力消耗
+            description = "生产铝，需要电力";
         }};
 
 //       【毁灭】核心(未完成)
