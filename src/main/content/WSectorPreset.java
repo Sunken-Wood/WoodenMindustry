@@ -1,17 +1,18 @@
 package main.content;
 
+import arc.util.Log;
 import main.ContentList;
 import mindustry.maps.generators.FileMapGenerator;
 import mindustry.type.SectorPreset;
 
 public class WSectorPreset implements ContentList {
-    public static SectorPreset SECTOR_V;
+    public static SectorPreset sector_v;
     @Override
     public void load() {
-        SECTOR_V = new SectorPreset("SECTOR-V", WPlanets.destruction, 5){{
-
+        sector_v = new SectorPreset("sector_v", WPlanets.destruction, 5){{
             alwaysUnlocked = true;
-            generator = new FileMapGenerator("SECTOR-V", SECTOR_V);
+            Log.info(this.generator.map.file.exists());
+            Log.info(this.generator.map.name());
             difficulty = 0;
         }};
     }
