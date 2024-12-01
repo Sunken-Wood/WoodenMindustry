@@ -6,6 +6,7 @@ import main.content.WBlocks;
 import mindustry.content.Blocks;
 import mindustry.content.Items;
 import mindustry.content.TechTree;
+import mindustry.maps.Maps;
 import mindustry.world.blocks.storage.CoreBlock;
 
 import static main.Utils.*;
@@ -47,6 +48,9 @@ public class WTechtree implements ContentList {
                         });
                     });
                 });
+            });
+            node(WSectorPreset.sector_v, () -> {
+
             });
         });
     }}
