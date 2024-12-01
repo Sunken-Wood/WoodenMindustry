@@ -519,10 +519,12 @@ public class WBlocks implements ContentList {
             researchCost = with(Items.copper,15);//研发成本
             consumeLiquid(Liquids.water,0.5f/60f).boost();//消耗水来加速
             fogRadius = 5;
+            group = BlockGroup.drills;
         }};
 
         destructionBlocks.add(
-                destruction_core
+                destruction_core,
+                basic_ion_drill
         );
     }
 }

@@ -13,8 +13,7 @@ import static main.content.WBlocks.*;
 import static main.content.WPlanets.destruction;
 import static mindustry.content.Planets.erekir;
 import static mindustry.content.Planets.gier;
-import static mindustry.content.TechTree.node;
-import static mindustry.content.TechTree.nodeRoot;
+import static mindustry.content.TechTree.*;
 
 public class WTechtree implements ContentList {
 
@@ -39,7 +38,7 @@ public class WTechtree implements ContentList {
             node(basic_ion_drill);
             node(Items.copper, () -> {
                 node(Items.lead, () -> {
-                    node(WItems.iron, () -> {
+                    nodeProduce(WItems.iron, () -> {
                         node(WItems.gold, () -> {
                             node(WItems.silver, () -> {
                                 node(WItems.aluminum_mineral, () ->{
