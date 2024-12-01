@@ -2,6 +2,7 @@ package main.content;
 
 import arc.graphics.Color;
 import main.ContentList;
+import mindustry.content.Planets;
 import mindustry.game.Team;
 import mindustry.graphics.g3d.HexMesh;
 import mindustry.graphics.g3d.HexSkyMesh;
@@ -19,7 +20,7 @@ import static mindustry.content.Planets.erekir;
 
 public class WPlanets implements ContentList {
     // 定义一个新的星球：destruction
-    public static Planet destruction;
+    public static Planet destruction,rebuild;
 
     @Override
     public void load() {

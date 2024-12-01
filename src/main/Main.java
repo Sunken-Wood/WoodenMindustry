@@ -1,10 +1,7 @@
 package main;
 
 import arc.util.Log;
-import main.content.WBlocks;
-import main.content.WItems;
-import main.content.WPlanets;
-import main.content.WTechtree;
+import main.content.*;
 //import main.ui.WUI;
 import main.ui.WUI_beckup;
 import mindustry.gen.Icon;
@@ -18,6 +15,7 @@ public class Main extends Mod {
     public static WBlocks WBlocks;
     public static WPlanets WPlanets;
     public static WTechtree WTechtree;
+    public static WSectorPreset WSectorPresets;
     public static WUI_beckup wuiBeckup;
 
     public Main(){
@@ -26,6 +24,7 @@ public class Main extends Mod {
         WBlocks = new WBlocks();
         WPlanets = new WPlanets();
         WTechtree = new WTechtree();
+        WSectorPresets = new WSectorPreset();
     }
     @Override
     public void loadContent() {
@@ -34,6 +33,7 @@ public class Main extends Mod {
         WBlocks.load();
         WPlanets.load();
         WTechtree.load();
+        WSectorPresets.load();
     }
 
     @Override
