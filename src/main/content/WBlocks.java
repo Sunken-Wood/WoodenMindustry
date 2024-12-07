@@ -33,6 +33,7 @@ import mindustry.world.blocks.power.PowerGenerator; // 发电机
 import mindustry.world.blocks.production.SolidPump;//抽水机
 import mindustry.world.blocks.storage.CoreBlock; // 核心
 import mindustry.world.blocks.storage.Unloader; // 装卸器
+import mindustry.world.blocks.distribution.Junction;//交叉器
 import mindustry.world.blocks.defense.Wall;//防御墙
 import mindustry.world.blocks.defense.turrets.PowerTurret;//炮台
 
@@ -54,6 +55,7 @@ public class WBlocks implements ContentList {
 //    ============ Erekir ============
     public static LaunchPad launchPad_erekir;
     public static Unloader unloader_erekir;
+    public static Junction junction;
     public static GenericCrafter sand_maker,aluminum_electrolyzer;
     public static PowerGenerator steam_turbine ;
     public static Pump reinforce_pump_plus;
@@ -79,6 +81,7 @@ public class WBlocks implements ContentList {
     public void load() {
 
 //        =============================== Erekir ===============================
+
 //添加一个炮台
         spear = new PowerTurret("spear") {{
             requirements(Category.turret, with(Items.beryllium,450, Items.oxide, 50, Items.tungsten, 200, Items.graphite,30, Items.silicon, 250)); // 成本
@@ -196,6 +199,15 @@ public class WBlocks implements ContentList {
             // 设置块组为 Transportation
             group = BlockGroup.transportation;
             description = "来自赛普罗的装卸器，现在可以从核心卸载资源了";
+        }};
+
+        junction = new Junction("junction"){{//交叉器
+            requirements(Category.distribution, with(Items.beryllium,2));
+            speed = 25;//输送速度
+            capacity = 5;//容量
+            health = 30;//HP
+            buildCostMultiplier = 6f;//建造成本倍数
+            description = "交叉输送物品";
         }};
 
         // 创建一个新的 GenericCrafter 实例，并将其命名为 "sand-maker"（采沙机）
