@@ -17,14 +17,15 @@ import mindustry.graphics.Pal;
 import mindustry.type.Category;
 import mindustry.type.ItemStack;
 import mindustry.type.LiquidStack;
-import mindustry.type.*;
 
 
 // 导入Mindustry世界块类
 import mindustry.world.Block;
 import mindustry.world.blocks.campaign.LaunchPad; // 发射台
 import mindustry.world.blocks.defense.Door;//门
+import mindustry.world.blocks.distribution.Duct;//传送带
 import mindustry.world.blocks.environment.OreBlock;//资源墙
+import mindustry.world.blocks.liquid.ArmoredConduit;//流体管道
 import mindustry.world.blocks.power.ThermalGenerator;//发电机
 import mindustry.world.blocks.production.AttributeCrafter;//T2排气冷凝器
 import mindustry.world.blocks.production.GenericCrafter; // 生产
@@ -44,7 +45,6 @@ import mindustry.world.blocks.production.Pump;
 import mindustry.world.draw.*;
 import mindustry.world.meta.Attribute;
 import mindustry.world.meta.BlockGroup;
-import mindustry.world.meta.BuildVisibility;
 
 //导入动画包
 
@@ -56,7 +56,7 @@ public class WBlocks implements ContentList {
     public static LaunchPad launchPad_erekir;
     public static Unloader unloader_erekir;
     public static Junction junction;
-    public static GenericCrafter sand_maker,aluminum_electrolyzer;
+    public static GenericCrafter sand_maker;
     public static PowerGenerator steam_turbine ;
     public static Pump reinforce_pump_plus;
     public static DuctBridge duct_bridge_plus;
@@ -69,12 +69,18 @@ public class WBlocks implements ContentList {
 
 //    ============ Destruction ============
     public static CoreBlock destruction_core;
+    public static GenericCrafter aluminum_electrolyzer;
     public static BeamDrill basic_ion_drill;
     public static Seq<Block> destructionBlocks = new Seq<>();
+    public static Duct duct;
+    public static DirectionLiquidBridge reinforced_bridge_conduit;
+    public static DuctBridge duct_bridge;
+    public static ArmoredConduit fluid_pipe;
+
+
     //=============资源==================
     public static OreBlock
-            ore_wall_iron,ore_iron,ore_gold,ore_silver,ore_aluminum_mineral
-            ;
+            ore_wall_iron,ore_iron,ore_gold,ore_silver,ore_aluminum_mineral;
 
 
     @Override
@@ -413,6 +419,60 @@ public class WBlocks implements ContentList {
             variants = 1;
         }};
 
+        duct = new Duct("duct"){{//传送带
+            requirements(Category.distribution, with(Items.copper,1));//需求
+            health = 100;//血量
+            speed = 15f;//速度
+            researchCost = with(Items.copper,10);//研发需求
+        }};
+
+        fluid_pipe = new ArmoredConduit("fluid_pipe"){{//流体管道
+            requirements(Category.liquid,with(Items.copper,5));
+            botColor = Pal.darkerMetal;//机器人颜色
+            leaks = true;//可泄露
+            liquidCapacity = 20;//容量
+            liquidPressure = 1.05f;//压力，可能和速度有关
+            health = 250;//血量
+            underBullets = true;//可阻挡子弹
+            researchCostMultiplier = 1.5f;//研究成本倍数
+        }};
+
+        //流体管道桥
+        reinforced_bridge_conduit = new DirectionLiquidBridge("reinforced-bridge-conduit"){{
+            // 定义方块的资源需求
+            requirements(Category.liquid, with(Items.copper,20));
+            // 方块尺寸
+            size = 1;
+            // 方块的生命值
+            health = 100;
+            // 传输范围
+            range = 4;
+            // 研究成本乘数
+            researchCostMultiplier = 0.5f;
+            // 可以在下方传输液体
+            underBullets = true;
+            // 方块的描述
+            description = "流体桥，可以跨过地形和建筑";
+        }};
+//       物品管道桥
+        duct_bridge = new DuctBridge("duct-bridge"){{
+            // 定义方块的资源需求
+            requirements(Category.liquid, with(Items.copper,10));
+            size = 1;
+            // 传输范围
+            range = 4;
+            // 方块的生命值
+            health = 100;
+            // 传输速度
+            speed = 4f;
+            // 研究成本乘数
+            researchCostMultiplier = 0.5f;
+            // 物品容量为8单位
+            itemCapacity = 8;
+            // 方块的描述
+            description = "物品桥，可以跨过地形和建筑";
+        }};
+        //铝电解机
         aluminum_electrolyzer = new GenericCrafter("aluminum-electrolyzer"){{
             requirements(Category.crafting,with(WItems.iron, 80,WItems.gold,40,WItems.silver,40,Items.graphite,80));
             outputItem = new ItemStack(WItems.aluminum,5);//产出
@@ -445,12 +505,12 @@ public class WBlocks implements ContentList {
             unitCapModifier = 20;//单位上限
             fogRadius = 50;
         }};
-
+//初级离子钻机
         basic_ion_drill = new BeamDrill("basic-ion-drill")
         {{
             requirements(Category.production, with( Items.copper,30));
             size = 2;//大小
-            itemCapacity = 5;//存储空间
+            itemCapacity = 10;//存储空间
             health = 200;//血量
             consumePower(0.2f);//电力消耗
             drillTime = 210f;//开采时间
