@@ -419,14 +419,14 @@ public class WBlocks implements ContentList {
             variants = 1;
         }};
 
-        duct = new Duct("duct"){{//传送带
+        duct = new Duct("duct"){{//初级传送带
             requirements(Category.distribution, with(Items.copper,1));//需求
             health = 100;//血量
             speed = 15f;//速度
             researchCost = with(Items.copper,10);//研发需求
         }};
 
-        fluid_pipe = new ArmoredConduit("fluid_pipe"){{//流体管道
+        fluid_pipe = new ArmoredConduit("fluid-pipe"){{//初级流体管道
             requirements(Category.liquid,with(Items.copper,5));
             botColor = Pal.darkerMetal;//机器人颜色
             leaks = true;//可泄露
@@ -437,7 +437,7 @@ public class WBlocks implements ContentList {
             researchCostMultiplier = 1.5f;//研究成本倍数
         }};
 
-        //流体管道桥
+        //初级流体管道桥
         reinforced_bridge_conduit = new DirectionLiquidBridge("reinforced-bridge-conduit"){{
             // 定义方块的资源需求
             requirements(Category.liquid, with(Items.copper,20));
@@ -454,7 +454,7 @@ public class WBlocks implements ContentList {
             // 方块的描述
             description = "流体桥，可以跨过地形和建筑";
         }};
-//       物品管道桥
+//       初级物品管道桥
         duct_bridge = new DuctBridge("duct-bridge"){{
             // 定义方块的资源需求
             requirements(Category.liquid, with(Items.copper,10));
@@ -472,7 +472,7 @@ public class WBlocks implements ContentList {
             // 方块的描述
             description = "物品桥，可以跨过地形和建筑";
         }};
-        //铝电解机
+        //铝精炼机
         aluminum_electrolyzer = new GenericCrafter("aluminum-electrolyzer"){{
             requirements(Category.crafting,with(WItems.iron, 80,WItems.gold,40,WItems.silver,40,Items.graphite,80));
             outputItem = new ItemStack(WItems.aluminum,5);//产出
