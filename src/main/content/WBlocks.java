@@ -75,11 +75,13 @@ public class WBlocks {
     public static DirectionLiquidBridge reinforced_bridge_conduit;
     public static DuctBridge duct_bridge;
     public static ArmoredConduit fluid_pipe;
+    public static Wall iron_wall, iron_wall_large;
 
 
     //=============资源==================
     public static OreBlock
             ore_wall_iron,ore_iron,ore_gold,ore_silver,ore_aluminum_mineral;
+
 
 
     public static void load() {
@@ -524,5 +526,37 @@ public class WBlocks {
                 destruction_core,
                 basic_ion_drill
         );
+        //铁墙
+        iron_wall = new Wall("iron-wall"){{
+            // 设置建造需求
+            requirements(Category.defense, with(WItems.iron, 5));
+            // 设置大小为 1*1
+            size = 1;
+            // 设置装甲值为 5
+            armor = 5;
+            // 设置血量为 800
+            health = 250;
+            // 设置建造成本倍率为 1.7
+            buildCostMultiplier = 1.7f;
+            // 设置描述信息
+            description = "防御子弹，保护建筑";
+        }};
+
+        //大型铁墙
+        iron_wall_large = new Wall("iron-wall-large"){{
+            // 设置建造需求
+            requirements(Category.defense, with(WItems.iron, 25));
+            // 设置大小为 2*2
+            size = 2;
+
+            // 设置装甲值为 5
+            armor = 5;
+            // 设置血量为 800
+            health = 500;
+            // 设置建造成本倍率为 1.7
+            buildCostMultiplier = 1.7f;
+            // 设置描述信息
+            description = "防御子弹，保护建筑";
+        }};
     }
 }
