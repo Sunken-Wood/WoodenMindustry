@@ -44,5 +44,8 @@ public class WTechtree {
             node(WSectorPreset.sector_v, () -> {
 
             });
+            node(iron_wall, () -> {
+                node(iron_wall_large);
+            });
         });
     }}
