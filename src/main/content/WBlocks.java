@@ -23,7 +23,7 @@ import mindustry.type.LiquidStack;
 import mindustry.world.Block;
 import mindustry.world.blocks.campaign.LaunchPad; // 发射台
 import mindustry.world.blocks.defense.Door;//门
-import mindustry.world.blocks.distribution.Duct;//传送带
+import mindustry.world.blocks.distribution.*;
 import mindustry.world.blocks.environment.OreBlock;//资源墙
 import mindustry.world.blocks.liquid.ArmoredConduit;//流体管道
 import mindustry.world.blocks.power.ThermalGenerator;//发电机
@@ -34,13 +34,10 @@ import mindustry.world.blocks.power.PowerGenerator; // 发电机
 import mindustry.world.blocks.production.SolidPump;//抽水机
 import mindustry.world.blocks.storage.CoreBlock; // 核心
 import mindustry.world.blocks.storage.Unloader; // 装卸器
-import mindustry.world.blocks.distribution.Junction;//交叉器
 import mindustry.world.blocks.defense.Wall;//防御墙
 import mindustry.world.blocks.defense.turrets.PowerTurret;//炮台
 
 // 导入Mindustry世界元数据类
-import mindustry.world.blocks.distribution.DirectionLiquidBridge;
-import mindustry.world.blocks.distribution.DuctBridge;
 import mindustry.world.blocks.production.Pump;
 import mindustry.world.draw.*;
 import mindustry.world.meta.Attribute;
@@ -76,6 +73,7 @@ public class WBlocks implements ContentList {
     public static DirectionLiquidBridge reinforced_bridge_conduit;
     public static DuctBridge duct_bridge;
     public static ArmoredConduit fluid_pipe;
+    public static Router w_router;
 
 
     //=============资源==================
@@ -419,14 +417,20 @@ public class WBlocks implements ContentList {
             variants = 1;
         }};
 
-        duct = new Duct("duct"){{//初级传送带
+        duct = new Duct("w-duct"){{//初级传送带
             requirements(Category.distribution, with(Items.copper,1));//需求
             health = 100;//血量
             speed = 15f;//速度
             researchCost = with(Items.copper,10);//研发需求
         }};
 
-        fluid_pipe = new ArmoredConduit("fluid-pipe"){{//初级流体管道
+        //分配器
+        w_router = new Router("w-router"){{
+            requirements(Category.distribution, with(Items.copper,5));//需求
+            buildCostMultiplier = 15f;//速度
+        }};
+
+        fluid_pipe = new ArmoredConduit("w-fluid-pipe"){{//初级流体管道
             requirements(Category.liquid,with(Items.copper,5));
             botColor = Pal.darkerMetal;//机器人颜色
             leaks = true;//可泄露
@@ -438,7 +442,7 @@ public class WBlocks implements ContentList {
         }};
 
         //初级流体管道桥
-        reinforced_bridge_conduit = new DirectionLiquidBridge("reinforced-bridge-conduit"){{
+        reinforced_bridge_conduit = new DirectionLiquidBridge("w-reinforced-bridge-conduit"){{
             // 定义方块的资源需求
             requirements(Category.liquid, with(Items.copper,20));
             // 方块尺寸
@@ -455,7 +459,7 @@ public class WBlocks implements ContentList {
             description = "流体桥，可以跨过地形和建筑";
         }};
 //       初级物品管道桥
-        duct_bridge = new DuctBridge("duct-bridge"){{
+        duct_bridge = new DuctBridge("w-duct-bridge"){{
             // 定义方块的资源需求
             requirements(Category.liquid, with(Items.copper,10));
             size = 1;
