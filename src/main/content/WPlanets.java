@@ -1,8 +1,6 @@
 package main.content;
 
 import arc.graphics.Color;
-import main.ContentList;
-import mindustry.content.Planets;
 import mindustry.game.Team;
 import mindustry.graphics.g3d.HexMesh;
 import mindustry.graphics.g3d.HexSkyMesh;
@@ -18,12 +16,11 @@ import static mindustry.content.Items.erekirItems;
 import static mindustry.content.Items.serpuloItems;
 import static mindustry.content.Planets.erekir;
 
-public class WPlanets implements ContentList {
+public class WPlanets {
     // 定义一个新的星球：destruction
     public static Planet destruction,rebuild;
 
-    @Override
-    public void load() {
+    public static void load() {
         // 初始化 destruction 星球
         destruction = new Planet("destruction", erekir, 1f, 1){{
             // 设置星球生成器为 ErekirPlanetGenerator

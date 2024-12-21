@@ -1,19 +1,20 @@
 package main.content;
 
 import arc.util.Log;
-import main.ContentList;
-import mindustry.maps.generators.FileMapGenerator;
 import mindustry.type.SectorPreset;
 
-public class WSectorPreset implements ContentList {
+public class WSectorPreset {
     public static SectorPreset sector_v;
-    @Override
-    public void load() {
-        sector_v = new SectorPreset("sector_v", WPlanets.destruction, 5){{
+    public static void load() {
+        sector_v = new SectorPreset("sector_v"){{
             alwaysUnlocked = true;
-            Log.info(this.generator.map.file.exists());
-            Log.info(this.generator.map.name());
+            addStartingItems = true;
             difficulty = 0;
+
+            this.initialize(WPlanets.destruction, 5);
+            Log.info("[WoodenMindustry]" + this.sector.planet.sectors);
+            Log.info("[WoodenMindustry]" + this.sector.planet.sectors.get(5).preset.name);
+            this.sector = WPlanets.destruction.sectors.get(5);
         }};
     }
 }

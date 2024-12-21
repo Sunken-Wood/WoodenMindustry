@@ -2,18 +2,16 @@ package main.content;
 
 import arc.graphics.Color;
 import arc.struct.Seq;
-import main.ContentList;
 import mindustry.type.Item;
 
-public class WItems implements ContentList {
+public class WItems {
     public static Item
         iron, gold, silver,aluminum,aluminum_mineral;
 
     public static final Seq<Item> destructionItems = new Seq<>();
 
 
-    @Override
-    public void load() {
+    public static void load() {
         // 铁
         iron = new Item("iron"){{
             hardness = 3; // 开采等级
