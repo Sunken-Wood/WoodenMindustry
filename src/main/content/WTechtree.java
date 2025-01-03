@@ -28,6 +28,11 @@ public class WTechtree {
 //        destruction
         destruction.techTree = nodeRoot(toText("planet.wooden-mindustry-destruction.name"), destruction_core, () -> {
             node(basic_ion_drill);
+            node(duct, () -> {
+                node(w_router, () -> {
+                    node(junction);
+                });
+            });
             node(Items.copper, () -> {
                 node(Items.lead, () -> {
                     nodeProduce(WItems.iron, () -> {
