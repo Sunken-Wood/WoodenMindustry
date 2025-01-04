@@ -4,7 +4,6 @@ package main.content;
 import arc.Core;
 import arc.graphics.Color;
 import arc.struct.Seq;
-import main.ContentList;
 
 // 导入Mindustry游戏内容类
 import mindustry.content.*;
@@ -48,7 +47,7 @@ import mindustry.world.meta.BlockGroup;
 
 import static mindustry.type.ItemStack.with;
 
-public class WBlocks implements ContentList {
+public class WBlocks {
 //    ============ Erekir ============
     public static LaunchPad launchPad_erekir;
     public static Unloader unloader_erekir;
@@ -81,8 +80,7 @@ public class WBlocks implements ContentList {
             ore_wall_iron,ore_iron,ore_gold,ore_silver,ore_aluminum_mineral;
 
 
-    @Override
-    public void load() {
+    public static void load() {
 
 //        =============================== Erekir ===============================
 

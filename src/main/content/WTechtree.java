@@ -1,25 +1,17 @@
 package main.content;
 
-import main.ContentList;
-import main.content.WItems;
-import main.content.WBlocks;
 import mindustry.content.Blocks;
 import mindustry.content.Items;
-import mindustry.content.TechTree;
-import mindustry.world.blocks.storage.CoreBlock;
 
 import static main.Utils.*;
 import static main.content.WBlocks.*;
 import static main.content.WPlanets.destruction;
-import static mindustry.content.Planets.erekir;
-import static mindustry.content.Planets.gier;
 import static mindustry.content.TechTree.node;
 import static mindustry.content.TechTree.nodeRoot;
 
-public class WTechtree implements ContentList {
+public class WTechtree{
 
-    @Override
-    public void load() {
+    public static void load() {
         addToNode(Blocks.turbineCondenser, node(steam_turbine));
         addToNode(Blocks.payloadMassDriver, node(launchPad_erekir));
         addToNode(Blocks.cliffCrusher, node(sand_maker));
