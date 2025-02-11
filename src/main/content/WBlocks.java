@@ -4,7 +4,6 @@ package main.content;
 import arc.Core;
 import arc.graphics.Color;
 import arc.struct.Seq;
-import main.ContentList;
 
 // 导入Mindustry游戏内容类
 import mindustry.content.*;
@@ -48,7 +47,7 @@ import mindustry.world.meta.BlockGroup;
 
 import static mindustry.type.ItemStack.with;
 
-public class WBlocks implements ContentList {
+public class WBlocks {
 //    ============ Erekir ============
     public static LaunchPad launchPad_erekir;
     public static Unloader unloader_erekir;
@@ -81,8 +80,7 @@ public class WBlocks implements ContentList {
             ore_wall_iron,ore_iron,ore_gold,ore_silver,ore_aluminum_mineral;
 
 
-    @Override
-    public void load() {
+    public static void load() {
 
 //        =============================== Erekir ===============================
 
@@ -392,141 +390,5 @@ public class WBlocks implements ContentList {
             consumePower(100f / 60f); // 消耗电力 100/s
             description = "抽水机，可以开采地下水，需要电力";
         }};
-
-//        =============================== Destruction ===============================
-
-        ore_wall_iron = new OreBlock("ore-wall-iron"){{//铁（墙）
-            itemDrop = WItems.iron;//产出
-            variants = 1;//贴图数
-            wallOre = true;//是否为墙
-        }};
-        ore_iron = new OreBlock("ore-iron"){{//Fe
-            itemDrop = WItems.iron;
-            variants = 1;
-        }};
-        ore_gold = new OreBlock("ore-gold"){{//Au
-            itemDrop = WItems.gold;
-            variants = 1;
-        }};
-        ore_silver = new OreBlock("ore-silver"){{//Ag
-            itemDrop = WItems.silver;
-            variants = 1;
-        }};
-        ore_aluminum_mineral = new OreBlock("ore-aluminum-mineral"){{//Al
-            itemDrop = WItems.aluminum_mineral;
-            variants = 1;
-        }};
-
-        duct = new Duct("w-duct"){{//初级传送带
-            requirements(Category.distribution, with(Items.copper,1));//需求
-            health = 100;//血量
-            speed = 15f;//速度
-            researchCost = with(Items.copper,10);//研发需求
-        }};
-
-        //分配器
-        w_router = new Router("w-router"){{
-            requirements(Category.distribution, with(Items.copper,5));//需求
-            buildCostMultiplier = 15f;//速度
-        }};
-
-        fluid_pipe = new ArmoredConduit("w-fluid-pipe"){{//初级流体管道
-            requirements(Category.liquid,with(Items.copper,5));
-            botColor = Pal.darkerMetal;//机器人颜色
-            leaks = true;//可泄露
-            liquidCapacity = 20;//容量
-            liquidPressure = 1.05f;//压力，可能和速度有关
-            health = 250;//血量
-            underBullets = true;//可阻挡子弹
-            researchCostMultiplier = 1.5f;//研究成本倍数
-        }};
-
-        //初级流体管道桥
-        reinforced_bridge_conduit = new DirectionLiquidBridge("w-reinforced-bridge-conduit"){{
-            // 定义方块的资源需求
-            requirements(Category.liquid, with(Items.copper,20));
-            // 方块尺寸
-            size = 1;
-            // 方块的生命值
-            health = 100;
-            // 传输范围
-            range = 4;
-            // 研究成本乘数
-            researchCostMultiplier = 0.5f;
-            // 可以在下方传输液体
-            underBullets = true;
-            // 方块的描述
-            description = "流体桥，可以跨过地形和建筑";
-        }};
-//       初级物品管道桥
-        duct_bridge = new DuctBridge("w-duct-bridge"){{
-            // 定义方块的资源需求
-            requirements(Category.liquid, with(Items.copper,10));
-            size = 1;
-            // 传输范围
-            range = 4;
-            // 方块的生命值
-            health = 100;
-            // 传输速度
-            speed = 4f;
-            // 研究成本乘数
-            researchCostMultiplier = 0.5f;
-            // 物品容量为8单位
-            itemCapacity = 8;
-            // 方块的描述
-            description = "物品桥，可以跨过地形和建筑";
-        }};
-        //铝精炼机
-        aluminum_electrolyzer = new GenericCrafter("aluminum-electrolyzer"){{
-            requirements(Category.crafting,with(WItems.iron, 80,WItems.gold,40,WItems.silver,40,Items.graphite,80));
-            outputItem = new ItemStack(WItems.aluminum,5);//产出
-            craftTime = 60f;//生产时间
-            size = 3;//大小
-            hasPower = true;//消耗电力
-            itemCapacity = 30;//容量
-            drawer = new DrawMulti(new DrawRegion("-bottom"), new DrawArcSmelt(),new DrawDefault());//绘制器
-            fogRadius = 5;//探照半径
-            ambientSound = Sounds.smelter;//背景音效
-            ambientSoundVolume = 0.12f;//背景音量
-            consumeItems(with(WItems.aluminum_mineral,5));//生产消耗
-            consumePower(6f);//电力消耗
-            description = "生产铝，需要电力";
-        }};
-
-//       【毁灭】核心(未完成)
-        destruction_core = new CoreBlock("destruction-core")
-        {{
-            requirements(Category.effect, with(WItems.iron, 1000, WItems.silver, 1000));
-
-            size = 6;//大小
-            hasItems = true;//是否储存物品
-            itemCapacity = 7000;//容量
-            health = 4000;//血量
-            unitType = UnitTypes.evoke;//单位类型
-            incinerateNonBuildable = true;//焚烧不可建造的物体
-            requiresCoreZone = true;//需要在核心区域内使用
-            alwaysUnlocked = true;//始终解锁
-            unitCapModifier = 20;//单位上限
-            fogRadius = 50;
-        }};
-//初级离子钻机
-        basic_ion_drill = new BeamDrill("basic-ion-drill")
-        {{
-            requirements(Category.production, with( Items.copper,30));
-            size = 2;//大小
-            itemCapacity = 10;//存储空间
-            health = 200;//血量
-            consumePower(0.2f);//电力消耗
-            drillTime = 210f;//开采时间
-            tier = 3;//开采等级
-            range = 4;//开采范围
-            researchCost = with(Items.copper,15);//研发成本
-            consumeLiquid(Liquids.water,0.5f/60f).boost();//消耗水来加速
-            fogRadius = 5;
-        }};
-
-        destructionBlocks.add(
-                destruction_core
-        );
     }
 }
