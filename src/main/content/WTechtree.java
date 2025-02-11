@@ -5,7 +5,6 @@ import mindustry.content.Items;
 
 import static main.Utils.*;
 import static main.content.WBlocks.*;
-import static main.content.WPlanets.destruction;
 import static mindustry.content.TechTree.node;
 import static mindustry.content.TechTree.nodeRoot;
 
@@ -26,26 +25,5 @@ public class WTechtree{
             node(fortify_the_defensive_wall_large);
             node(strengthened_gates);
         }));
-//        destruction
-        destruction.techTree = nodeRoot(toText("planet.wooden-mindustry-destruction.name"), destruction_core, () -> {
-            node(basic_ion_drill);
-            node(duct, () -> {
-                node(w_router, () -> {
-                    node(junction);
-                });
-            });
-            node(Items.copper, () -> {
-                node(Items.lead, () -> {
-                    node(WItems.iron, () -> {
-                        node(WItems.gold, () -> {
-                            node(WItems.silver, () -> {
-                                node(WItems.aluminum_mineral, () ->{
-                                    node(WItems.aluminum);
-                                });
-                            });
-                        });
-                    });
-                });
-            });
-        });
-    }}
+    }
+}
