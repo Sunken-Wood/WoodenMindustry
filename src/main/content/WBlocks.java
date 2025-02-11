@@ -2,36 +2,27 @@ package main.content;
 
 // 导入主内容列表类
 import arc.Core;
-import arc.graphics.Color;
-import arc.struct.Seq;
 
 // 导入Mindustry游戏内容类
+import main.worlds.blocks.turret.Wads;
 import mindustry.content.*;
 
 // 导入Mindustry类型类
-import mindustry.entities.bullet.LaserBulletType;
-import mindustry.entities.effect.MultiEffect;
 import mindustry.gen.Sounds;
-import mindustry.graphics.Pal;
 import mindustry.type.Category;
 import mindustry.type.ItemStack;
 import mindustry.type.LiquidStack;
 
 
 // 导入Mindustry世界块类
-import mindustry.world.Block;
 import mindustry.world.blocks.campaign.LaunchPad; // 发射台
 import mindustry.world.blocks.defense.Door;//门
 import mindustry.world.blocks.distribution.*;
-import mindustry.world.blocks.environment.OreBlock;//资源墙
-import mindustry.world.blocks.liquid.ArmoredConduit;//流体管道
 import mindustry.world.blocks.power.ThermalGenerator;//发电机
 import mindustry.world.blocks.production.AttributeCrafter;//T2排气冷凝器
 import mindustry.world.blocks.production.GenericCrafter; // 生产
-import mindustry.world.blocks.production.BeamDrill;//矿机
 import mindustry.world.blocks.power.PowerGenerator; // 发电机
 import mindustry.world.blocks.production.SolidPump;//抽水机
-import mindustry.world.blocks.storage.CoreBlock; // 核心
 import mindustry.world.blocks.storage.Unloader; // 装卸器
 import mindustry.world.blocks.defense.Wall;//防御墙
 import mindustry.world.blocks.defense.turrets.PowerTurret;//炮台
@@ -62,13 +53,24 @@ public class WBlocks {
     public static Wall fortify_the_defensive_wall,fortify_the_defensive_wall_large;
     public static Door strengthened_gates;
     public static PowerTurret spear;
+    public static Wads Mads;
 
-//    ============ Destruction ============
-    public static CoreBlock destruction_core;
 
     public static void load() {
 
 //        =============================== Erekir ===============================
+//小型主动防御
+        Mads = new Wads("ADS") {{
+            requirements(Category.defense, with(Items.beryllium,70, Items.graphite,100,Items.tungsten,50,Items.silicon,50));
+            size = 2;
+            rotateSpeed = 20f; // 旋转速度
+            range = 20 * 8; // 拦截范围（20 格）
+            health = 70;
+            consumePower(30f / 60f);
+            description = "主动防御装置，能够拦截导弹和炮弹";
+            shootSound = Sounds.missile;
+
+        }};
 
 // 创建一个新的防御墙对象，命名为 "fortify-the-defensive-wall"
         fortify_the_defensive_wall = new Wall("fortify-the-defensive-wall") {{
@@ -198,7 +200,7 @@ public class WBlocks {
             consumePower(2.5f);
             // 设置方块的图标
             fullIcon = Core.atlas.find("reinforce_pump_plus");
-            // 每分钟泵送100单位的液体，除以4表示每秒泵送的量
+            // 每分钟泵送80单位的液体，除以4表示每秒泵送的量
             pumpAmount = 80f / 60f / 4f;
             // 液体容量
             liquidCapacity = 50f;
@@ -336,7 +338,5 @@ public class WBlocks {
             consumePower(100f / 60f); // 消耗电力 100/s
             description = "抽水机，可以开采地下水，需要电力";
         }};
-
-
     }
 }
