@@ -53,7 +53,11 @@ public class Wads extends PowerTurret {
             if (power.status <= 0.01f) return;
 
             // 计算攻击频率（如果有水，则提升攻击频率）
-            float reloadTime = baseReload / (liquids.currentAmount() > 0 ? waterBoost : 1f);
+
+            float reloadTime = baseReload;
+            if (liquids != null){
+                reloadTime = baseReload / (liquids.currentAmount() > 0 ? waterBoost : 1f);
+            }
             reloadTime /= power.status; // 根据电力状态调整射速
 
             // 查找目标
