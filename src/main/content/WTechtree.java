@@ -19,7 +19,7 @@ public class WTechtree{
         addToNode(Blocks.ductBridge, node(duct_bridge_plus));
         addToNode(Blocks.reinforcedBridgeConduit, node(reinforced_bridge_conduit_plus));
         addToNode(Blocks.ductUnloader, node(unloader_erekir));
-        addToNode(Blocks.sublimate, node(spear));
+        addToNode(Blocks.sublimate, node(Mads));
         addToNode(Blocks.ductBridge, node(junction));
         addToNode(Blocks.carbideWall, node(fortify_the_defensive_wall, () -> {
             node(fortify_the_defensive_wall_large);

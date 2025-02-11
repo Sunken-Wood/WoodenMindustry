@@ -48,7 +48,6 @@ public class Wads extends PowerTurret {
 
         @Override
         public void updateTile() {
-            super.updateTile();
 
             // 如果没有电力，直接返回
             if (power.status <= 0.01f) return;
