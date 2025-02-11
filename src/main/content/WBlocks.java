@@ -65,60 +65,10 @@ public class WBlocks {
 
 //    ============ Destruction ============
     public static CoreBlock destruction_core;
-    public static GenericCrafter aluminum_electrolyzer;
-    public static BeamDrill basic_ion_drill;
-    public static Seq<Block> destructionBlocks = new Seq<>();
-    public static Duct duct;
-    public static DirectionLiquidBridge reinforced_bridge_conduit;
-    public static DuctBridge duct_bridge;
-    public static ArmoredConduit fluid_pipe;
-    public static Router w_router;
-
-
-    //=============资源==================
-    public static OreBlock
-            ore_wall_iron,ore_iron,ore_gold,ore_silver,ore_aluminum_mineral;
-
 
     public static void load() {
 
 //        =============================== Erekir ===============================
-
-//添加一个炮台
-        spear = new PowerTurret("spear") {{
-            requirements(Category.turret, with(Items.beryllium,450, Items.oxide, 50, Items.tungsten, 200, Items.graphite,30, Items.silicon, 250)); // 成本
-            range = 165; // 射程
-            shoot.firstShotDelay = 40f; // 射击延迟
-            recoil = 1.5f; // 后坐力
-            reload = 40f; // 装填时间
-            shootEffect = Fx.lancerLaserShoot; // 射击效果
-            heatColor = Color.blue; // 热量颜色
-            size = 3; // 大小
-            scaledHealth = 180; // 生命值
-            consumePower(3f); // 能量消耗
-            targetAir = false; // 攻空目标
-            moveWhileCharging = true; // 可移动充电
-            accurateDelay = true; // 精确延迟
-            shootSound = Sounds.laser; // 射击声音
-
-
-            shootType = new LaserBulletType(450) {{//伤害
-                colors = new Color[]{Pal.lancerLaser.cpy().a(1f), Pal.lancerLaser, Color.white}; // 子弹颜色
-                chargeEffect = new MultiEffect(Fx.lancerLaserCharge, Fx.lancerLaserChargeBegin); // 充电效果
-                buildCostMultiplier = 0.4f; // 建造成本倍率
-                hitEffect = Fx.hitLancer; // 命中效果
-                hitSize = 3; // 命中效果大小
-                lifetime = 8f; // 子弹生命时间
-                drawSize = 400f; // 绘制大小
-                collidesAir = false; // 是否与空气碰撞
-                length = 173f; // 激光长度
-                ammoMultiplier = 1f; // 弹药倍率
-                pierceCap = -1; // 穿透上限为无限
-                knockback = 2; //击退效果
-                buildingDamageMultiplier = 0.2f;//对建筑的伤害倍率
-            }};
-            description = "发射能量束攻击地面单位，无限穿透，精度很高"; // 描述
-        }};
 
 // 创建一个新的防御墙对象，命名为 "fortify-the-defensive-wall"
         fortify_the_defensive_wall = new Wall("fortify-the-defensive-wall") {{
@@ -277,10 +227,6 @@ public class WBlocks {
             minEfficiency = 9f - 0.0001f;
             // 设置电力生产为6/9
             powerProduction = 6f / 9f;
-            // 流体存储量：60
-            liquidCapacity = 4800f / 60f ;
-            // 输出流体：水 效率：15/s
-            outputLiquid = new LiquidStack(Liquids.water, 15f / 60f / 9f);
             // 将发电机添加到电源块组
             group = BlockGroup.power;
             // 设置不显示效率
@@ -291,7 +237,7 @@ public class WBlocks {
             placeableOn = true;
             // 设置效果触发几率为0.04
             effectChance = 0.04f;
-            description = "更高效的发电机，能产生水和较多的电力";
+            description = "更高效的发电机";
 
             // 设置绘制器为DrawMulti，包含默认绘制和旋转模糊绘制
             drawer = new DrawMulti(new DrawDefault(), new DrawBlurSpin("-rotator", 0.6f * 9f)
@@ -324,7 +270,7 @@ public class WBlocks {
             // 启用电力消耗
             hasPower = true;
             // 设置电力消耗为 150 单位/分钟（即 2.5 单位/秒）
-            consumePower(150f / 60f);
+            consumePower(170f / 60f);
             // 设置不显示效率
             displayEfficiency = false;
             // 必须全部放置在蒸汽喷口上
@@ -390,5 +336,7 @@ public class WBlocks {
             consumePower(100f / 60f); // 消耗电力 100/s
             description = "抽水机，可以开采地下水，需要电力";
         }};
+
+
     }
 }
