@@ -59,7 +59,7 @@ public class Wads extends PowerTurret {
 
             // 查找目标
             if (timer.get(0, reloadTime)) {
-                Teamc targetTeamc = findTarget();
+                Teamc targetTeamc = find();
                 if (targetTeamc instanceof Bullet) {
                     target = (Bullet) targetTeamc;
                     shoot(target);
@@ -81,8 +81,7 @@ public class Wads extends PowerTurret {
         }
 
         // 查找范围内的敌方炮弹或导弹
-        @Override
-        protected Teamc findTarget() {
+        protected Teamc find() {
             return Groups.bullet.intersect(x - range, y - range, range * 2, range * 2)
                     .min((Bullet b) -> b.team != team && b.type() != null && b.type().collidesTiles, (Bullet b) -> b.dst2(x, y));
         }
