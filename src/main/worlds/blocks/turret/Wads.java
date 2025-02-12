@@ -132,6 +132,10 @@ public class Wads extends PowerTurret {
                 laserLength = Mathf.dst(x,  y, target.x, target.y);
 
                 // 命中目标
+                target.damage(50); // 造成伤害
+                target.remove(); // 摧毁目标
+
+                // 触发命中效果
                 hitEffectTime = 0.2f;
                 hitEffectSize = 10f;
             }
