@@ -52,7 +52,7 @@ public class WBlocks {
     public static AttributeCrafter t2_vent_condenser;
     public static Wall fortify_the_defensive_wall,fortify_the_defensive_wall_large;
     public static Door strengthened_gates;
-    public static PowerTurret spear;
+    //public static PowerTurret spear;
     public static Wads Mads;
 
 
@@ -69,7 +69,8 @@ public class WBlocks {
             consumePower(30f / 60f);
             description = "主动防御装置，能够拦截导弹和炮弹";
             shootSound = Sounds.missile;
-
+            drawer = new DrawTurret("reinforced-");
+            squareSprite = false;
         }};
 
 // 创建一个新的防御墙对象，命名为 "fortify-the-defensive-wall"

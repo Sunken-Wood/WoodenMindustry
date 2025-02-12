@@ -17,7 +17,7 @@ public class Wads extends PowerTurret {
 
     public float waterConsumption = 0.1f; // 默认水消耗速度
     public float waterBoost = 1.5f; // 默认水冷却带来的攻击频率提升
-    public float baseReload = 60f; // 默认基础射速（60 帧 = 1 秒）
+    public float baseReload = 30f; // 默认基础射速（60 帧 = 1 秒）
     public float idleRotationSpeed = 360f / 120f; // 默认待机旋转速度（2 秒一圈）
 
     public Wads(String name) {
@@ -27,16 +27,16 @@ public class Wads extends PowerTurret {
         shootCone = 360f; // 360 度全覆盖
         targetAir = false; // 不针对空中单位
         targetGround = false; // 不针对地面单位
-        shootSound = Sounds.laser; // 射击音效
+        shootSound = Sounds.laser;  // 射击音效
     }
 
     @Override
     public void setStats() {
         super.setStats();
-        stats.remove(Stat.ammo); // 移除弹药统计
-        stats.remove(Stat.targetsAir); // 移除对空目标统计
-        stats.remove(Stat.targetsGround); // 移除对地目标统计
-        stats.add(Stat.liquidCapacity, waterConsumption * 60f, StatUnit.perSecond); // 显示水消耗
+        stats.remove(Stat.ammo);  // 移除弹药统计
+        stats.remove(Stat.targetsAir);  // 移除对空目标统计
+        stats.remove(Stat.targetsGround);  // 移除对地目标统计
+        stats.add(Stat.liquidCapacity,  waterConsumption * 60f, StatUnit.perSecond);  // 显示水消耗
     }
 
     public class ADSBuild extends PowerTurretBuild {
@@ -45,33 +45,62 @@ public class Wads extends PowerTurret {
         protected float laserLength; // 激光长度
         protected float hitEffectTime; // 命中效果时间
         protected float hitEffectSize = 10f; // 命中效果大小
+        protected boolean isShooting; // 是否正在射击
+        protected float shotTime; // 记录射击时间
 
         @Override
         public void updateTile() {
 
             // 如果没有电力，直接返回
-            if (power.status <= 0.01f) return;
+            if (power.status  <= 0.01f) {
+                isShooting = false;
+                return;
+            }
 
             // 计算攻击频率（如果有水，则提升攻击频率）
-
             float reloadTime = baseReload;
-            if (liquids != null){
-                reloadTime = baseReload / (liquids.currentAmount() > 0 ? waterBoost : 1f);
+            if (liquids != null) {
+                reloadTime = baseReload / (liquids.currentAmount()  > 0 ? waterBoost : 1f);
             }
-            reloadTime /= power.status; // 根据电力状态调整射速
+            reloadTime /= power.status;  // 根据电力状态调整射速
 
             // 查找目标
-            if (timer.get(0, reloadTime)) {
+            if (timer.get(0,  reloadTime)) {
                 Teamc targetTeamc = find();
                 if (targetTeamc instanceof Bullet) {
                     target = (Bullet) targetTeamc;
                     shoot(target);
+                    isShooting = true;
+                    shotTime = Time.time;  // 记录射击时间
+                } else {
+                    isShooting = false;
+                    hitEffectTime = 0;
                 }
+            }
+
+            // 如果正在射击，播放持续音效
+            if (isShooting && laserLength > 0) {
+                Sounds.laser.loop();
+            } else {
+                Sounds.laser.stop();
+            }
+
+            // 自动摧毁目标
+            if (target != null && Time.time  >= shotTime + 0.2f) {
+                target.damage(50);  // 造成伤害
+                target.remove();  // 摧毁目标
+                hitEffectTime = 0.2f;
+                hitEffectSize = 10f;
+                isShooting = false;
+                laserLength = 0;
+                target = null;
             }
 
             // 待机状态下缓慢旋转
             if (target == null) {
-                rotation += idleRotationSpeed * Time.delta * power.status;
+                rotation += idleRotationSpeed * Time.delta  * power.status;
+                isShooting = false;
+                hitEffectTime = 0;
             }
 
             // 更新命中效果
@@ -81,25 +110,28 @@ public class Wads extends PowerTurret {
                     hitEffectTime = 0;
                 }
             }
+
+            // 如果目标不存在，停止绘制激光
+            if (target == null) {
+                laserLength = 0;
+                isShooting = false;
+                hitEffectTime = 0;
+            }
         }
 
         // 查找范围内的敌方炮弹或导弹
         protected Teamc find() {
-            return Groups.bullet.intersect(x - range, y - range, range * 2, range * 2)
-                    .min((Bullet b) -> b.team != team && b.type() != null && b.type().collidesTiles, (Bullet b) -> b.dst2(x, y));
+            return Groups.bullet.intersect(x  - range, y - range, range * 2, range * 2)
+                    .min((Bullet b) -> b.team  != team && b.type()  != null && b.type().collidesTiles,  (Bullet b) -> b.dst2(x,  y));
         }
 
         // 射击目标
         protected void shoot(Bullet target) {
             if (target != null) {
                 // 计算激光长度
-                laserLength = Mathf.dst(x, y, target.x, target.y);
+                laserLength = Mathf.dst(x,  y, target.x, target.y);
 
                 // 命中目标
-                target.damage(50); // 造成伤害
-                target.remove(); // 摧毁目标
-
-                // 触发命中效果
                 hitEffectTime = 0.2f;
                 hitEffectSize = 10f;
             }
@@ -113,7 +145,7 @@ public class Wads extends PowerTurret {
             if (target != null && laserLength > 0) {
                 Draw.color(Color.green);
                 Lines.stroke(2f);
-                Lines.line(x, y, target.x, target.y);
+                Lines.line(x,  y, target.x, target.y);
                 Draw.reset();
             }
 
@@ -121,7 +153,7 @@ public class Wads extends PowerTurret {
             if (hitEffectTime > 0) {
                 Draw.color(Color.green);
                 Lines.stroke(2f);
-                Lines.circle(target.x, target.y, hitEffectSize * (hitEffectTime / 0.2f));
+                Lines.circle(target.x,  target.y, hitEffectSize * (hitEffectTime / 0.2f));
                 Draw.reset();
             }
         }
