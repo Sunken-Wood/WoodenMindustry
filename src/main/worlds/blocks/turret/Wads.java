@@ -65,14 +65,17 @@ public class Wads extends PowerTurret {
                 Teamc targetTeamc = find();
                 if (targetTeamc instanceof Bullet) {
                     target = (Bullet) targetTeamc;
+
+                    // 待机状态下缓慢旋转
+                    if (target == null | Mathf.dst(x, y, target.x, target.y) > 35) {
+                        rotation += idleRotationSpeed * Time.delta * power.status;
+                        return;
+                    }
                     shoot(target);
                 }
             }
 
-            // 待机状态下缓慢旋转
-            if (target == null) {
-                rotation += idleRotationSpeed * Time.delta * power.status;
-            }
+
 
             // 更新命中效果
             if (hitEffectTime > 0) {
@@ -92,8 +95,6 @@ public class Wads extends PowerTurret {
         // 射击目标
         protected void shoot(Bullet target) {
             if (target != null) {
-                // 计算激光长度
-                laserLength = Mathf.dst(x, y, target.x, target.y);
 
                 // 命中目标
                 target.damage(50); // 造成伤害
