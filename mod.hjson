@@ -8,7 +8,7 @@ name: "wooden-mindustry-java-mod"
 author: "SunkenWood/TAGAST"
 
 #the fully qualified main class of the mod
-main: "main.main"
+main: "main.Main"
 
 #the mod description as seen in the mod dialog
 description: "Happy Every Day"
