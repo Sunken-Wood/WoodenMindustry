@@ -38,7 +38,6 @@ public class WBlocks {
             // 设置块组为 Transportation
             group = BlockGroup.transportation;
         }};
-
-        // 顶点探测仪（待定）
+        // 定点探测仪（待定）
     }
 }
